@@ -67,6 +67,33 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/react:
+    devDependencies:
+      '@nubo-icons/tools':
+        specifier: workspace:*
+        version: link:../../tools/icons
+      '@types/node':
+        specifier: ^24.19.2
+        version: 24.19.2
+      '@types/react':
+        specifier: ^19.3.0
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19.3.0
+        version: 19.3.0(@types/react@19.3.0)
+      react:
+        specifier: 19.3.0
+        version: 19.3.0
+      react-dom:
+        specifier: 19.3.0
+        version: 19.3.0(react@19.3.0)
+      tsx:
+        specifier: ^4.23.15
+        version: 4.23.15
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   tools/icons:
     dependencies:
       fast-xml-parser:

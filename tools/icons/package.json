@@ -1,5 +1,6 @@
 {
   "name": "@nubo-icons/tools",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,5 +16,8 @@
     "@types/node": "^24.19.2",
     "tsx": "^4.23.15",
     "typescript": "^5.9.3"
+  },
+  "exports": {
+    "./icons": "./src/icons.ts"
   }
 }

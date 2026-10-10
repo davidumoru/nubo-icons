@@ -13,13 +13,13 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 3**: chevron-left, chevron-up, chevron-down, arrow-left, arrow-up, arrow-down.
 - **Batch 4**: user, bell, mail, lock, trash, calendar.
 - **Batch 5**: menu, eye, eye-off, user-plus, pencil, copy.
+- **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 
 ## Next
 
 1. **Grow the set in batches** of 4–6, every icon in all three styles, each batch reviewed and locked before the next. Write a scope policy alongside: what nubo draws and what it doesn't (no brand logos).
 2. **Packages.**
    - `@nubo-icons/svg`: optimized SVGs plus icon data JSON.
-   - `@nubo-icons/react`: one module per icon per style, ESM + CJS, TypeScript types, `currentColor`, hidden from screen readers unless given a `title`. Each style has its own import path (`@nubo-icons/react/line`). Props stay compatible with Lucide (`size`, `strokeWidth`).
    - Release with Changesets, all packages on one version, published from CI with npm provenance.
 3. **Website** in `apps/web`: search across names and tags, style switcher, copy SVG or JSX, a page per icon, an auto-generated `llms.txt`.
 4. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.

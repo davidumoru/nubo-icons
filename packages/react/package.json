@@ -1,0 +1,87 @@
+{
+  "name": "@nubo-icons/react",
+  "version": "0.0.0",
+  "description": "Soft, open-source icons for React in three styles: Line, Fill and Duo.",
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/cjs/line/index.js",
+  "module": "./dist/esm/line/index.js",
+  "types": "./dist/cjs/line/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/types/line/index.d.ts",
+        "default": "./dist/esm/line/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/line/index.d.ts",
+        "default": "./dist/cjs/line/index.js"
+      }
+    },
+    "./line": {
+      "import": {
+        "types": "./dist/types/line/index.d.ts",
+        "default": "./dist/esm/line/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/line/index.d.ts",
+        "default": "./dist/cjs/line/index.js"
+      }
+    },
+    "./fill": {
+      "import": {
+        "types": "./dist/types/fill/index.d.ts",
+        "default": "./dist/esm/fill/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/fill/index.d.ts",
+        "default": "./dist/cjs/fill/index.js"
+      }
+    },
+    "./duo": {
+      "import": {
+        "types": "./dist/types/duo/index.d.ts",
+        "default": "./dist/esm/duo/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/duo/index.d.ts",
+        "default": "./dist/cjs/duo/index.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "@nubo-icons/tools": "workspace:*",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "typesVersions": {
+    "*": {
+      "line": [
+        "./dist/cjs/line/index.d.ts"
+      ],
+      "fill": [
+        "./dist/cjs/fill/index.d.ts"
+      ],
+      "duo": [
+        "./dist/cjs/duo/index.d.ts"
+      ]
+    }
+  }
+}
