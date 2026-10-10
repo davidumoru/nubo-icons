@@ -1,0 +1,8 @@
+{
+  "tags": ["warning", "alert", "caution", "danger", "exclamation"],
+  "categories": ["status"],
+  "aliases": ["alert-triangle"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

@@ -72,12 +72,12 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | Icon            | Priority | Notes                                                        |
 | --------------- | -------- | ------------------------------------------------------------ |
 | circle-check    | ✅       |                                                              |
-| circle-x        | P1       | Error toasts (shadcn's sonner uses an octagon; we alias it). |
-| circle-info     | P1       | Alias `info`.                                                |
-| triangle-alert  | P1       | Alias `alert-triangle`. Warning toasts.                      |
-| circle-alert    | P2       | Alias `alert-circle`.                                        |
-| circle-question | P2       | Alias `help-circle`.                                         |
-| clock           | P2       |                                                              |
+| circle-x        | ✅       | Error toasts (shadcn's sonner uses an octagon; we alias it). |
+| circle-info     | ✅       | Alias `info`.                                                |
+| triangle-alert  | ✅       | Alias `alert-triangle`. Warning toasts.                      |
+| circle-alert    | ✅       | Alias `alert-circle`.                                        |
+| circle-question | ✅       | Alias `help-circle`.                                         |
+| clock           | ✅       |                                                              |
 | bell            | ✅       |                                                              |
 | bell-off        | P3       | Slash rule from DESIGN.md.                                   |
 | prohibit        | P3       | Alias `ban`.                                                 |

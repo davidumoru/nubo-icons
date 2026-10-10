@@ -1,0 +1,8 @@
+{
+  "tags": ["help", "question", "support", "faq", "unknown"],
+  "categories": ["status", "interface"],
+  "aliases": ["help-circle", "circle-help"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

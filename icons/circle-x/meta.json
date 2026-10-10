@@ -1,0 +1,8 @@
+{
+  "tags": ["error", "close", "cancel", "remove", "failed", "delete"],
+  "categories": ["status", "interface"],
+  "aliases": ["x-circle"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

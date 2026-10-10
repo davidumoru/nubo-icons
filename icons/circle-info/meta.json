@@ -1,0 +1,8 @@
+{
+  "tags": ["information", "help", "about", "details", "tooltip"],
+  "categories": ["status", "interface"],
+  "aliases": ["info"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
