@@ -19,7 +19,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Browser } from "@/components/browser";
-import { SiteHeader } from "@/components/site-header";
 import { icons } from "@/lib/icons";
 
 const SHOWCASE = [
@@ -33,8 +32,7 @@ const SHOWCASE = [
 
 export default function Home() {
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 sm:px-8">
-      <SiteHeader />
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-8">
       <section className="flex flex-col items-center gap-8 py-20 text-center">
         <Badge variant="outline" className="h-8 gap-2 px-3">
           <CloudLineIcon />

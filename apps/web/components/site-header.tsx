@@ -2,18 +2,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { cn } from "@/lib/utils";
 
-export function SiteHeader({
-  className,
-  logoClassName,
-}: {
-  className?: string;
-  logoClassName?: string;
-}) {
+// Rendered once in the root layout, so it stays in place when moving between pages.
+export function SiteHeader() {
   return (
-    <header className={cn("flex h-16 items-center justify-between", className)}>
-      <Link href="/" className={cn("rounded-md", logoClassName)}>
+    <header className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-8">
+      <Link href="/" className="rounded-md">
         <Logo />
       </Link>
       <nav className="flex items-center gap-1 text-sm text-muted-foreground">
