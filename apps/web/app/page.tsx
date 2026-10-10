@@ -2,6 +2,7 @@ import { DownloadIcon } from "@nubo-icons/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Browser } from "@/components/browser";
+import { SiteFooter } from "@/components/site-footer";
 import { StyleSpecimen } from "@/components/style-specimen";
 
 export default function Home() {
@@ -42,6 +43,7 @@ export default function Home() {
       <main className="pb-24">
         <Browser />
       </main>
+      <SiteFooter />
     </div>
   );
 }
