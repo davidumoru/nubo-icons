@@ -60,7 +60,7 @@ No sharp points or hard corners anywhere. Star tips, arrow heads, bolt points an
 The **puff** technique: every solid shape is filled _and_ traced with a 1.5px round stroke (`fill="currentColor" stroke="currentColor" stroke-width="1.5"`). The stroke adds 0.75px on every side and rounds every outer corner. Draw the shape on the centerline, exactly where Line draws it.
 
 - **Cutouts.** Details inside a solid shape (the flap of an envelope, the "i" in info, a keyhole) are holes made with `fill-rule="evenodd"`. The puff stroke shrinks every hole by 0.75px on each side, so draw a hole 1.5px larger than it should look.
-- **Cutout lines** are drawn 3px wide, so they show as a 1.5px gap: a negative stroke the same weight as Line.
+- **Cutout lines** are drawn 3px wide, so they show as a 1.5px gap: a negative stroke the same weight as Line. Build them with `strokeOutline` in `tools/icons/src/geometry.ts`, which traces a real round-capped, round-joined stroke, so the gap's ends and elbows stay soft.
 - **Minimum hole:** 4px drawn (2.5px visible). Holes that identify the object, like a gear's axle, should be generous, around a third of the icon's width, so the shape still reads at 16px. Every major set draws them that way.
 - A hole's corners are not softened by the stroke. Round them in the geometry.
 - **Separate solid parts** keep at least a 1.5px visible gap. **(calibrate)**
@@ -79,6 +79,10 @@ Duo is Line with a light tint inside.
 - Holes stay empty. An opening that goes through the object (a gear's axle hole, the gap in a ring) is untinted, the same way Fill cuts it out. The tint is the object's body, not every enclosed area.
 
 One rule, no per-icon choices: anyone can predict what a new icon's Duo looks like from its Line drawing.
+
+## Motion
+
+Symbols that may join the morph group (menu, x, plus, minus, check, chevrons, arrows) are drawn from at most three straight lines. That keeps them animatable later without redrawing. See [docs/roadmap.md](docs/roadmap.md).
 
 ## Metaphors and naming
 
