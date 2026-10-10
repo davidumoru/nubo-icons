@@ -1,0 +1,8 @@
+{
+  "tags": ["photo", "picture", "gallery", "media", "landscape"],
+  "categories": ["media", "files"],
+  "aliases": ["photo"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

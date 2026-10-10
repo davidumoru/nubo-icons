@@ -97,13 +97,13 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 
 | Icon        | Priority | Notes                                    |
 | ----------- | -------- | ---------------------------------------- |
-| file        | P2       | Page with a folded corner.               |
-| file-text   | P2       |                                          |
-| folder      | P2       |                                          |
+| file        | ✅       | Page with a folded corner.               |
+| file-text   | ✅       |                                          |
+| folder      | ✅       |                                          |
 | folder-open | P3       |                                          |
-| image       | P2       | Mountains and sun.                       |
-| paperclip   | P2       |                                          |
-| clipboard   | P2       |                                          |
+| image       | ✅       | Mountains and sun.                       |
+| paperclip   | ✅       |                                          |
+| clipboard   | ✅       |                                          |
 | copy        | ✅       |                                          |
 | cloud       | ✅       | Nubo means cloud. Worth getting perfect. |
 | database    | P3       |                                          |
