@@ -1,0 +1,79 @@
+export const metadata = {
+  title: "React",
+  description: "Import paths, names, props and types for @nubo-icons/react.",
+};
+
+`@nubo-icons/react` has one component per icon per style. It works with React 18 and 19, ships ES modules and CommonJS with types for both, and only the icons you import end up in your bundle.
+
+## Import paths
+
+Each style has its own entry point. The names are the same in all three, so switching style is a one-line change.
+
+| Style | Import from                                     |
+| ----- | ----------------------------------------------- |
+| Line  | `@nubo-icons/react` or `@nubo-icons/react/line` |
+| Fill  | `@nubo-icons/react/fill`                        |
+| Duo   | `@nubo-icons/react/duo`                         |
+
+To use two styles in one file, rename one of them:
+
+```tsx
+import { BellIcon } from "@nubo-icons/react";
+import { BellIcon as BellFillIcon } from "@nubo-icons/react/fill";
+
+<span>{unread ? <BellFillIcon /> : <BellIcon />}</span>;
+```
+
+## Names
+
+Icon names are kebab-case on the site (`magnifying-glass`) and PascalCase in code. Every icon is exported twice, with and without an `Icon` suffix:
+
+```tsx
+import { MagnifyingGlass, MagnifyingGlassIcon } from "@nubo-icons/react";
+```
+
+Icons also export their aliases: the names other sets use for the same thing. `Search`, `Home` and `Settings` all work, so moving from Lucide is mostly a find-and-replace. Each icon's aliases are listed in its drawer on the site.
+
+## Props
+
+| Prop               | Default   | Notes                                                                                 |
+| ------------------ | --------- | ------------------------------------------------------------------------------------- |
+| `size`             | `24`      | Width and height. Any number or CSS length, such as `18` or `"1em"`.                  |
+| `strokeWidth`      | `1.5`     | Stroke width in grid units, so it scales with `size`.                                 |
+| `color`            | inherited | Icons draw in `currentColor`, so they follow the text color unless you set one.       |
+| `title`            | none      | Makes the icon announced to screen readers. See [Accessibility](/docs/accessibility). |
+| `secondaryOpacity` | `0.3`     | Duo only: the strength of the tint.                                                   |
+
+Every other SVG prop passes through, including `className`, `style`, event handlers and `ref`.
+
+Fill and Duo are drawn for the 1.5px stroke. Changing `strokeWidth` on them also thickens their outlines, which can close the small gaps between parts. Keep custom stroke widths to Line.
+
+## Styling
+
+Every icon has the classes `nubo-icon` and `nubo-<name>`, so you can style one icon or all of them:
+
+```tsx
+<HeartIcon className="size-5 text-rose-500" />
+```
+
+```css
+.nubo-icon {
+  flex-shrink: 0;
+}
+```
+
+Size follows the `size` prop, but CSS `width` and `height` win if you set them, which makes utility classes like `size-5` work as expected. Use `size="1em"` to scale an icon with the text around it.
+
+## TypeScript
+
+Every icon has the type `NuboIcon`, and its props are `IconProps`. Both are exported from each entry point.
+
+```tsx
+import type { IconProps, NuboIcon } from "@nubo-icons/react";
+
+type NavItem = { label: string; icon: NuboIcon };
+
+function Glyph({ icon: Icon, ...props }: { icon: NuboIcon } & IconProps) {
+  return <Icon {...props} />;
+}
+```

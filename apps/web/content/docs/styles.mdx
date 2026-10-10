@@ -1,0 +1,32 @@
+import { StylePreview } from "@/components/docs/style-preview";
+
+export const metadata = {
+  title: "Line, Fill and Duo",
+  description: "The three Nubo styles and when to use each.",
+};
+
+Every icon comes in three styles with the same name and the same outline. An icon is exactly the same size in every style, so you can switch styles, or show two side by side, without anything moving.
+
+<StylePreview />
+
+## Line
+
+The default. Everything is drawn with a 1.5px round stroke and nothing is filled. Use it for most interface icons: navigation, toolbars, forms and lists.
+
+## Fill
+
+Every enclosed shape becomes solid, and details inside it are cut out. Symbols made of lines, like arrows, check, plus or x, stay as lines, because filling them would change what they mean.
+
+Use Fill to show state against Line, such as a selected tab, an active filter or a liked post, or wherever icons need more weight, like a bottom navigation bar.
+
+## Duo
+
+Line, with a light tint behind the part that identifies the icon: a bell's body, a folder's tab, a camera's body. Holes stay clear and symbols get no tint.
+
+The tint is the icon's own color at 30% opacity, so it follows `color` and works in light and dark themes. Use Duo for feature lists, empty states and illustrations at larger sizes, where a little more character helps.
+
+In React, `secondaryOpacity` changes the tint's strength. In SVG, the tint is a group at 30% opacity.
+
+## Mixing styles
+
+Pick one style for each surface and switch to another to show a change. Line in a toolbar with Fill for the active item is a common pattern. Avoid mixing styles at random within one group, because the change reads as meaning something.

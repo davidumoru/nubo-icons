@@ -1,0 +1,36 @@
+export const metadata = {
+  title: "Design",
+  description: "The rules every Nubo icon is drawn to.",
+};
+
+Every Nubo icon follows the same small set of rules. That consistency is what lets an icon you've never seen fit next to the ones you already use.
+
+## Grid
+
+- **24 × 24** canvas with **2px of padding**, so artwork stays within the 20 × 20 area in the middle.
+- **Keylines** keep different shapes looking the same size: circles fill 20 × 20, squares 18 × 18, tall shapes 16 × 20 and wide shapes 20 × 16.
+- Shapes are centered by eye rather than by their bounding box, so a play triangle sits slightly right of center.
+
+## Stroke
+
+- **1.5px**, with round caps and joins. It lands on exactly 1px at 16px, so small sizes stay crisp.
+- **One weight everywhere.** No thicker or thinner strokes for emphasis.
+- Separate parts keep at least a **1.5px gap**, so neighbouring strokes never merge.
+
+## Soft corners
+
+No sharp points. Corners are rounded on the centerline, inside corners included, and points like a star's tips or a bolt's ends are small curves. The goal is light and friendly, never chunky.
+
+## Styles
+
+- **Fill** uses the same outlines as Line, filled in. Details inside a shape are cut out, and secondary parts, like a folder's tab or an archive's lid, stay as outlines so the object still reads.
+- **Duo** tints the part that identifies an icon: a bell's body, a folder's tab. Holes stay clear and symbols get no tint.
+- Slashes (eye-off, bell-off, mic-off) run from top left to bottom right. The icon keeps a gap on one side of the slash and runs into it on the other.
+
+## Names
+
+Icons are named for what they show, not what they do: `magnifying-glass`, not `search`. Function names like `search` become aliases, so both work.
+
+## Request an icon
+
+Missing something? [Open an issue](https://github.com/davidumoru/nubo-icons/issues/new) with what you need it for. Icons are added in reviewed batches, all three styles at once.

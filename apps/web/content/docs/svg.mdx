@@ -1,0 +1,33 @@
+export const metadata = {
+  title: "SVG",
+  description: "Use Nubo icons as plain SVG.",
+};
+
+Every icon is plain SVG, so you can use Nubo anywhere, not only in React.
+
+## Copy or download
+
+[Open any icon](/) on the site. The drawer shows its SVG with your chosen size, stroke and color already applied: copy it, or download it as a file. The React tab gives you the matching component.
+
+## What's inside
+
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+  fill="none" stroke="currentColor" stroke-width="1.5"
+  stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="12" cy="12" r="9.25"/>
+  <path d="M12 7.25L12 12L15.25 14"/>
+</svg>
+```
+
+- **`currentColor`** everywhere, so an inline icon takes the text color of its parent.
+- **`viewBox="0 0 24 24"`** with no fixed size inside, so change `width` and `height` to any size.
+- **Fill** icons use `fill="currentColor"` on the root. **Duo** icons wrap the tint in a group at 30% `opacity`; in the source files that group is marked `data-tone="secondary"` instead, so tools can restyle it.
+
+## Sizes
+
+Icons are drawn for 24px and checked at 16, 20, 24 and 32px. Any size works, because the stroke scales with the icon. Multiples of 24 land exactly on the pixel grid, so they're the sharpest.
+
+## For AI tools
+
+[`/llms.txt`](/llms.txt) lists every icon with its component name, aliases and tags, so coding assistants can pick the right icon without guessing.

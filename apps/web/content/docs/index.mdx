@@ -1,0 +1,45 @@
+import { InstallTabs } from "@/components/docs/install-tabs";
+import { StylePreview } from "@/components/docs/style-preview";
+import { icons } from "@/lib/icons";
+
+export const metadata = {
+  title: "Introduction",
+  description: "Install Nubo and render your first icon.",
+};
+
+Nubo is a set of {icons.length} soft, open-source icons. Every icon is drawn on a 24px grid with a 1.5px stroke and comes in three styles that share one outline, so you can swap styles without anything shifting.
+
+<StylePreview />
+
+## Install
+
+<InstallTabs pkg="@nubo-icons/react" />
+
+## Use an icon
+
+Import icons by name. The package root gives you Line; Fill and Duo have their own paths.
+
+```tsx
+import { HeartIcon } from "@nubo-icons/react";
+import { HeartIcon as HeartFillIcon } from "@nubo-icons/react/fill";
+
+export function Like() {
+  return (
+    <button aria-label="Like">
+      <HeartIcon />
+    </button>
+  );
+}
+```
+
+Icons are plain components with no client-side code, so they work in Server Components and anywhere else React renders.
+
+## Find an icon
+
+[Browse the set](/) to search by name, alias or tag. Click any icon to preview it, copy it as SVG or JSX, or download it. Icons also answer to familiar names from other sets, so a search for `search`, `home` or `settings` finds the right one.
+
+## Next
+
+- [React](/docs/react): import paths, names, props and TypeScript.
+- [Line, Fill and Duo](/docs/styles): what each style is for.
+- [Accessibility](/docs/accessibility): when an icon needs a label.

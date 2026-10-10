@@ -1,0 +1,53 @@
+export const metadata = {
+  title: "Accessibility",
+  description: "Labelling Nubo icons for screen readers.",
+};
+
+Most icons sit next to text that already says what they mean, so Nubo hides them from screen readers by default: every icon renders with `aria-hidden="true"`.
+
+## Decorative icons
+
+Next to a visible label, do nothing. The label is what gets read.
+
+```tsx
+<button>
+  <TrashIcon />
+  Delete
+</button>
+```
+
+## Icon-only buttons
+
+When the icon is the only thing in a control, label the control, not the icon:
+
+```tsx
+<button aria-label="Delete">
+  <TrashIcon />
+</button>
+```
+
+The button is what gets focused and announced, so that's where the name belongs.
+
+## Icons that carry meaning
+
+When an icon stands on its own and says something, such as a status in a table, give it a `title` or an `aria-label`. The icon then renders with `role="img"` and is announced.
+
+```tsx
+<CircleCheckIcon title="Verified" />
+```
+
+## Don't rely on the icon alone
+
+- Pair status icons with text or a tooltip. Colors and shapes mean different things to different people.
+- Keep icons at least 16px, and give icon-only buttons a hit area of at least 24px, or 44px on touch screens.
+- Make sure the icon color has at least 3:1 contrast against its background. Duo's tint is decoration on top of that and doesn't need to meet it.
+
+## Right-to-left layouts
+
+Icons that point a direction, such as arrows, chevrons, undo and sign-out, should be mirrored in right-to-left layouts. Icons like clocks, checkmarks and media controls stay as they are. Each icon's metadata marks whether it mirrors, and a CSS rule handles it:
+
+```css
+[dir="rtl"] .nubo-arrow-right {
+  transform: scaleX(-1);
+}
+```
