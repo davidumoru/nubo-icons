@@ -22,7 +22,7 @@ export function markdownFor(doc: Doc, title: string, description: string) {
   return `# ${title}\n\n${description}\n\n${body}\n`;
 }
 
-// h2 and h3 headings with the ids rehype-slug gives them.
+// The ids must match the ones rehype-slug gives the rendered headings.
 export function tocFor(doc: Doc) {
   const slugger = new GithubSlugger();
   const fence = /^```/;

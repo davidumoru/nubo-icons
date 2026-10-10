@@ -8,8 +8,6 @@ import { highlight, type Lang } from "@/components/code/highlight";
 import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
-// The site's one code block. Inside `.typeset` it takes typeset's code styling; docs pass a highlighted
-// <pre> from MDX, and anywhere else passes `code` and `lang` to highlight it in the browser.
 export function CodeBlock({
   code,
   lang,

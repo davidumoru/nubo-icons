@@ -53,8 +53,7 @@ export async function generateMetadata({
   });
 }
 
-// The page is a static shell; the part that reads the URL streams in behind Suspense, so navigating between
-// docs pages never waits on it. Every page is prerendered, so the fallback only shows for a moment, if at all.
+// The part that reads the URL streams in behind Suspense, so navigating between docs pages never waits on it.
 export default function DocPage({ params }: PageProps<"/docs/[[...slug]]">) {
   return (
     <Suspense fallback={<DocSkeleton />}>

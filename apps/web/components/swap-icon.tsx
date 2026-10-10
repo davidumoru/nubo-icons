@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 
 // Both icons stay mounted and cross-fade, so the swap and the swap back are interruptible CSS transitions.
-// Reduced motion keeps the fade and drops the scale and blur.
 export function SwapIcon({
   on,
   from,

@@ -3,8 +3,7 @@ import { createJavaScriptRegexEngine } from "shiki/engine/javascript";
 
 export type Lang = "tsx" | "xml";
 
-// One small highlighter for code built in the browser (the icon drawer). Docs code is highlighted at build
-// time with the same two themes, so both look identical.
+// Keep these themes in step with rehype-pretty-code in next.config.ts, so drawer and docs code look the same.
 let highlighter: Promise<HighlighterCore> | undefined;
 const getHighlighter = () =>
   (highlighter ??= createHighlighterCore({

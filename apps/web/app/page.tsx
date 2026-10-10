@@ -105,9 +105,8 @@ export default function Home() {
   );
 }
 
-// Shared icon links (/?icon=heart) need their own title and preview image, which can only be read per request.
-// This tells Next the page has request-time data so it can stream that metadata while still prerendering the
-// rest of the page.
+// Shared icon links (/?icon=heart) get their own title and preview image, which needs the request; marking the
+// page as request-time lets Next stream that metadata and still prerender the rest.
 async function RequestTime() {
   await connection();
   return null;

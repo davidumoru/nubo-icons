@@ -50,7 +50,6 @@ export function CodeTabsBlock({
     >
       <div className="flex items-center gap-1 border-b border-border/50 p-1">
         {icon && (
-          // The same size and colour as the copy and download icons at the other end of the bar.
           <span className="flex size-7 items-center justify-center text-muted-foreground [&_svg]:size-3.5">
             {icon}
           </span>

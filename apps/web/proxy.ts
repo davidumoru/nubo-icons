@@ -1,7 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-// AI tools ask for pages as Markdown, either with `Accept: text/markdown` or by adding `.md` to the URL. Both
-// are served from /md.
+// AI tools ask for pages as Markdown, with `Accept: text/markdown` or a `.md` suffix.
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const suffixed = pathname.endsWith(".md");
