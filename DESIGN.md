@@ -63,7 +63,7 @@ The **puff** technique: every solid shape is filled _and_ traced with a 1.5px ro
 - **Cutout lines** are drawn 3px wide, so they show as a 1.5px gap: a negative stroke the same weight as Line. Build them with `strokeOutline` in `tools/icons/src/geometry.ts`, which traces a real round-capped, round-joined stroke, so the gap's ends and elbows stay soft.
 - **Minimum hole:** 4px drawn (2.5px visible). Holes that identify the object, like a gear's axle, should be generous, around a third of the icon's width, so the shape still reads at 16px. Every major set draws them that way.
 - A hole's corners are not softened by the stroke. Round them in the geometry.
-- **Separate solid parts** keep at least a 1.5px visible gap. **(calibrate)**
+- **Separate solid parts** (a head and shoulders, a bell and its clapper, a lid and bin) keep a 1.5px visible gap, one stroke width, so Fill shows exactly the space Line leaves.
 - **Fill only fills objects.** When an icon's subject is a solid object with a body (heart, house, gear, bell), it becomes solid. When the subject is a line, a symbol or a frame (check, arrows, chevrons, plus, x, menu, a magnifier's ring, an open tray), Fill is identical to Line: the same 1.5px stroke, pixel for pixel. There is no in-between weight.
 - An icon can mix the two: a solid basket with a line handle.
 

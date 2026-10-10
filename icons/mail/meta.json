@@ -1,0 +1,8 @@
+{
+  "tags": ["email", "envelope", "message", "inbox", "letter", "send"],
+  "categories": ["communication"],
+  "aliases": ["envelope"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
