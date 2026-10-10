@@ -4,10 +4,10 @@ import { useState } from "react";
 import {
   CheckIcon,
   ChevronDownIcon,
+  CodeIcon,
   CopyIcon,
   DownloadIcon,
   ImageIcon,
-  LinkIcon,
 } from "@nubo-icons/react";
 import { Button } from "@/components/ui/button";
 import {
@@ -122,7 +122,7 @@ export function ExportMenu({
             <DropdownMenuItem closeOnClick={false} onClick={actions.copyUri}>
               <SwapIcon
                 on={done === "copyUri"}
-                from={<LinkIcon />}
+                from={<CodeIcon />}
                 to={<CheckIcon />}
               />
               Copy data URI

@@ -31,6 +31,9 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 - **CI**: GitHub Actions runs format, icon lint, build, typecheck and tests on every push and pull request.
 - **Website, first version** in `apps/web`, built on shadcn/ui: search across names, aliases and tags; a toolbar for style, size, stroke and color with Random and Reset; a bottom drawer per icon with previews, SVG and React code, copy and download; light and dark themes; a generated `llms.txt`.
+- **Logo and favicon**: a wordmark built from circles, half circles and bars like the icons, with the "n" as the favicon.
+- **Docs** in `apps/web/content/docs`: introduction, React, styles, SVG, accessibility and design, on shadcn's typeset, sidebar and table of contents.
+- **Exports**: download an icon as SVG or PNG at 1x, 2x or 3x, copy it as a PNG or data URI, copy a link to it (`/?icon=phone` opens its drawer), and download the whole set as a zip.
 
 ## Next
 
@@ -38,7 +41,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 2. **Packages.**
    - `@nubo-icons/svg`: optimized SVGs plus icon data JSON.
    - Release with Changesets, all packages on one version, published from CI with npm provenance.
-3. **Website**: docs (install, props, import paths per style, accessibility), shareable links that open an icon's drawer, a place for the maker's links.
+3. **Website**: a place for the maker's links.
 4. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
 
 ## Later

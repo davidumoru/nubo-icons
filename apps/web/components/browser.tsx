@@ -1,6 +1,13 @@
 "use client";
 
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { MagnifyingGlassIcon, XIcon } from "@nubo-icons/react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -14,23 +21,31 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Input } from "@/components/ui/input";
+import { Controls } from "@/components/controls";
 import {
-  Controls,
   DEFAULT_SETTINGS,
   effectiveStroke,
   type Settings,
-} from "@/components/controls";
+} from "@/lib/settings";
 import { Icon } from "@/components/icon";
 import { IconDetails } from "@/components/icon-details";
+import { useSiteUrl } from "@/components/use-site-url";
 import { icons, searchIcons, type IconData } from "@/lib/icons";
 
 export function Browser() {
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
+  const { name, openIcon, closeIcon } = useSiteUrl(
+    useCallback(
+      (linked: Partial<Settings>) => setSettings((s) => ({ ...s, ...linked })),
+      [],
+    ),
+  );
+  const current = name ? (icons.find((i) => i.name === name) ?? null) : null;
   // Kept after closing so the drawer still has content while it animates out.
-  const [selected, setSelected] = useState<IconData | null>(null);
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selected, setSelected] = useState<IconData | null>(current);
+  if (current && current !== selected) setSelected(current);
   const search = useRef<HTMLInputElement>(null);
 
   const results = useMemo(
@@ -49,10 +64,7 @@ export function Browser() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const open = (icon: IconData) => {
-    setSelected(icon);
-    setDrawerOpen(true);
-  };
+  const open = (icon: IconData) => openIcon(icon.name);
 
   return (
     <div className="flex flex-col gap-6">
@@ -132,7 +144,11 @@ export function Browser() {
         </Empty>
       )}
 
-      <Drawer open={drawerOpen} onOpenChange={setDrawerOpen} showSwipeHandle>
+      <Drawer
+        open={current !== null}
+        onOpenChange={(isOpen) => !isOpen && closeIcon()}
+        showSwipeHandle
+      >
         <DrawerContent>
           <DrawerClose
             render={

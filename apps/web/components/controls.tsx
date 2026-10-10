@@ -2,6 +2,8 @@
 
 import {
   ArrowCounterClockwiseIcon,
+  CheckIcon,
+  ShareIcon,
   HeartIcon as HeartLineIcon,
   SparklesIcon,
 } from "@nubo-icons/react";
@@ -10,22 +12,18 @@ import { HeartIcon as HeartDuoIcon } from "@nubo-icons/react/duo";
 import { Button } from "@/components/ui/button";
 import { Field, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-import { STYLES, type Customization, type Style } from "@/lib/icons";
-
-export type Settings = Customization & { iconStyle: Style };
-
-export const DEFAULT_SETTINGS: Settings = {
-  iconStyle: "line",
-  size: 24,
-  strokeWidth: 1.5,
-  color: "currentColor",
-};
-
-// Fill and Duo are drawn for the 1.5px stroke; a different weight would close their holes and gaps.
-export const effectiveStroke = (s: Settings) =>
-  s.iconStyle === "line" ? s.strokeWidth : 1.5;
+import { STYLES, type Style } from "@/lib/icons";
+import {
+  DEFAULT_SETTINGS,
+  effectiveStroke,
+  type Settings,
+} from "@/lib/settings";
+import { shareLink } from "@/components/use-site-url";
+import { useCopy } from "@/components/use-copy";
+import { SwapIcon } from "@/components/swap-icon";
 
 const STYLE_ICONS = {
   line: HeartLineIcon,
@@ -74,6 +72,7 @@ export function Controls({
   const set = <K extends keyof Settings>(key: K, value: Settings[K]) =>
     onChange({ ...settings, [key]: value });
   const lineOnly = settings.iconStyle !== "line";
+  const { copied, copy } = useCopy();
 
   return (
     <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
@@ -156,6 +155,20 @@ export function Controls({
         >
           <ArrowCounterClockwiseIcon data-icon="inline-start" />
           Reset
+        </Button>
+        <Separator orientation="vertical" className="mx-1 h-5! self-center!" />
+        <Button
+          variant="outline"
+          onClick={() => copy("share", shareLink(settings))}
+          title="Copy a link to the site with these settings"
+        >
+          <SwapIcon
+            data-icon="inline-start"
+            on={copied === "share"}
+            from={<ShareIcon />}
+            to={<CheckIcon />}
+          />
+          Share
         </Button>
       </div>
     </div>

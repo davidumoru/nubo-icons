@@ -6,12 +6,10 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { DrawerTitle } from "@/components/ui/drawer";
 import { CodePanel } from "@/components/code-panel";
+import { CopyLinkButton } from "@/components/copy-link-button";
 import { ExportMenu } from "@/components/export-menu";
-import {
-  StyleToggle,
-  effectiveStroke,
-  type Settings,
-} from "@/components/controls";
+import { StyleToggle } from "@/components/controls";
+import { effectiveStroke, type Settings } from "@/lib/settings";
 import { Icon } from "@/components/icon";
 import { useCopy } from "@/components/use-copy";
 import { jsxFor, svgFor, type IconData } from "@/lib/icons";
@@ -69,12 +67,15 @@ export function IconDetails({
             )}
           />
         </DrawerTitle>
-        <ExportMenu
-          svg={svg}
-          baseName={`${icon.name}-${settings.iconStyle}`}
-          size={settings.size}
-          color={custom.color}
-        />
+        <div className="flex items-center gap-2">
+          <CopyLinkButton iconName={icon.name} settings={settings} />
+          <ExportMenu
+            svg={svg}
+            baseName={`${icon.name}-${settings.iconStyle}`}
+            size={settings.size}
+            color={custom.color}
+          />
+        </div>
       </div>
 
       <div className="grid gap-8 md:grid-cols-[1fr_22rem]">
