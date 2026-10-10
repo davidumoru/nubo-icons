@@ -23,12 +23,12 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | menu                       | ✅       |                                                                 |
 | magnifying-glass           | ✅       | Alias `search`.                                                 |
 | gear                       | ✅       | Alias `settings`.                                               |
-| circle                     | P1       | Radio and dropdown radio indicators.                            |
-| dot                        | P1       | Small filled dot; menu indicators.                              |
-| ellipsis                   | P1       | Alias `more-horizontal`. Breadcrumb and pagination overflow.    |
+| circle                     | ✅       | Radio and dropdown radio indicators.                            |
+| dot                        | ✅       | Small filled dot; menu indicators.                              |
+| ellipsis                   | ✅       | Alias `more-horizontal`. Breadcrumb and pagination overflow.    |
 | ellipsis-vertical          | P2       | Alias `more-vertical`.                                          |
-| grip-vertical              | P1       | Resizable panel handle.                                         |
-| loader                     | P1       | Spinner for buttons and toasts. Must look right while rotating. |
+| grip-vertical              | ✅       | Resizable panel handle.                                         |
+| loader                     | ✅       | Spinner for buttons and toasts. Must look right while rotating. |
 | sliders-horizontal         | P2       | Filters and adjustments.                                        |
 | funnel                     | P2       | Alias `filter`.                                                 |
 | link                       | P2       | Chain links.                                                    |
@@ -58,13 +58,13 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | -------------------------- | -------- | ---------------------------------------- |
 | arrow-up/down/left/right   | ✅       |                                          |
 | chevron-up/down/left/right | ✅       |                                          |
-| chevrons-up-down           | P1       | Combobox and select triggers.            |
+| chevrons-up-down           | ✅       | Combobox and select triggers.            |
 | chevrons-left              | P2       | First page.                              |
 | chevrons-right             | P2       | Last page.                               |
 | arrow-up-right             | P2       | Outbound link, growth.                   |
 | arrows-up-down             | P2       | Alias `sort`.                            |
 | arrow-elbow-down-left      | P3       | Alias `corner-down-left`. The enter key. |
-| panel-left                 | P1       | Sidebar toggle.                          |
+| panel-left                 | ✅       | Sidebar toggle.                          |
 | panel-right                | P3       |                                          |
 
 ## Status and feedback

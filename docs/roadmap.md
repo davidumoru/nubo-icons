@@ -13,6 +13,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 3**: chevron-left, chevron-up, chevron-down, arrow-left, arrow-up, arrow-down.
 - **Batch 4**: user, bell, mail, lock, trash, calendar.
 - **Batch 5**: menu, eye, eye-off, user-plus, pencil, copy.
+- **Batch 6**: circle, dot, ellipsis, grip-vertical, loader, chevrons-up-down, panel-left.
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 
 ## Next

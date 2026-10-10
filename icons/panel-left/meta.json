@@ -1,0 +1,8 @@
+{
+  "tags": ["sidebar", "layout", "drawer", "toggle", "navigation"],
+  "categories": ["layout", "interface"],
+  "aliases": ["sidebar"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

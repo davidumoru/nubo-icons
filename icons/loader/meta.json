@@ -1,0 +1,8 @@
+{
+  "tags": ["spinner", "loading", "progress", "wait", "busy"],
+  "categories": ["interface", "status"],
+  "aliases": ["loader-circle"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

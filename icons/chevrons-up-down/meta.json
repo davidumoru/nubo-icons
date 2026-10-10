@@ -1,0 +1,8 @@
+{
+  "tags": ["select", "sort", "expand", "toggle", "combobox"],
+  "categories": ["arrows", "interface"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

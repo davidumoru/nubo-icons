@@ -1,0 +1,8 @@
+{
+  "tags": ["point", "bullet", "indicator", "status"],
+  "categories": ["shapes", "interface"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

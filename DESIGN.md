@@ -53,7 +53,7 @@ No sharp points or hard corners anywhere. Star tips, arrow heads, bolt points an
 - `stroke-width="1.5"`, round caps, round joins, `fill="none"`. The same weight as Heroicons and Phosphor Regular, and it lands on exactly 1px at 16px, so small sizes stay crisp.
 - One weight in every style. No thicker or thinner strokes for emphasis, ever.
 - Separate elements keep at least a 1.5px visible gap (one stroke width). Tighter gaps make neighbouring strokes merge and read as heavier.
-- **Dots:** draw a zero-length path (`M x y h.01`) with the round cap, not a tiny circle. A circle that small renders hollow in many SVG tools.
+- **Dots** are circles with a radius of exactly half the stroke (`r=".75"`), so the stroke closes at the center and the dot is solid at every size. Any larger and a pinhole shows; any smaller and many renderers draw it hollow. Dots are symbols, identical in every style.
 
 ## Fill
 
