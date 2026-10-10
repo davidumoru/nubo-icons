@@ -18,6 +18,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 8**: sun, moon, monitor, globe, cloud, star.
 - **Batch 9**: file, file-text, folder, image, paperclip, clipboard.
 - **Batch 10**: link, share, download, upload, arrows-clockwise, sliders-horizontal.
+- **Batch 11**: ellipsis-vertical, chevrons-left, chevrons-right, arrow-up-right, arrows-up-down, arrow-counter-clockwise, arrow-clockwise.
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 
 ## Next

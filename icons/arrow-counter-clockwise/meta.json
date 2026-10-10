@@ -1,0 +1,8 @@
+{
+  "tags": ["undo", "back", "revert", "history"],
+  "categories": ["arrows", "editing"],
+  "aliases": ["undo"],
+  "rtl": "mirror",
+  "added": "0.1.0",
+  "status": "approved"
+}

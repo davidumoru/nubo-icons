@@ -1,0 +1,8 @@
+{
+  "tags": ["last", "next", "forward", "skip", "expand"],
+  "categories": ["arrows", "navigation"],
+  "aliases": [],
+  "rtl": "mirror",
+  "added": "0.1.0",
+  "status": "approved"
+}

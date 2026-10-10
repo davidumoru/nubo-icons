@@ -26,7 +26,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | circle                     | ✅       | Radio and dropdown radio indicators.                            |
 | dot                        | ✅       | Small filled dot; menu indicators.                              |
 | ellipsis                   | ✅       | Alias `more-horizontal`. Breadcrumb and pagination overflow.    |
-| ellipsis-vertical          | P2       | Alias `more-vertical`.                                          |
+| ellipsis-vertical          | ✅       | Alias `more-vertical`.                                          |
 | grip-vertical              | ✅       | Resizable panel handle.                                         |
 | loader                     | ✅       | Spinner for buttons and toasts. Must look right while rotating. |
 | sliders-horizontal         | ✅       | Filters and adjustments.                                        |
@@ -37,8 +37,8 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | download                   | ✅       | Morph group candidate.                                          |
 | upload                     | ✅       | Morph group candidate.                                          |
 | arrows-clockwise           | ✅       | Alias `refresh`.                                                |
-| arrow-counter-clockwise    | P2       | Alias `undo`.                                                   |
-| arrow-clockwise            | P2       | Alias `redo`.                                                   |
+| arrow-counter-clockwise    | ✅       | Alias `undo`.                                                   |
+| arrow-clockwise            | ✅       | Alias `redo`.                                                   |
 | sign-out                   | P2       | Alias `log-out`. Mirrors in RTL.                                |
 | sign-in                    | P3       | Alias `log-in`. Mirrors in RTL.                                 |
 | arrows-out                 | P3       | Alias `maximize`.                                               |
@@ -59,10 +59,10 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | arrow-up/down/left/right   | ✅       |                                          |
 | chevron-up/down/left/right | ✅       |                                          |
 | chevrons-up-down           | ✅       | Combobox and select triggers.            |
-| chevrons-left              | P2       | First page.                              |
-| chevrons-right             | P2       | Last page.                               |
-| arrow-up-right             | P2       | Outbound link, growth.                   |
-| arrows-up-down             | P2       | Alias `sort`.                            |
+| chevrons-left              | ✅       | First page.                              |
+| chevrons-right             | ✅       | Last page.                               |
+| arrow-up-right             | ✅       | Outbound link, growth.                   |
+| arrows-up-down             | ✅       | Alias `sort`.                            |
 | arrow-elbow-down-left      | P3       | Alias `corner-down-left`. The enter key. |
 | panel-left                 | ✅       | Sidebar toggle.                          |
 | panel-right                | P3       |                                          |
