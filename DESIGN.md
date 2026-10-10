@@ -12,7 +12,7 @@ Every icon ships in all three styles, with the same name and the same silhouette
 | -------- | ---------------------------------------------------------------------------------------------- |
 | **Line** | Everything drawn with a 1.5px round stroke. Nothing filled.                                    |
 | **Fill** | Every enclosed area is solid. Details inside a shape are cut out. Open glyphs stay as strokes. |
-| **Duo**  | Line, with the inside of each shape tinted in a light secondary tone.                          |
+| **Duo**  | Line, with a light tint behind the part that identifies the icon.                              |
 
 Line and Fill are drawn on the **same geometry**. A Line icon's centerlines are a Fill icon's shape outlines. Because both use a 1.5px stroke (Fill uses it to soften the shape, see below), their outer edges land in exactly the same place, and switching styles never makes an icon jump in size.
 
@@ -66,19 +66,23 @@ The **puff** technique: every solid shape is filled _and_ traced with a 1.5px ro
 - **Separate solid parts** (a head and shoulders, a bell and its clapper, a lid and bin) keep a 1.5px visible gap, one stroke width, so Fill shows exactly the space Line leaves.
 - **Fill only fills objects.** When an icon's subject is a solid object with a body (heart, house, gear, bell), it becomes solid. When the subject is a line, a symbol or a frame (check, arrows, chevrons, plus, x, menu, a magnifier's ring, an open tray), Fill is identical to Line: the same 1.5px stroke, pixel for pixel. There is no in-between weight.
 - An icon can mix the two: a solid basket with a line handle.
+- **Inner circles are holes, never solid dots.** A gear's axle and an eye's pupil are both cut out of the solid body.
 
 ## Duo
 
-Duo is Line with a light tint inside.
+Duo is Line with a light tint behind the part of the icon that identifies it.
 
 - **Primary**: the icon's Line drawing, exactly. Same strokes, same 1.5px weight, full strength, drawn on top.
-- **Secondary**: the enclosed areas of the shape, filled at 35% of the same color and drawn underneath.
-- The secondary is puffed like Fill, so its edge sits under the middle of the primary stroke and never peeks out.
+- **Secondary**: one region, filled at 30% of the same color and drawn underneath.
+- The secondary is puffed like Fill and traced on the same curves as the Line drawing, so its edge sits under the stroke and never peeks out.
 - The secondary opacity sits on a group, never on a shape. Many renderers apply element opacity to fill and stroke separately, which doubles up where they overlap.
-- Icons with no enclosed area (check, arrows, chevrons, plus, x, menu) have no tint. Their Duo is identical to Line.
-- Holes stay empty. An opening that goes through the object (a gear's axle hole, the gap in a ring) is untinted, the same way Fill cuts it out. The tint is the object's body, not every enclosed area.
 
-One rule, no per-icon choices: anyone can predict what a new icon's Duo looks like from its Line drawing.
+**What gets tinted** follows Phosphor's duotone, which has been refined over many releases. When in doubt, check what Phosphor tints for the same object.
+
+- **The body**, when the object is one solid thing: heart, house, bell, lock, trash bin, gear, magnifier lens, circle-check's disc.
+- **The identifying part**, when the object has one: a person's head (not the shoulders), a calendar's header strip, an envelope's flap, a pencil's eraser, the sheet behind the front one in copy.
+- **Holes and inner details stay clear**: a gear's axle, an eye's pupil, a house's door.
+- **Symbols get no tint** and no added shapes. Arrows and chevrons stay open, and check, plus, minus, x and menu get no background. Their Duo is identical to Line.
 
 ## Motion
 

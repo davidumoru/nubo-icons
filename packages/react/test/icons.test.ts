@@ -92,7 +92,7 @@ test("size, strokeWidth, className and secondaryOpacity apply", () => {
   assert.match(out, /stroke-width="2"/);
   assert.match(out, /class="nubo-icon nubo-heart extra"/);
   assert.match(out, /<g data-tone="secondary" opacity="0.2">/);
-  assert.match(html(Heart), /opacity="0.35"/);
+  assert.match(html(Heart), /opacity="0.3"/);
 });
 
 test("the CommonJS build exports the same components", () => {

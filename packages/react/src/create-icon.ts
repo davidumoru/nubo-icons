@@ -49,7 +49,7 @@ export function createIcon(
       {
         size = 24,
         strokeWidth = 1.5,
-        secondaryOpacity = 0.35,
+        secondaryOpacity = 0.3,
         title,
         className,
         children,

@@ -8,7 +8,7 @@ export const ICONS_DIR = join(ROOT, "icons");
 export const STYLES = ["line", "fill", "duo"] as const;
 export type Style = (typeof STYLES)[number];
 
-export const SECONDARY_OPACITY = 0.35;
+export const SECONDARY_OPACITY = 0.3;
 
 export type Meta = {
   tags: string[];

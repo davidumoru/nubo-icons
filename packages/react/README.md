@@ -30,7 +30,7 @@ Every icon is also exported with an `Icon` suffix (`HeartIcon`), and under its L
 | `strokeWidth`      | `1.5`   | Applies to every style, so Line, Fill and Duo stay the same size.                     |
 | `color`            | inherit | Icons use `currentColor`, so they follow the text color unless you set one.           |
 | `title`            | none    | Makes the icon an announced image (`role="img"` with a `<title>`).                    |
-| `secondaryOpacity` | `0.35`  | Duo only: strength of the light tone. The layer also carries `data-tone="secondary"`. |
+| `secondaryOpacity` | `0.3`   | Duo only: strength of the light tone. The layer also carries `data-tone="secondary"`. |
 
 Any other SVG prop (`className`, `style`, `onClick`, `ref`) passes through. Every icon has the classes `nubo-icon` and `nubo-<name>`.
 
