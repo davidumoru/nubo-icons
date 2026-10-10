@@ -17,7 +17,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 
 ## Next
 
-1. **Grow the set in batches** of 4–6, every icon in all three styles, each batch reviewed and locked before the next. Write a scope policy alongside: what nubo draws and what it doesn't (no brand logos).
+1. **Grow the set to the [launch list](launch-icons.md)** in batches, every icon in all three styles, each batch reviewed and locked before the next. The list also says what nubo doesn't draw.
 2. **Packages.**
    - `@nubo-icons/svg`: optimized SVGs plus icon data JSON.
    - Release with Changesets, all packages on one version, published from CI with npm provenance.
