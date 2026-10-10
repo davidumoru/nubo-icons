@@ -9,6 +9,7 @@ import { DocsCopyPage } from "@/components/docs/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs/docs-toc";
 import { DOCS, findDoc, neighbours, type Doc } from "@/lib/docs";
 import { markdownFor, tocFor } from "@/lib/docs-source";
+import { pageMetadata, REPO_URL } from "@/lib/site";
 
 import * as Index from "@/content/docs/index.mdx";
 import * as ReactDoc from "@/content/docs/react.mdx";
@@ -44,7 +45,12 @@ export async function generateMetadata({
   const doc = findDoc((await params).slug);
   if (!doc) return {};
   const { metadata } = await load(doc);
-  return { title: metadata.title, description: metadata.description };
+  return pageMetadata({
+    title: metadata.title,
+    description: metadata.description,
+    path: doc.href,
+    image: `/og/docs/${doc.file}`,
+  });
 }
 
 // The page is a static shell; the part that reads the URL streams in behind Suspense, so navigating between
@@ -157,7 +163,7 @@ async function Doc({ slug }: { slug: Promise<string[] | undefined> }) {
       <aside className="sticky top-0 hidden max-h-svh w-56 shrink-0 self-start overflow-y-auto pt-12 pb-8 pl-8 xl:block">
         <DocsTableOfContents
           toc={toc}
-          editUrl={`https://github.com/davidumoru/nubo-icons/edit/main/apps/web/content/docs/${doc.file}.mdx`}
+          editUrl={`${REPO_URL}/edit/main/apps/web/content/docs/${doc.file}.mdx`}
         />
       </aside>
     </div>

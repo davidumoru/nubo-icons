@@ -2,6 +2,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { strToU8, zipSync } from "fflate";
 import { DOCS } from "../lib/docs.ts";
+import { REPO_URL, SITE_URL } from "../lib/site.ts";
 
 const ROOT = join(import.meta.dirname, "../../..");
 const ICONS = join(ROOT, "icons");
@@ -45,15 +46,14 @@ writeFileSync(
   JSON.stringify(icons),
 );
 
-const REPO = "https://github.com/davidumoru/nubo-icons";
-
 const description = (file: string) =>
   readFileSync(
     join(import.meta.dirname, `../content/docs/${file}.mdx`),
     "utf8",
   ).match(/description: "([^"]*)"/)?.[1];
 
-// Links are site-relative until the site has a domain; llms.txt readers resolve them against the file's URL.
+const url = (path: string) => new URL(path, SITE_URL).href;
+
 const llms = [
   "# Nubo",
   "",
@@ -63,19 +63,19 @@ const llms = [
   "",
   "## Docs",
   "",
-  ...DOCS.map((d) => `- [${d.title}](${d.href}): ${description(d.file)}`),
+  ...DOCS.map((d) => `- [${d.title}](${url(d.href)}): ${description(d.file)}`),
   "",
   "## Icons",
   "",
   ...icons.map(
     (i) =>
-      `- [${i.name}](/?icon=${i.name}): ${i.component}Icon${i.aliases.length ? `, aliases: ${i.aliases.join(", ")}` : ""}. ${i.tags.join(", ")}`,
+      `- [${i.name}](${url(`/?icon=${i.name}`)}): ${i.component}Icon${i.aliases.length ? `, aliases: ${i.aliases.join(", ")}` : ""}. ${i.tags.join(", ")}`,
   ),
   "",
   "## Optional",
   "",
-  `- [Source on GitHub](${REPO}): icons, packages and this site`,
-  "- [All icons as SVG](/nubo-icons.zip): every icon in every style, with the license",
+  `- [Source on GitHub](${REPO_URL}): icons, packages and this site`,
+  `- [All icons as SVG](${url("/nubo-icons.zip")}): every icon in every style, with the license`,
   "",
 ].join("\n");
 writeFileSync(join(import.meta.dirname, "../public/llms.txt"), llms);

@@ -11,14 +11,13 @@ import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
 import { Separator } from "@/components/ui/separator";
 import { Logo } from "@/components/logo";
+import { REPO_URL } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
-const REPO = "https://github.com/davidumoru/nubo-icons";
-
 const PROJECT = [
-  { label: "GitHub", href: REPO, icon: CodeIcon },
+  { label: "GitHub", href: REPO_URL, icon: CodeIcon },
   { label: "Roadmap", href: "/docs/roadmap", icon: MapIcon, internal: true },
-  { label: "Request an icon", href: `${REPO}/issues/new`, icon: PlusIcon },
+  { label: "Request an icon", href: `${REPO_URL}/issues/new`, icon: PlusIcon },
   { label: "llms.txt", href: "/llms.txt", icon: FileTextIcon },
 ];
 

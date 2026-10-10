@@ -1,13 +1,65 @@
 import { DownloadIcon } from "@nubo-icons/react";
+import type { Metadata } from "next";
 import Link from "next/link";
+import { connection } from "next/server";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Browser } from "@/components/browser";
 import { SiteFooter } from "@/components/site-footer";
 import { StyleSpecimen } from "@/components/style-specimen";
+import { getIcon } from "@/lib/icons";
+import {
+  pageMetadata,
+  REPO_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
+
+const STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  name: SITE_NAME,
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  codeRepository: REPO_URL,
+  license: "https://opensource.org/licenses/MIT",
+  programmingLanguage: ["TypeScript", "SVG"],
+  runtimePlatform: "React",
+  author: {
+    "@type": "Person",
+    name: "David Umoru",
+    url: "https://x.com/theumoru",
+  },
+};
+
+export async function generateMetadata({
+  searchParams,
+}: PageProps<"/">): Promise<Metadata> {
+  const { icon: name } = await searchParams;
+  const icon = typeof name === "string" ? getIcon(name) : undefined;
+  if (!icon)
+    return pageMetadata({
+      description: SITE_DESCRIPTION,
+      path: "/",
+      image: "/og/home",
+    });
+  return pageMetadata({
+    title: icon.name,
+    description: `The ${icon.name} icon from Nubo, as SVG or React (${icon.component}Icon).`,
+    path: `/?icon=${icon.name}`,
+    canonical: "/",
+    image: `/og/icon/${icon.name}`,
+  });
+}
 
 export default function Home() {
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(STRUCTURED_DATA) }}
+      />
       <section className="grid items-start gap-12 py-16 lg:grid-cols-[1fr_30rem] lg:gap-16 lg:py-24">
         <div className="flex flex-col items-start gap-8">
           <div className="flex flex-col gap-6">
@@ -44,6 +96,17 @@ export default function Home() {
         <Browser />
       </main>
       <SiteFooter />
+      <Suspense>
+        <RequestTime />
+      </Suspense>
     </div>
   );
+}
+
+// Shared icon links (/?icon=heart) need their own title and preview image, which can only be read per request.
+// This tells Next the page has request-time data so it can stream that metadata while still prerendering the
+// rest of the page.
+async function RequestTime() {
+  await connection();
+  return null;
 }

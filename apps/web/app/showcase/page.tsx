@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from "@nubo-icons/react";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Canvas } from "@/components/canvas";
+import { pageMetadata } from "@/lib/site";
 import { Logo } from "@/components/logo";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -37,10 +38,12 @@ import {
   WeatherDemo,
 } from "@/components/showcase-more";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Showcase",
-  description: "Nubo icons in everyday interfaces.",
-};
+  description: "Nubo in the places icons usually live.",
+  path: "/showcase",
+  image: "/og/showcase",
+});
 
 export default function Showcase() {
   return (

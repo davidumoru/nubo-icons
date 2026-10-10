@@ -21,6 +21,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty";
 import { Controls } from "@/components/controls";
+import { REPO_URL } from "@/lib/site";
 import {
   InputGroup,
   InputGroupAddon,
@@ -163,7 +164,7 @@ export function Browser() {
               nativeButton={false}
               render={
                 <a
-                  href="https://github.com/davidumoru/nubo-icons/issues/new"
+                  href={`${REPO_URL}/issues/new`}
                   target="_blank"
                   rel="noreferrer"
                 />

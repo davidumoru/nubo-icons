@@ -4,6 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { HideOn } from "@/components/hide-on";
 import { SiteHeader } from "@/components/site-header";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -17,8 +18,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Nubo", template: "%s · Nubo" },
-  description: "Soft, open-source icons in three styles: Line, Fill and Duo.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s - ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

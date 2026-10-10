@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/logo";
+import { REPO_URL } from "@/lib/site";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 // Rendered once in the root layout, so it stays in place when moving between pages.
@@ -28,13 +29,7 @@ export function SiteHeader() {
         <Button
           variant="ghost"
           nativeButton={false}
-          render={
-            <a
-              href="https://github.com/davidumoru/nubo-icons"
-              target="_blank"
-              rel="noreferrer"
-            />
-          }
+          render={<a href={REPO_URL} target="_blank" rel="noreferrer" />}
         >
           GitHub
         </Button>
