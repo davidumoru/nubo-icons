@@ -22,6 +22,11 @@ const unknown = requested.filter((n) => !all.some((i) => i.name === n));
 if (unknown.length) throw new Error(`unknown icons: ${unknown.join(", ")}`);
 
 const drafts = all.filter((i) => i.meta.status === "draft");
+const batchLabel = requested.length
+  ? "selected"
+  : drafts.length
+    ? "drafts"
+    : "";
 const batch = requested.length
   ? all.filter((i) => requested.includes(i.name))
   : drafts.length
@@ -137,7 +142,7 @@ function html() {
 <button onclick="document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'">Toggle light / dark</button>
 <div class="wrap"><table>
   <thead><tr><th></th>${STYLES.map((s) => `<th>${s} · ${SIZES.join(" / ")}</th>`).join("")}</tr></thead>
-  <tbody>${batch.map(row).join("")}
+  <tbody>${batchLabel ? `<tr class="divider"><th>${batchLabel}</th><td colspan="${STYLES.length}"></td></tr>` : ""}${batch.map(row).join("")}
   ${rest.length ? `<tr class="divider"><th>everything else</th><td colspan="${STYLES.length}"></td></tr>${rest.map(row).join("")}` : ""}</tbody>
 </table></div>`;
 }
