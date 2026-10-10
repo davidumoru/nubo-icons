@@ -29,14 +29,14 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | ellipsis-vertical          | P2       | Alias `more-vertical`.                                          |
 | grip-vertical              | ✅       | Resizable panel handle.                                         |
 | loader                     | ✅       | Spinner for buttons and toasts. Must look right while rotating. |
-| sliders-horizontal         | P2       | Filters and adjustments.                                        |
+| sliders-horizontal         | ✅       | Filters and adjustments.                                        |
 | funnel                     | P2       | Alias `filter`.                                                 |
-| link                       | P2       | Chain links.                                                    |
+| link                       | ✅       | Chain links.                                                    |
 | arrow-up-right-from-square | P2       | Alias `external-link`.                                          |
-| share                      | P2       | Box with an arrow out.                                          |
-| download                   | P2       | Morph group candidate.                                          |
-| upload                     | P2       | Morph group candidate.                                          |
-| arrows-clockwise           | P2       | Alias `refresh`.                                                |
+| share                      | ✅       | Box with an arrow out.                                          |
+| download                   | ✅       | Morph group candidate.                                          |
+| upload                     | ✅       | Morph group candidate.                                          |
+| arrows-clockwise           | ✅       | Alias `refresh`.                                                |
 | arrow-counter-clockwise    | P2       | Alias `undo`.                                                   |
 | arrow-clockwise            | P2       | Alias `redo`.                                                   |
 | sign-out                   | P2       | Alias `log-out`. Mirrors in RTL.                                |

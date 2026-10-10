@@ -1,0 +1,8 @@
+{
+  "tags": ["refresh", "reload", "sync", "rotate", "repeat"],
+  "categories": ["arrows", "interface"],
+  "aliases": ["refresh", "refresh-cw"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
