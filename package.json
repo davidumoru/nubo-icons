@@ -12,9 +12,12 @@
     "format:check": "prettier --check .",
     "build": "pnpm --filter \"./packages/**\" build",
     "typecheck": "pnpm --filter \"./packages/**\" typecheck",
-    "test": "pnpm --filter \"./packages/**\" test"
+    "test": "pnpm --filter \"./packages/**\" test",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "prettier": "^3.9.9"
   }
 }

@@ -1,8 +1,27 @@
 {
   "name": "@nubo-icons/react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Soft, open-source icons for React in three styles: Line, Fill and Duo.",
   "license": "MIT",
+  "author": "David Umoru (https://x.com/theumoru)",
+  "homepage": "https://nubo.davidumoru.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidumoru/nubo-icons.git",
+    "directory": "packages/react"
+  },
+  "bugs": "https://github.com/davidumoru/nubo-icons/issues",
+  "keywords": [
+    "icons",
+    "react",
+    "svg",
+    "icon-set",
+    "outline",
+    "filled",
+    "duotone",
+    "shadcn",
+    "lucide-alternative"
+  ],
   "type": "module",
   "sideEffects": false,
   "files": [
