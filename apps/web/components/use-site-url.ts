@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useSyncExternalStore } from "react";
-import { DEFAULT_SETTINGS, type Settings } from "@/lib/settings";
+import { clampSize, DEFAULT_SETTINGS, type Settings } from "@/lib/settings";
 import { STYLES, type Style } from "@/lib/icons";
 
 const EVENT = "nubo:url";
@@ -40,7 +40,7 @@ function linkedSettings(search: string): Partial<Settings> | null {
   const style = params.get("style");
   if (STYLES.includes(style as Style)) out.iconStyle = style as Style;
   const size = Number(params.get("size"));
-  if (size >= 8 && size <= 256) out.size = size;
+  if (size > 0) out.size = clampSize(size);
   const stroke = Number(params.get("stroke"));
   if (stroke >= 1 && stroke <= 2.5) out.strokeWidth = stroke;
   const color = params.get("color");

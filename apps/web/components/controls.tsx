@@ -28,8 +28,10 @@ import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { STYLES, type Style } from "@/lib/icons";
 import {
+  clampSize,
   DEFAULT_SETTINGS,
   effectiveStroke,
+  SIZE_RANGE,
   type Settings,
 } from "@/lib/settings";
 import { shareLink } from "@/components/use-site-url";
@@ -154,17 +156,10 @@ function Customize({
             <div className="flex items-center justify-between">
               <FieldLabel htmlFor="icon-size">Size</FieldLabel>
               <InputGroup className="h-8 w-20">
-                <InputGroupInput
+                <SizeInput
                   id="icon-size"
-                  type="number"
-                  min={8}
-                  max={256}
                   value={settings.size}
-                  onChange={(e) => {
-                    const v = Number(e.target.value);
-                    if (v > 0) set("size", v);
-                  }}
-                  className="[appearance:textfield] text-right tabular-nums [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                  onCommit={(size) => set("size", size)}
                 />
                 <InputGroupAddon align="inline-end">
                   <InputGroupText>px</InputGroupText>
@@ -297,6 +292,49 @@ function Customize({
         </div>
       </PopoverContent>
     </Popover>
+  );
+}
+
+// Clamping on every keystroke would turn a half-typed "24" into 12.
+function SizeInput({
+  id,
+  value,
+  onCommit,
+}: {
+  id: string;
+  value: number;
+  onCommit: (size: number) => void;
+}) {
+  const [draft, setDraft] = useState(String(value));
+  const [synced, setSynced] = useState(value);
+  if (value !== synced) {
+    setSynced(value);
+    setDraft(String(value));
+  }
+  const commit = () => {
+    const size = clampSize(Number(draft) || value);
+    setDraft(String(size));
+    onCommit(size);
+  };
+  return (
+    <InputGroupInput
+      id={id}
+      type="number"
+      inputMode="numeric"
+      min={SIZE_RANGE.min}
+      max={SIZE_RANGE.max}
+      value={draft}
+      onChange={(e) => {
+        setDraft(e.target.value);
+        const v = Number(e.target.value);
+        if (v >= SIZE_RANGE.min && v <= SIZE_RANGE.max) onCommit(v);
+      }}
+      onBlur={commit}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") commit();
+      }}
+      className="[appearance:textfield] text-right tabular-nums [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+    />
   );
 }
 
