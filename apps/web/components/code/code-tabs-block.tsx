@@ -84,15 +84,37 @@ export function CodeTabsBlock({
           </Button>
         </div>
       </div>
-      {tabs.map((t) => (
-        <TabsContent key={t.value} value={t.value}>
-          <HighlightedPre
-            code={t.code}
-            lang={t.lang}
-            className={preClassName}
-          />
-        </TabsContent>
-      ))}
+      {/* Invisible copies of every tab share the active panel's grid cell, so the block is always as tall as its
+          longest tab and switching never resizes what's around it. */}
+      <div className="grid">
+        {tabs.map((t) => (
+          <div
+            key={t.value}
+            aria-hidden
+            inert
+            className="invisible col-start-1 row-start-1 min-w-0 text-sm"
+          >
+            <HighlightedPre
+              code={t.code}
+              lang={t.lang}
+              className={preClassName}
+            />
+          </div>
+        ))}
+        {tabs.map((t) => (
+          <TabsContent
+            key={t.value}
+            value={t.value}
+            className="col-start-1 row-start-1 min-w-0"
+          >
+            <HighlightedPre
+              code={t.code}
+              lang={t.lang}
+              className={preClassName}
+            />
+          </TabsContent>
+        ))}
+      </div>
     </Tabs>
   );
 }
