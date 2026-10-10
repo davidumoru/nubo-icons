@@ -1,3 +1,5 @@
 pnpm-lock.yaml
 apps/web/.next
 tools/icons/out
+apps/web/lib/icon-data.json
+apps/web/public/llms.txt

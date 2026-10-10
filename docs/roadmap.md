@@ -25,6 +25,8 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 15**: funnel, arrow-up-right-from-square, sign-out, bookmark, sparkle.
 - **Batch 16**: code, list, squares-four, chart-bar, sparkles.
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
+- **CI**: GitHub Actions runs format, icon lint, build, typecheck and tests on every push and pull request.
+- **Website, first version** in `apps/web`, built on shadcn/ui: search across names, aliases and tags; a toolbar for style, size, stroke and color with Random and Reset; a bottom drawer per icon with previews, SVG and React code, copy and download; light and dark themes; a generated `llms.txt`.
 
 ## Next
 
@@ -32,7 +34,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 2. **Packages.**
    - `@nubo-icons/svg`: optimized SVGs plus icon data JSON.
    - Release with Changesets, all packages on one version, published from CI with npm provenance.
-3. **Website** in `apps/web`: search across names and tags, style switcher, copy SVG or JSX, a page per icon, an auto-generated `llms.txt`.
+3. **Website**: docs (install, props, import paths per style, accessibility), shareable links that open an icon's drawer, a place for the maker's links.
 4. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
 
 ## Later

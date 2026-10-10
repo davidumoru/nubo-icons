@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @nubo-icons/react build && next dev",
-    "build": "pnpm --filter @nubo-icons/react build && next build",
+    "dev": "pnpm --filter @nubo-icons/react build && pnpm icons && next dev",
+    "build": "pnpm --filter @nubo-icons/react build && pnpm icons && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "icons": "node scripts/icon-data.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
@@ -14,6 +15,7 @@
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "next": "16.4.0",
+    "next-themes": "^0.4.6",
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "shadcn": "^4.21.4",
