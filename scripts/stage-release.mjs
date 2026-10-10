@@ -27,7 +27,8 @@ for (const dir of readdirSync("packages")) {
   execFileSync("npm", ["stage", "publish", tarball, "--access", "public"], {
     stdio: "inherit",
   });
-  // changesets/action reads these lines to tag the release and write its GitHub release notes.
+  // As `changeset publish` would: changesets/action pushes this tag and makes a GitHub release from the line.
+  execFileSync("git", ["tag", id]);
   console.log(`New tag: ${id}`);
 }
 
