@@ -49,7 +49,8 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | flag                       | P3       |                                                                 |
 | tag                        | P3       |                                                                 |
 | archive                    | P3       | Box with a lid.                                                 |
-| sparkle                    | ✅       | Alias `sparkles`. The AI icon.                                  |
+| sparkle                    | ✅       | The AI icon.                                                    |
+| sparkles                   | ✅       | sparkle with a small second star.                               |
 | bolt                       | P3       | Alias `zap`.                                                    |
 
 ## Arrows and navigation
@@ -107,7 +108,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | copy        | ✅       |                                          |
 | cloud       | ✅       | Nubo means cloud. Worth getting perfect. |
 | database    | P3       |                                          |
-| code        | P2       | Angle brackets.                          |
+| code        | ✅       | Angle brackets.                          |
 | terminal    | P3       |                                          |
 
 ## Editing and text
@@ -117,7 +118,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | pencil          | ✅       | Alias `edit`.      |
 | trash           | ✅       |                    |
 | scissors        | P3       |                    |
-| list            | P2       | Bullets and lines. |
+| list            | ✅       | Bullets and lines. |
 | list-ordered    | P3       |                    |
 | text-align-left | P3       |                    |
 | quotes          | P3       |                    |
@@ -197,9 +198,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 
 | Icon         | Priority | Notes                |
 | ------------ | -------- | -------------------- |
-| squares-four | P2       | Alias `layout-grid`. |
+| squares-four | ✅       | Alias `layout-grid`. |
 | rows         | P3       | Alias `layout-list`. |
-| chart-bar    | P2       |                      |
+| chart-bar    | ✅       |                      |
 | chart-line   | P3       |                      |
 | chart-pie    | P3       |                      |
 | trend-up     | P3       | Alias `trending-up`. |

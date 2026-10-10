@@ -1,0 +1,8 @@
+{
+  "tags": ["grid", "apps", "dashboard", "layout", "tiles"],
+  "categories": ["interface"],
+  "aliases": ["layout-grid"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
