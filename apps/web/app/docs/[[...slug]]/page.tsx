@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@nubo-icons/react";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { DocsCopyPage } from "@/components/docs/docs-copy-page";
 import { DocsTableOfContents } from "@/components/docs/docs-toc";
 import { DOCS, findDoc, neighbours, type Doc } from "@/lib/docs";
@@ -43,11 +45,31 @@ export async function generateMetadata({
   return { title: metadata.title, description: metadata.description };
 }
 
-export default async function DocPage({
-  params,
-}: PageProps<"/docs/[[...slug]]">) {
+// The page is a static shell; the part that reads the URL streams in behind Suspense, so navigating between
+// docs pages never waits on it. Every page is prerendered, so the fallback only shows for a moment, if at all.
+export default function DocPage({ params }: PageProps<"/docs/[[...slug]]">) {
+  return (
+    <Suspense fallback={<DocSkeleton />}>
+      <Doc slug={params.then((p) => p.slug)} />
+    </Suspense>
+  );
+}
+
+function DocSkeleton() {
+  return (
+    <div className="mx-auto flex w-full max-w-160 flex-col gap-4 px-2 py-6 md:px-0 lg:py-10">
+      <Skeleton className="h-9 w-48" />
+      <Skeleton className="h-5 w-80" />
+      <Skeleton className="mt-6 h-4 w-full" />
+      <Skeleton className="h-4 w-11/12" />
+      <Skeleton className="h-4 w-4/5" />
+    </div>
+  );
+}
+
+async function Doc({ slug }: { slug: Promise<string[] | undefined> }) {
   "use cache";
-  const doc = findDoc((await params).slug);
+  const doc = findDoc(await slug);
   if (!doc) notFound();
   const { default: Content, metadata } = await load(doc);
   const { previous, next } = neighbours(doc);
