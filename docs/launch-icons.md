@@ -136,16 +136,16 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 
 | Icon             | Priority | Notes                               |
 | ---------------- | -------- | ----------------------------------- |
-| play             | P2       | Morph group candidate (play/pause). |
-| pause            | P2       | Morph group candidate.              |
+| play             | ✅       | Morph group candidate (play/pause). |
+| pause            | ✅       | Morph group candidate.              |
 | stop             | P3       |                                     |
 | skip-forward     | P3       |                                     |
 | skip-back        | P3       |                                     |
-| speaker-high     | P2       | Alias `volume-2`.                   |
-| speaker-slash    | P2       | Alias `volume-x`.                   |
-| microphone       | P2       | Alias `mic`.                        |
+| speaker-high     | ✅       | Alias `volume-2`.                   |
+| speaker-slash    | ✅       | Alias `volume-x`.                   |
+| microphone       | ✅       | Alias `mic`.                        |
 | microphone-slash | P3       | Alias `mic-off`.                    |
-| camera           | P2       |                                     |
+| camera           | ✅       |                                     |
 | video-camera     | P3       | Alias `video`.                      |
 
 ## Devices and system

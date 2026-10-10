@@ -1,0 +1,8 @@
+{
+  "tags": ["mic", "record", "voice", "audio", "speak"],
+  "categories": ["media", "devices"],
+  "aliases": ["mic"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

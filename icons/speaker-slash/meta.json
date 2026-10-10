@@ -1,0 +1,8 @@
+{
+  "tags": ["mute", "volume", "sound off", "silent", "audio"],
+  "categories": ["media"],
+  "aliases": ["volume-x", "volume-off"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
