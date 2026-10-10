@@ -1,0 +1,8 @@
+{
+  "tags": ["external", "open", "new tab", "link", "launch"],
+  "categories": ["arrows", "interface"],
+  "aliases": ["external-link"],
+  "rtl": "mirror",
+  "added": "0.1.0",
+  "status": "approved"
+}

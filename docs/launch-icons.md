@@ -30,26 +30,26 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | grip-vertical              | ✅       | Resizable panel handle.                                         |
 | loader                     | ✅       | Spinner for buttons and toasts. Must look right while rotating. |
 | sliders-horizontal         | ✅       | Filters and adjustments.                                        |
-| funnel                     | P2       | Alias `filter`.                                                 |
+| funnel                     | ✅       | Alias `filter`.                                                 |
 | link                       | ✅       | Chain links.                                                    |
-| arrow-up-right-from-square | P2       | Alias `external-link`.                                          |
+| arrow-up-right-from-square | ✅       | Alias `external-link`.                                          |
 | share                      | ✅       | Box with an arrow out.                                          |
 | download                   | ✅       | Morph group candidate.                                          |
 | upload                     | ✅       | Morph group candidate.                                          |
 | arrows-clockwise           | ✅       | Alias `refresh`.                                                |
 | arrow-counter-clockwise    | ✅       | Alias `undo`.                                                   |
 | arrow-clockwise            | ✅       | Alias `redo`.                                                   |
-| sign-out                   | P2       | Alias `log-out`. Mirrors in RTL.                                |
+| sign-out                   | ✅       | Alias `log-out`. Mirrors in RTL.                                |
 | sign-in                    | P3       | Alias `log-in`. Mirrors in RTL.                                 |
 | arrows-out                 | P3       | Alias `maximize`.                                               |
 | arrows-in                  | P3       | Alias `minimize`.                                               |
 | pin                        | P3       | Push pin.                                                       |
-| bookmark                   | P2       |                                                                 |
+| bookmark                   | ✅       |                                                                 |
 | star                       | ✅       | Five points, soft tips. Never folded or halved in Duo.          |
 | flag                       | P3       |                                                                 |
 | tag                        | P3       |                                                                 |
 | archive                    | P3       | Box with a lid.                                                 |
-| sparkle                    | P2       | Alias `sparkles`. The AI icon.                                  |
+| sparkle                    | ✅       | Alias `sparkles`. The AI icon.                                  |
 | bolt                       | P3       | Alias `zap`.                                                    |
 
 ## Arrows and navigation

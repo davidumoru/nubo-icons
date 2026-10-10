@@ -1,0 +1,8 @@
+{
+  "tags": ["log out", "exit", "leave", "logout"],
+  "categories": ["account", "arrows"],
+  "aliases": ["log-out"],
+  "rtl": "mirror",
+  "added": "0.1.0",
+  "status": "approved"
+}
