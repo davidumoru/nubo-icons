@@ -77,7 +77,7 @@ export function ExportMenu({
     <ButtonGroup className="rounded-4xl bg-secondary">
       <Button variant="secondary" size="sm" onClick={actions.svg}>
         <DownloadIcon data-icon="inline-start" />
-        Download SVG
+        <span className="max-sm:sr-only">Download SVG</span>
       </Button>
       {/* A short divider on the group's own fill, so the two halves read as one button with no seam. */}
       <ButtonGroupSeparator className="my-auto! h-4! self-center! bg-foreground/15" />

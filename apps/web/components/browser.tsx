@@ -187,7 +187,7 @@ export function Browser() {
                 variant="ghost"
                 size="icon"
                 aria-label="Close"
-                className="absolute top-4 right-4"
+                className="absolute top-4 right-4 max-md:hidden"
               />
             }
           >

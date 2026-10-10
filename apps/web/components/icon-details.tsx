@@ -42,7 +42,7 @@ export function IconDetails({
   return (
     <div className="flex flex-col gap-6">
       {/* Leaves room for the drawer's close button until the content is narrower than the drawer. */}
-      <div className="flex items-center justify-between gap-4 pr-10 xl:pr-0">
+      <div className="flex items-center justify-between gap-4 md:pr-10 xl:pr-0">
         <DrawerTitle
           render={
             <Button
@@ -52,9 +52,9 @@ export function IconDetails({
               aria-label={`Copy name ${icon.name}`}
             />
           }
-          className="group/title -ml-4 self-start text-2xl font-semibold tracking-tight"
+          className="group/title -ml-4 min-w-0 shrink self-start text-2xl font-semibold tracking-tight"
         >
-          {icon.name}
+          <span className="truncate">{icon.name}</span>
           <SwapIcon
             data-icon="inline-end"
             on={copied === "name"}
@@ -67,7 +67,7 @@ export function IconDetails({
             )}
           />
         </DrawerTitle>
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2">
           <CopyLinkButton iconName={icon.name} settings={settings} />
           <ExportMenu
             svg={svg}
