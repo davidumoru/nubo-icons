@@ -21,6 +21,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 11**: ellipsis-vertical, chevrons-left, chevrons-right, arrow-up-right, arrows-up-down, arrow-counter-clockwise, arrow-clockwise.
 - **Batch 12**: user-minus, users, circle-user, chat, paper-plane, phone.
 - **Batch 13**: play, pause, speaker-high, speaker-slash, microphone, camera.
+- **Batch 14**: lock-open, key, shield-check, shopping-cart, credit-card, map-pin.
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 
 ## Next

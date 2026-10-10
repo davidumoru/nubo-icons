@@ -1,0 +1,8 @@
+{
+  "tags": ["location", "place", "marker", "map", "address"],
+  "categories": ["maps"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

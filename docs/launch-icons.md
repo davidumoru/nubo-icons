@@ -165,20 +165,20 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | Icon         | Priority | Notes           |
 | ------------ | -------- | --------------- |
 | lock         | ✅       |                 |
-| lock-open    | P2       | Alias `unlock`. |
+| lock-open    | ✅       | Alias `unlock`. |
 | eye          | ✅       |                 |
 | eye-off      | ✅       |                 |
-| key          | P2       |                 |
+| key          | ✅       |                 |
 | shield       | P3       |                 |
-| shield-check | P2       |                 |
+| shield-check | ✅       |                 |
 
 ## Commerce
 
 | Icon          | Priority | Notes |
 | ------------- | -------- | ----- |
-| shopping-cart | P2       |       |
+| shopping-cart | ✅       |       |
 | shopping-bag  | P3       |       |
-| credit-card   | P2       |       |
+| credit-card   | ✅       |       |
 | receipt       | P3       |       |
 | gift          | P3       |       |
 
@@ -188,7 +188,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | -------- | -------- | ------------- |
 | house    | ✅       | Alias `home`. |
 | calendar | ✅       |               |
-| map-pin  | P2       |               |
+| map-pin  | ✅       |               |
 | map      | P3       |               |
 | compass  | P3       |               |
 | building | P3       |               |
