@@ -1,6 +1,6 @@
 type DocEntry = { slug: string; file: DocFile; title: string };
 export type DocFile =
-  "index" | "react" | "styles" | "svg" | "accessibility" | "design";
+  "index" | "react" | "styles" | "svg" | "accessibility" | "design" | "roadmap";
 
 export const DOC_GROUPS: { label: string; pages: DocEntry[] }[] = [
   {
@@ -16,6 +16,10 @@ export const DOC_GROUPS: { label: string; pages: DocEntry[] }[] = [
       { slug: "accessibility", file: "accessibility", title: "Accessibility" },
       { slug: "design", file: "design", title: "Design" },
     ],
+  },
+  {
+    label: "Project",
+    pages: [{ slug: "roadmap", file: "roadmap", title: "Roadmap" }],
   },
 ];
 

@@ -34,15 +34,16 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Logo and favicon**: a wordmark built from circles, half circles and bars like the icons, with the "n" as the favicon.
 - **Docs** in `apps/web/content/docs`: introduction, React, styles, SVG, accessibility and design, on shadcn's typeset, sidebar and table of contents.
 - **Exports**: download an icon as SVG or PNG at 1x, 2x or 3x, copy it as a PNG or data URI, copy a link to it (`/?icon=phone` opens its drawer), and download the whole set as a zip.
+- **Showcase**: a pannable canvas of UI examples built from shadcn/ui components.
+- **Footer** with the maker's links, and a **public roadmap** at `/docs/roadmap`. Keep that page in step with this file, written for users rather than contributors.
 
 ## Next
 
-1. **Grow the set to the [launch list](launch-icons.md)** in batches, every icon in all three styles, each batch reviewed and locked before the next. The list also says what nubo doesn't draw.
-2. **Packages.**
+1. **Packages.**
    - `@nubo-icons/svg`: optimized SVGs plus icon data JSON.
-   - Release with Changesets, all packages on one version, published from CI with npm provenance.
-3. **Website**: a place for the maker's links.
-4. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
+   - Release with Changesets, all packages on one version, published from CI with npm provenance. The generated changelog also becomes a `/docs/changelog` page.
+2. **Grow the set past the [launch list](launch-icons.md)** in batches, led by icon requests, every icon in all three styles, each batch reviewed and locked before the next.
+3. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
 
 ## Later
 

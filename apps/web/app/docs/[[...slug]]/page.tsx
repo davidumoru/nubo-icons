@@ -16,6 +16,7 @@ import * as Styles from "@/content/docs/styles.mdx";
 import * as Svg from "@/content/docs/svg.mdx";
 import * as Accessibility from "@/content/docs/accessibility.mdx";
 import * as Design from "@/content/docs/design.mdx";
+import * as Roadmap from "@/content/docs/roadmap.mdx";
 
 type Mdx = {
   default: React.ComponentType;
@@ -28,6 +29,7 @@ const PAGES = {
   svg: Svg,
   accessibility: Accessibility,
   design: Design,
+  roadmap: Roadmap,
 } as unknown as Record<Doc["file"], Mdx>;
 const load = async (doc: Doc) => PAGES[doc.file];
 
