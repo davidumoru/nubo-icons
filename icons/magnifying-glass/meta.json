@@ -1,17 +1,7 @@
 {
-  "tags": [
-    "search",
-    "find",
-    "lookup",
-    "zoom",
-    "explore"
-  ],
-  "categories": [
-    "interface"
-  ],
-  "aliases": [
-    "search"
-  ],
+  "tags": ["search", "find", "lookup", "zoom", "explore"],
+  "categories": ["interface"],
+  "aliases": ["search"],
   "rtl": "none",
   "added": "0.1.0",
   "status": "approved"

@@ -1,7 +1,16 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import sharp from "sharp";
-import { ROOT, STYLES, iconNames, loadIcon, measure, toRenderable, withColor, type Icon } from "./icons";
+import {
+  ROOT,
+  STYLES,
+  iconNames,
+  loadIcon,
+  measure,
+  toRenderable,
+  withColor,
+  type Icon,
+} from "./icons";
 
 const OUT = join(ROOT, "tools/icons/out");
 mkdirSync(OUT, { recursive: true });
@@ -12,13 +21,27 @@ const requested = process.argv.slice(2);
 const unknown = requested.filter((n) => !all.some((i) => i.name === n));
 if (unknown.length) throw new Error(`unknown icons: ${unknown.join(", ")}`);
 
-const batch = requested.length ? all.filter((i) => requested.includes(i.name)) : all.filter((i) => i.meta.status === "draft");
-const approved = all.filter((i) => i.meta.status === "approved" && !batch.includes(i));
+const batch = requested.length
+  ? all.filter((i) => requested.includes(i.name))
+  : all.filter((i) => i.meta.status === "draft");
+const approved = all.filter(
+  (i) => i.meta.status === "approved" && !batch.includes(i),
+);
 
-const inner = (svg: string) => svg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
-const rootAttrs = (svg: string) => svg.match(/<svg([^>]*)>/)![1].replace(/\s(xmlns|width|height|viewBox)="[^"]*"/g, "");
+const inner = (svg: string) =>
+  svg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
+const rootAttrs = (svg: string) =>
+  svg
+    .match(/<svg([^>]*)>/)![1]
+    .replace(/\s(xmlns|width|height|viewBox)="[^"]*"/g, "");
 
-function placed(source: string, x: number, y: number, size: number, color: string) {
+function placed(
+  source: string,
+  x: number,
+  y: number,
+  size: number,
+  color: string,
+) {
   const svg = toRenderable(source);
   return `<g transform="translate(${x} ${y}) scale(${size / 24})" color="${color}"><g${rootAttrs(svg)}>${inner(svg)}</g></g>`;
 }
@@ -37,15 +60,23 @@ async function realSheet(file: string, fg: string, bg: string, muted: string) {
   const parts: string[] = [];
   STYLES.forEach((style, s) => {
     const gx = LABEL_W + s * (groupW + GROUP_GAP);
-    parts.push(`<text x="${gx}" y="18" font-size="11" fill="${muted}" font-family="sans-serif">${style}  ·  ${SIZES.join(" / ")}</text>`);
+    parts.push(
+      `<text x="${gx}" y="18" font-size="11" fill="${muted}" font-family="sans-serif">${style}  ·  ${SIZES.join(" / ")}</text>`,
+    );
   });
-  if (approved.length) parts.push(`<path d="M10 ${dividerY}H${sheetW - 10}" stroke="${muted}" stroke-opacity=".4" stroke-dasharray="3 3"/>`);
+  if (approved.length)
+    parts.push(
+      `<path d="M10 ${dividerY}H${sheetW - 10}" stroke="${muted}" stroke-opacity=".4" stroke-dasharray="3 3"/>`,
+    );
   rows.forEach((icon, r) => {
     const y = 30 + r * ROW_H + (r >= batch.length && approved.length ? 28 : 0);
-    parts.push(`<text x="10" y="${y + 22}" font-size="11" fill="${muted}" font-family="sans-serif">${icon.name}</text>`);
+    parts.push(
+      `<text x="10" y="${y + 22}" font-size="11" fill="${muted}" font-family="sans-serif">${icon.name}</text>`,
+    );
     STYLES.forEach((style, s) => {
       SIZES.forEach((size, z) => {
-        const x = LABEL_W + s * (groupW + GROUP_GAP) + z * CELL + (CELL - size) / 2;
+        const x =
+          LABEL_W + s * (groupW + GROUP_GAP) + z * CELL + (CELL - size) / 2;
         parts.push(placed(icon.svg[style], x, y + (32 - size) / 2, size, fg));
       });
     });
@@ -58,7 +89,10 @@ async function zoomSheet(file: string) {
   const z = 6;
   const box = 24 * z;
   const pad = 20;
-  const grid = Array.from({ length: 25 }, (_, k) => `M${k * z} 0V${box}M0 ${k * z}H${box}`).join("");
+  const grid = Array.from(
+    { length: 25 },
+    (_, k) => `M${k * z} 0V${box}M0 ${k * z}H${box}`,
+  ).join("");
   const guides = `<path d="${grid}" stroke="#eee" stroke-width=".6"/>
     <circle cx="${12 * z}" cy="${12 * z}" r="${10 * z}" fill="none" stroke="#9cf" stroke-width=".8"/>
     <rect x="${3 * z}" y="${3 * z}" width="${18 * z}" height="${18 * z}" fill="none" stroke="#9cf" stroke-width=".8"/>
@@ -78,9 +112,11 @@ async function zoomSheet(file: string) {
 }
 
 function html() {
-  const row = (icon: Icon) => `<tr><th>${icon.name}</th>${STYLES.map(
-    (style) => `<td>${SIZES.map((size) => withColor(icon.svg[style], "currentColor").replace(/width="24" height="24"/, `width="${size}" height="${size}"`)).join("")}</td>`,
-  ).join("")}</tr>`;
+  const row = (icon: Icon) =>
+    `<tr><th>${icon.name}</th>${STYLES.map(
+      (style) =>
+        `<td>${SIZES.map((size) => withColor(icon.svg[style], "currentColor").replace(/width="24" height="24"/, `width="${size}" height="${size}"`)).join("")}</td>`,
+    ).join("")}</tr>`;
   return `<!doctype html><meta charset="utf-8"><title>Nubo review</title>
 <style>
   :root { color-scheme: light dark; --fg:#111; --bg:#fff; --muted:#888; --line:#e5e5e5 }

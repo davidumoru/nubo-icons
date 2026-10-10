@@ -1,18 +1,7 @@
 {
-  "tags": [
-    "settings",
-    "preferences",
-    "options",
-    "configuration",
-    "cog"
-  ],
-  "categories": [
-    "interface"
-  ],
-  "aliases": [
-    "settings",
-    "cog"
-  ],
+  "tags": ["settings", "preferences", "options", "configuration", "cog"],
+  "categories": ["interface"],
+  "aliases": ["settings", "cog"],
   "rtl": "none",
   "added": "0.1.0",
   "status": "approved"

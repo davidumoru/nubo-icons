@@ -4,16 +4,19 @@ Nubo is an open-source icon library: one set of icon names, three styles (Line, 
 
 ## Layout
 
-| Path             | What lives there                                                                      |
-| ---------------- | ------------------------------------------------------------------------------------- |
-| `DESIGN.md`      | The design rules. Read it before drawing or changing any icon.                        |
-| `icons/<name>/`  | Source of truth: `line.svg`, `fill.svg`, `duo.svg`, `meta.json`.                      |
-| `packages/`      | Published packages, generated from `icons/`.                                          |
-| `tools/`         | Lint, build and preview scripts.                                                      |
-| `apps/web/`      | The website (Next.js, shadcn/ui).                                                     |
-| `docs/research/` | The research behind the design and architecture decisions.                            |
+| Path              | What lives there                                                  |
+| ----------------- | ----------------------------------------------------------------- |
+| `DESIGN.md`       | The design rules. Read it before drawing or changing any icon.    |
+| `icons/<name>/`   | Source of truth: `line.svg`, `fill.svg`, `duo.svg`, `meta.json`.  |
+| `packages/`       | Published packages, generated from `icons/`.                      |
+| `tools/`          | Lint, build and preview scripts.                                  |
+| `apps/web/`       | The website (Next.js, shadcn/ui).                                 |
+| `docs/research/`  | The research behind the design and architecture decisions.        |
+| `docs/roadmap.md` | What's done, what's next, and later ideas such as morphing icons. |
 
 pnpm workspace. Use `pnpm`, never npm or yarn.
+
+Code, JSON and Markdown follow Prettier's defaults. Run `pnpm format` before finishing any change; `pnpm format:check` must pass.
 
 ## Working on icons
 

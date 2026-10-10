@@ -25,7 +25,11 @@ export type Icon = {
   svg: Record<Style, string>;
 };
 
-export type Node = { name: string; attrs: Record<string, string>; children: Node[] };
+export type Node = {
+  name: string;
+  attrs: Record<string, string>;
+  children: Node[];
+};
 
 export function iconNames(): string[] {
   if (!existsSync(ICONS_DIR)) return [];
@@ -37,26 +41,48 @@ export function iconNames(): string[] {
 
 export function loadIcon(name: string): Icon {
   const dir = join(ICONS_DIR, name);
-  const svg = Object.fromEntries(STYLES.map((s) => [s, readFileSync(join(dir, `${s}.svg`), "utf8")])) as Record<Style, string>;
-  return { name, meta: JSON.parse(readFileSync(join(dir, "meta.json"), "utf8")), svg };
+  const svg = Object.fromEntries(
+    STYLES.map((s) => [s, readFileSync(join(dir, `${s}.svg`), "utf8")]),
+  ) as Record<Style, string>;
+  return {
+    name,
+    meta: JSON.parse(readFileSync(join(dir, "meta.json"), "utf8")),
+    svg,
+  };
 }
 
-const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: "", preserveOrder: true });
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: "",
+  preserveOrder: true,
+});
 
 export function parseSvg(source: string): Node {
   const toNode = (raw: Record<string, unknown>): Node => {
     const name = Object.keys(raw).find((k) => k !== ":@")!;
-    const children = (raw[name] as Record<string, unknown>[]).filter((c) => !("#text" in c)).map(toNode);
-    return { name, attrs: (raw[":@"] as Record<string, string>) ?? {}, children };
+    const children = (raw[name] as Record<string, unknown>[])
+      .filter((c) => !("#text" in c))
+      .map(toNode);
+    return {
+      name,
+      attrs: (raw[":@"] as Record<string, string>) ?? {},
+      children,
+    };
   };
-  const roots = (parser.parse(source) as Record<string, unknown>[]).filter((n) => !("#text" in n) && !("?xml" in n));
-  if (roots.length !== 1) throw new Error(`expected one root element, found ${roots.length}`);
+  const roots = (parser.parse(source) as Record<string, unknown>[]).filter(
+    (n) => !("#text" in n) && !("?xml" in n),
+  );
+  if (roots.length !== 1)
+    throw new Error(`expected one root element, found ${roots.length}`);
   return toNode(roots[0]);
 }
 
 // The source marks Duo's light layer semantically; renderers need real opacity.
 export function toRenderable(source: string): string {
-  return source.replace(/data-tone="secondary"/g, `opacity="${SECONDARY_OPACITY}"`);
+  return source.replace(
+    /data-tone="secondary"/g,
+    `opacity="${SECONDARY_OPACITY}"`,
+  );
 }
 
 export function withColor(source: string, color: string): string {
@@ -76,9 +102,21 @@ export type Metrics = {
 export async function measure(source: string): Promise<Metrics> {
   const px = 480;
   const k = px / 24;
-  const svg = withColor(source, "#000").replace(/width="24" height="24"/, `width="${px}" height="${px}"`);
-  const { data } = await sharp(Buffer.from(svg)).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
-  let minX = px, minY = px, maxX = -1, maxY = -1, ink = 0, sx = 0, sy = 0;
+  const svg = withColor(source, "#000").replace(
+    /width="24" height="24"/,
+    `width="${px}" height="${px}"`,
+  );
+  const { data } = await sharp(Buffer.from(svg))
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
+  let minX = px,
+    minY = px,
+    maxX = -1,
+    maxY = -1,
+    ink = 0,
+    sx = 0,
+    sy = 0;
   for (let y = 0; y < px; y++)
     for (let x = 0; x < px; x++) {
       const a = data[(y * px + x) * 4 + 3] / 255;
