@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { HideOn } from "@/components/hide-on";
 import { SiteHeader } from "@/components/site-header";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import "./globals.css";
@@ -35,7 +36,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           disableTransitionOnChange
         >
           <TooltipProvider>
-            <SiteHeader />
+            <HideOn paths={["/showcase"]}>
+              <SiteHeader />
+            </HideOn>
             {children}
           </TooltipProvider>
         </ThemeProvider>

@@ -21,6 +21,13 @@ export function SiteHeader() {
         <Button
           variant="ghost"
           nativeButton={false}
+          render={<Link href="/showcase" />}
+        >
+          Showcase
+        </Button>
+        <Button
+          variant="ghost"
+          nativeButton={false}
           render={<a href="https://github.com/davidumoru/nubo-icons" />}
         >
           GitHub
