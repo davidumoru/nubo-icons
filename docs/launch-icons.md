@@ -119,9 +119,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | trash           | ✅       |                    |
 | scissors        | ✅       |                    |
 | list            | ✅       | Bullets and lines. |
-| list-ordered    | P3       |                    |
-| text-align-left | P3       |                    |
-| quotes          | P3       |                    |
+| list-ordered    | ✅       |                    |
+| text-align-left | ✅       |                    |
+| quotes          | ✅       |                    |
 
 ## Communication
 
@@ -139,15 +139,15 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | ---------------- | -------- | ----------------------------------- |
 | play             | ✅       | Morph group candidate (play/pause). |
 | pause            | ✅       | Morph group candidate.              |
-| stop             | P3       |                                     |
-| skip-forward     | P3       |                                     |
-| skip-back        | P3       |                                     |
+| stop             | ✅       |                                     |
+| skip-forward     | ✅       |                                     |
+| skip-back        | ✅       |                                     |
 | speaker-high     | ✅       | Alias `volume-2`.                   |
 | speaker-slash    | ✅       | Alias `volume-x`.                   |
 | microphone       | ✅       | Alias `mic`.                        |
-| microphone-slash | P3       | Alias `mic-off`.                    |
+| microphone-slash | ✅       | Alias `mic-off`.                    |
 | camera           | ✅       |                                     |
-| video-camera     | P3       | Alias `video`.                      |
+| video-camera     | ✅       | Alias `video`.                      |
 
 ## Devices and system
 
@@ -199,11 +199,11 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | Icon         | Priority | Notes                |
 | ------------ | -------- | -------------------- |
 | squares-four | ✅       | Alias `layout-grid`. |
-| rows         | P3       | Alias `layout-list`. |
+| rows         | ✅       | Alias `layout-list`. |
 | chart-bar    | ✅       |                      |
-| chart-line   | P3       |                      |
-| chart-pie    | P3       |                      |
-| trend-up     | P3       | Alias `trending-up`. |
+| chart-line   | ✅       |                      |
+| chart-pie    | ✅       |                      |
+| trend-up     | ✅       | Alias `trending-up`. |
 
 ## Social
 

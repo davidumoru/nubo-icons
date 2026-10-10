@@ -1,0 +1,8 @@
+{
+  "tags": ["layout", "list", "stack", "rows"],
+  "categories": ["interface", "layout"],
+  "aliases": ["layout-list"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

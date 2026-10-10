@@ -1,0 +1,8 @@
+{
+  "tags": ["mute", "mic off", "silent", "voice off", "audio"],
+  "categories": ["media", "devices"],
+  "aliases": ["mic-off"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
