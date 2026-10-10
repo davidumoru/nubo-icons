@@ -1,0 +1,8 @@
+{
+  "tags": ["on", "off", "shutdown", "switch", "start"],
+  "categories": ["interface", "devices"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

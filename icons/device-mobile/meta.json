@@ -1,0 +1,8 @@
+{
+  "tags": ["phone", "smartphone", "mobile", "cell", "device"],
+  "categories": ["devices"],
+  "aliases": ["smartphone"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

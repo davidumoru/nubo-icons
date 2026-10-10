@@ -156,10 +156,10 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | sun           | ✅       | Theme toggle.          |
 | moon          | ✅       | Theme toggle.          |
 | monitor       | ✅       | "System" theme option. |
-| device-mobile | P3       | Alias `smartphone`.    |
+| device-mobile | ✅       | Alias `smartphone`.    |
 | globe         | ✅       | Language, public.      |
-| wifi          | P3       |                        |
-| power         | P3       |                        |
+| wifi          | ✅       |                        |
+| power         | ✅       |                        |
 
 ## Security
 
@@ -170,7 +170,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | eye          | ✅       |                 |
 | eye-off      | ✅       |                 |
 | key          | ✅       |                 |
-| shield       | P3       |                 |
+| shield       | ✅       |                 |
 | shield-check | ✅       |                 |
 
 ## Commerce
@@ -178,10 +178,10 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | Icon          | Priority | Notes |
 | ------------- | -------- | ----- |
 | shopping-cart | ✅       |       |
-| shopping-bag  | P3       |       |
+| shopping-bag  | ✅       |       |
 | credit-card   | ✅       |       |
-| receipt       | P3       |       |
-| gift          | P3       |       |
+| receipt       | ✅       |       |
+| gift          | ✅       |       |
 
 ## Places and time
 
@@ -190,9 +190,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | house    | ✅       | Alias `home`. |
 | calendar | ✅       |               |
 | map-pin  | ✅       |               |
-| map      | P3       |               |
-| compass  | P3       |               |
-| building | P3       |               |
+| map      | ✅       |               |
+| compass  | ✅       |               |
+| building | ✅       |               |
 
 ## Layout and charts
 
@@ -211,8 +211,8 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | -------------- | -------- | -------------- |
 | heart          | ✅       |                |
 | heart-straight | ✅       |                |
-| thumbs-up      | P3       |                |
-| smiley         | P3       | Alias `smile`. |
+| thumbs-up      | ✅       |                |
+| smiley         | ✅       | Alias `smile`. |
 
 ## Not in scope
 
