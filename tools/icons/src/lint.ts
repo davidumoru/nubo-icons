@@ -47,12 +47,32 @@ const SHAPE_ATTRS: Record<string, string[]> = {
   rect: ["x", "y", "width", "height", "rx", "ry"],
 };
 const PAINT_ATTRS = ["fill", "fill-rule"];
-const META_KEYS = ["tags", "categories", "aliases", "rtl", "added", "status"];
+const META_KEYS = [
+  "tags",
+  "categories",
+  "aliases",
+  "rtl",
+  "added",
+  "status",
+  "exceptions",
+];
+const EXCEPTIONS = ["thin-fill-outline"];
 
 const tooPrecise = (value: string) => /\d\.\d{3,}/.test(value);
 
-function checkShape(where: string, style: Style, node: Node) {
-  const allowed = [...SHAPE_ATTRS[node.name], ...PAINT_ATTRS];
+function checkShape(
+  where: string,
+  style: Style,
+  node: Node,
+  exceptions: string[],
+) {
+  const thinOutline =
+    style === "fill" && exceptions.includes("thin-fill-outline");
+  const allowed = [
+    ...SHAPE_ATTRS[node.name],
+    ...PAINT_ATTRS,
+    ...(thinOutline ? ["stroke-width"] : []),
+  ];
   for (const [attr, value] of Object.entries(node.attrs)) {
     if (!allowed.includes(attr))
       errors.push(
@@ -66,9 +86,22 @@ function checkShape(where: string, style: Style, node: Node) {
     errors.push(`${where}: fill must be "none" or inherited, got "${fill}"`);
   if (fillRule !== undefined && fillRule !== "evenodd")
     errors.push(`${where}: fill-rule must be "evenodd"`);
+  const strokeWidth = node.attrs["stroke-width"];
+  if (thinOutline && strokeWidth !== undefined) {
+    const width = Number(strokeWidth);
+    if (!(width > 0 && width < 1.5) || fill === "none")
+      errors.push(
+        `${where}: a thin outline must be thinner than 1.5 and on a solid shape`,
+      );
+  }
 }
 
-function checkSvg(where: string, style: Style, source: string) {
+function checkSvg(
+  where: string,
+  style: Style,
+  source: string,
+  exceptions: string[],
+) {
   let root: Node;
   try {
     root = parseSvg(source);
@@ -109,11 +142,11 @@ function checkSvg(where: string, style: Style, source: string) {
       for (const grandchild of child.children) {
         if (!(grandchild.name in SHAPE_ATTRS))
           errors.push(`${where}: <${grandchild.name}> is not allowed`);
-        else checkShape(where, style, grandchild);
+        else checkShape(where, style, grandchild, exceptions);
       }
     } else if (!(child.name in SHAPE_ATTRS))
       errors.push(`${where}: <${child.name}> is not allowed`);
-    else checkShape(where, style, child);
+    else checkShape(where, style, child, exceptions);
   }
 }
 
@@ -134,6 +167,14 @@ function checkMeta(where: string, meta: Record<string, unknown>) {
     errors.push(`${where}: added must be a version like 0.1.0`);
   if (meta.status !== "draft" && meta.status !== "approved")
     errors.push(`${where}: status must be "draft" or "approved"`);
+  if (
+    meta.exceptions !== undefined &&
+    (!strings(meta.exceptions) ||
+      !(meta.exceptions as string[]).every((e) => EXCEPTIONS.includes(e)))
+  )
+    errors.push(
+      `${where}: exceptions must be a subset of ${EXCEPTIONS.join(", ")}`,
+    );
 }
 
 const names = iconNames();
@@ -157,7 +198,7 @@ for (const name of names) {
     {};
   for (const style of STYLES) {
     const where = `${name}/${style}.svg`;
-    checkSvg(where, style, icon.svg[style]);
+    checkSvg(where, style, icon.svg[style], icon.meta.exceptions ?? []);
     const m = (bounds[style] = await measure(icon.svg[style]));
     const extent = [m.left, m.top, 24 - m.right, 24 - m.bottom];
     const tightest = Math.min(...extent);
@@ -185,7 +226,11 @@ for (const name of names) {
     ["fill", "duo"],
   ] as const) {
     const d = differs(a, b);
-    if (d > 0.1)
+    // Pieces cut through the outline (thin-fill-outline) dip the silhouette at each gap by design.
+    const tolerance = icon.meta.exceptions?.includes("thin-fill-outline")
+      ? 0.5
+      : 0.1;
+    if (d > tolerance)
       warnings.push(
         `${name}: ${a} and ${b} silhouettes differ by up to ${fmt(d)}px`,
       );

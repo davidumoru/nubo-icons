@@ -1,0 +1,8 @@
+{
+  "tags": ["favorite", "rating", "bookmark", "featured", "important"],
+  "categories": ["social", "interface"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

@@ -1,0 +1,9 @@
+{
+  "tags": ["world", "earth", "internet", "language", "public", "web"],
+  "categories": ["navigation", "devices"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved",
+  "exceptions": ["thin-fill-outline"]
+}

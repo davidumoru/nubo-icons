@@ -45,7 +45,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | arrows-in                  | P3       | Alias `minimize`.                                               |
 | pin                        | P3       | Push pin.                                                       |
 | bookmark                   | P2       |                                                                 |
-| star                       | P2       | Five points, soft tips. Never folded or halved in Duo.          |
+| star                       | ✅       | Five points, soft tips. Never folded or halved in Duo.          |
 | flag                       | P3       |                                                                 |
 | tag                        | P3       |                                                                 |
 | archive                    | P3       | Box with a lid.                                                 |
@@ -105,7 +105,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | paperclip   | P2       |                                          |
 | clipboard   | P2       |                                          |
 | copy        | ✅       |                                          |
-| cloud       | P2       | Nubo means cloud. Worth getting perfect. |
+| cloud       | ✅       | Nubo means cloud. Worth getting perfect. |
 | database    | P3       |                                          |
 | code        | P2       | Angle brackets.                          |
 | terminal    | P3       |                                          |
@@ -152,11 +152,11 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 
 | Icon          | Priority | Notes                  |
 | ------------- | -------- | ---------------------- |
-| sun           | P2       | Theme toggle.          |
-| moon          | P2       | Theme toggle.          |
-| monitor       | P2       | "System" theme option. |
+| sun           | ✅       | Theme toggle.          |
+| moon          | ✅       | Theme toggle.          |
+| monitor       | ✅       | "System" theme option. |
 | device-mobile | P3       | Alias `smartphone`.    |
-| globe         | P2       | Language, public.      |
+| globe         | ✅       | Language, public.      |
 | wifi          | P3       |                        |
 | power         | P3       |                        |
 

@@ -17,6 +17,7 @@ export type Meta = {
   rtl: "mirror" | "none";
   added: string;
   status: "draft" | "approved";
+  exceptions?: string[];
 };
 
 export type Icon = {

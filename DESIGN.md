@@ -67,6 +67,7 @@ The **puff** technique: every solid shape is filled _and_ traced with a 1.5px ro
 - **Fill only fills objects.** When an icon's subject is a solid object with a body (heart, house, gear, bell), it becomes solid. When the subject is a line, a symbol or a frame (check, arrows, chevrons, plus, x, menu, a magnifier's ring, an open tray), Fill is identical to Line: the same 1.5px stroke, pixel for pixel. There is no in-between weight.
 - An icon can mix the two: a solid basket with a line handle.
 - **Inner circles are holes, never solid dots.** A gear's axle and an eye's pupil are both cut out of the solid body.
+- **Exception: shapes cut into many pieces.** When gaps split a solid shape into many pieces (the Fill globe's nine), the standard soft outline rounds every piece so much that the whole shape reads as loose tiles. Those pieces use a thinner 1px outline (0.5px corners), drawn so their visible edges stay where the normal outline would put them. The icon declares `"exceptions": ["thin-fill-outline"]` in its `meta.json`; lint rejects a thinner outline anywhere else.
 
 ## Duo
 
@@ -123,6 +124,8 @@ icons/<name>/meta.json
   "status": "draft"
 }
 ```
+
+- `exceptions` (optional) lists deliberate departures from these rules that lint should allow for this icon. Today there is one: `thin-fill-outline`.
 
 - `status` is `"draft"` until the icon passes review, then `"approved"`.
 
