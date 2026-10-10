@@ -1,8 +1,6 @@
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { strToU8, zipSync } from "fflate";
-import { DOCS } from "../lib/docs.ts";
-import { REPO_URL, SITE_URL } from "../lib/site.ts";
 
 const ROOT = join(import.meta.dirname, "../../..");
 const ICONS = join(ROOT, "icons");
@@ -46,42 +44,9 @@ writeFileSync(
   JSON.stringify(icons),
 );
 
-const description = (file: string) =>
-  readFileSync(
-    join(import.meta.dirname, `../content/docs/${file}.mdx`),
-    "utf8",
-  ).match(/description: "([^"]*)"/)?.[1];
-
-const url = (path: string) => new URL(path, SITE_URL).href;
-
-const llms = [
-  "# Nubo",
-  "",
-  "> Soft, open-source icons on a 24px grid with a 1.5px stroke, in three styles: Line, Fill and Duo (a line drawing with a 30% tint).",
-  "",
-  'React: `import { HeartIcon } from "@nubo-icons/react"` for Line, or from `@nubo-icons/react/fill` and `@nubo-icons/react/duo`. Every icon takes `size`, `strokeWidth`, `color` and `title`; icons are decorative (aria-hidden) unless given a `title` or `aria-label`.',
-  "",
-  "## Docs",
-  "",
-  ...DOCS.map((d) => `- [${d.title}](${url(d.href)}): ${description(d.file)}`),
-  "",
-  "## Icons",
-  "",
-  ...icons.map(
-    (i) =>
-      `- [${i.name}](${url(`/?icon=${i.name}`)}): ${i.component}Icon${i.aliases.length ? `, aliases: ${i.aliases.join(", ")}` : ""}. ${i.tags.join(", ")}`,
-  ),
-  "",
-  "## Optional",
-  "",
-  `- [Source on GitHub](${REPO_URL}): icons, packages and this site`,
-  `- [All icons as SVG](${url("/nubo-icons.zip")}): every icon in every style, with the license`,
-  "",
-].join("\n");
 // Everything in public/ is generated, so a fresh clone has no public/ folder to write into.
 const PUBLIC = join(import.meta.dirname, "../public");
 mkdirSync(PUBLIC, { recursive: true });
-writeFileSync(join(PUBLIC, "llms.txt"), llms);
 
 // Duo's tint group gets its 30% opacity written in: a plain SVG file has nothing else to apply it.
 const files: Record<string, Uint8Array> = {

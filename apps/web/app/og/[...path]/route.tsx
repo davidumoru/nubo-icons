@@ -1,6 +1,5 @@
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
 import { DOCS } from "@/lib/docs";
+import { docMeta } from "@/lib/docs-source";
 import { icons, type Style } from "@/lib/icons";
 import { renderOg, type OgContent } from "@/lib/og";
 
@@ -14,12 +13,6 @@ const SAMPLE: { name: string; style: Style }[] = [
   { name: "house", style: "line" },
   { name: "star", style: "fill" },
 ];
-
-const docDescription = (file: string) =>
-  readFileSync(
-    join(process.cwd(), "content/docs", `${file}.mdx`),
-    "utf8",
-  ).match(/description: "([^"]*)"/)?.[1];
 
 function content(path: string[]): OgContent | null {
   const [kind, name] = path;
@@ -41,7 +34,7 @@ function content(path: string[]): OgContent | null {
     return {
       eyebrow: "Docs",
       title: doc.title,
-      description: docDescription(doc.file),
+      description: docMeta(doc).description,
       icons: SAMPLE,
     };
   }

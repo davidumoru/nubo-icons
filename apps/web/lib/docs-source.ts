@@ -7,6 +7,12 @@ import type { Doc } from "@/lib/docs";
 const source = (doc: Doc) =>
   readFileSync(join(process.cwd(), "content/docs", `${doc.file}.mdx`), "utf8");
 
+export function docMeta(doc: Doc) {
+  const field = (name: string) =>
+    source(doc).match(new RegExp(`${name}: "([^"]*)"`))?.[1] ?? "";
+  return { title: field("title"), description: field("description") };
+}
+
 export function markdownFor(doc: Doc, title: string, description: string) {
   const body = source(doc)
     .replace(/^export const metadata = \{[\s\S]*?\};\n/m, "")

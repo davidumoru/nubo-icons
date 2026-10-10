@@ -29,7 +29,9 @@ const STRUCTURED_DATA = {
   author: {
     "@type": "Person",
     name: "David Umoru",
+    description: "Creator of Nubo.",
     url: "https://x.com/theumoru",
+    sameAs: ["https://x.com/theumoru", "https://github.com/davidumoru"],
   },
 };
 

@@ -42,5 +42,4 @@ next-env.d.ts
 
 # generated from icons/ by scripts/icon-data.mts
 /lib/icon-data.json
-/public/llms.txt
 /public/nubo-icons.zip
