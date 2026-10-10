@@ -43,7 +43,7 @@ export async function generateMetadata({
 }: PageProps<"/docs/[[...slug]]">): Promise<Metadata> {
   "use cache";
   const doc = findDoc((await params).slug);
-  if (!doc) return {};
+  if (!doc) notFound();
   const { metadata } = await load(doc);
   return pageMetadata({
     title: metadata.title,
