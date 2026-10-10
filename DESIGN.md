@@ -125,7 +125,7 @@ icons/<name>/meta.json
 
 ## Review
 
-`pnpm icons:lint` checks every rule above that a machine can check. `pnpm icons:preview [names…]` renders the review sheets into `tools/icons/out/` (draft icons by default).
+`pnpm icons:lint` checks every rule above that a machine can check. `pnpm icons:preview [names…]` renders the review sheets into `tools/icons/out/`: the named icons, otherwise the drafts, otherwise the whole set.
 
 Icons are made in small batches of 4–6, with each icon drawn in all three styles at once.
 

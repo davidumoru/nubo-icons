@@ -21,9 +21,12 @@ const requested = process.argv.slice(2);
 const unknown = requested.filter((n) => !all.some((i) => i.name === n));
 if (unknown.length) throw new Error(`unknown icons: ${unknown.join(", ")}`);
 
+const drafts = all.filter((i) => i.meta.status === "draft");
 const batch = requested.length
   ? all.filter((i) => requested.includes(i.name))
-  : all.filter((i) => i.meta.status === "draft");
+  : drafts.length
+    ? drafts
+    : all;
 const approved = all.filter(
   (i) => i.meta.status === "approved" && !batch.includes(i),
 );
@@ -142,7 +145,7 @@ function html() {
 }
 
 if (batch.length === 0) {
-  console.log("Nothing to review: no draft icons and none named.");
+  console.log("No icons yet.");
   process.exit(0);
 }
 
