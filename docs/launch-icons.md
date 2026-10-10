@@ -88,10 +88,10 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | ----------- | -------- | ----------------------------- |
 | user        | ✅       |                               |
 | user-plus   | ✅       |                               |
-| user-minus  | P2       | Same badge rule as user-plus. |
+| user-minus  | ✅       | Same badge rule as user-plus. |
 | user-check  | P3       |                               |
-| users       | P2       | Two people.                   |
-| circle-user | P2       | Avatar fallback.              |
+| users       | ✅       | Two people.                   |
+| circle-user | ✅       | Avatar fallback.              |
 
 ## Files and data
 
@@ -127,9 +127,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | Icon        | Priority | Notes                   |
 | ----------- | -------- | ----------------------- |
 | mail        | ✅       | Alias `envelope`.       |
-| chat        | P2       | Alias `message-circle`. |
-| paper-plane | P2       | Alias `send`.           |
-| phone       | P2       |                         |
+| chat        | ✅       | Alias `message-circle`. |
+| paper-plane | ✅       | Alias `send`.           |
+| phone       | ✅       |                         |
 | at          | P3       |                         |
 
 ## Media

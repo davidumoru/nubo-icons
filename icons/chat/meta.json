@@ -1,0 +1,8 @@
+{
+  "tags": ["message", "comment", "conversation", "bubble", "talk"],
+  "categories": ["communication"],
+  "aliases": ["message-circle"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

@@ -1,0 +1,8 @@
+{
+  "tags": ["avatar", "profile", "account", "user", "person"],
+  "categories": ["people", "account"],
+  "aliases": ["user-circle"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

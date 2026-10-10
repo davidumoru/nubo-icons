@@ -1,0 +1,8 @@
+{
+  "tags": ["send", "submit", "message", "deliver"],
+  "categories": ["communication"],
+  "aliases": ["send"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
