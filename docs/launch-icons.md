@@ -43,15 +43,15 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | sign-in                    | ✅       | Alias `log-in`. Mirrors in RTL.                                 |
 | arrows-out                 | ✅       | Alias `maximize`.                                               |
 | arrows-in                  | ✅       | Alias `minimize`.                                               |
-| pin                        | P3       | Push pin.                                                       |
+| pin                        | ✅       | Push pin.                                                       |
 | bookmark                   | ✅       |                                                                 |
 | star                       | ✅       | Five points, soft tips. Never folded or halved in Duo.          |
-| flag                       | P3       |                                                                 |
-| tag                        | P3       |                                                                 |
-| archive                    | P3       | Box with a lid.                                                 |
+| flag                       | ✅       |                                                                 |
+| tag                        | ✅       |                                                                 |
+| archive                    | ✅       | Box with a lid.                                                 |
 | sparkle                    | ✅       | The AI icon.                                                    |
 | sparkles                   | ✅       | sparkle with a small second star.                               |
-| bolt                       | P3       | Alias `zap`.                                                    |
+| bolt                       | ✅       | Alias `zap`.                                                    |
 
 ## Arrows and navigation
 
@@ -80,7 +80,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | circle-question | ✅       | Alias `help-circle`.                                         |
 | clock           | ✅       |                                                              |
 | bell            | ✅       |                                                              |
-| bell-off        | P3       | Slash rule from DESIGN.md.                                   |
+| bell-off        | ✅       | Slash rule from DESIGN.md.                                   |
 | prohibit        | ✅       | Alias `ban`.                                                 |
 
 ## People
@@ -90,7 +90,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | user        | ✅       |                               |
 | user-plus   | ✅       |                               |
 | user-minus  | ✅       | Same badge rule as user-plus. |
-| user-check  | P3       |                               |
+| user-check  | ✅       |                               |
 | users       | ✅       | Two people.                   |
 | circle-user | ✅       | Avatar fallback.              |
 
@@ -101,15 +101,15 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | file        | ✅       | Page with a folded corner.               |
 | file-text   | ✅       |                                          |
 | folder      | ✅       |                                          |
-| folder-open | P3       |                                          |
+| folder-open | ✅       |                                          |
 | image       | ✅       | Mountains and sun.                       |
 | paperclip   | ✅       |                                          |
 | clipboard   | ✅       |                                          |
 | copy        | ✅       |                                          |
 | cloud       | ✅       | Nubo means cloud. Worth getting perfect. |
-| database    | P3       |                                          |
+| database    | ✅       |                                          |
 | code        | ✅       | Angle brackets.                          |
-| terminal    | P3       |                                          |
+| terminal    | ✅       |                                          |
 
 ## Editing and text
 
@@ -117,7 +117,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | --------------- | -------- | ------------------ |
 | pencil          | ✅       | Alias `edit`.      |
 | trash           | ✅       |                    |
-| scissors        | P3       |                    |
+| scissors        | ✅       |                    |
 | list            | ✅       | Bullets and lines. |
 | list-ordered    | P3       |                    |
 | text-align-left | P3       |                    |
@@ -131,7 +131,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | chat        | ✅       | Alias `message-circle`. |
 | paper-plane | ✅       | Alias `send`.           |
 | phone       | ✅       |                         |
-| at          | P3       |                         |
+| at          | ✅       |                         |
 
 ## Media
 

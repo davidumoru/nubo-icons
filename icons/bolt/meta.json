@@ -1,0 +1,8 @@
+{
+  "tags": ["lightning", "zap", "power", "energy", "fast", "flash"],
+  "categories": ["interface", "weather"],
+  "aliases": ["zap"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

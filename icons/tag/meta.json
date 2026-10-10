@@ -1,0 +1,8 @@
+{
+  "tags": ["label", "price", "category", "badge", "sale"],
+  "categories": ["commerce", "interface"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

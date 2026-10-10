@@ -1,0 +1,14 @@
+{
+  "tags": [
+    "mute",
+    "notifications off",
+    "silent",
+    "do not disturb",
+    "alarm off"
+  ],
+  "categories": ["communication", "status"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
