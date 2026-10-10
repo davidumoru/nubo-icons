@@ -1,0 +1,8 @@
+{
+  "tags": ["ban", "forbidden", "blocked", "not allowed", "disabled"],
+  "categories": ["status"],
+  "aliases": ["ban"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

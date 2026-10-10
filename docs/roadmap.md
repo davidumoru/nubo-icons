@@ -24,6 +24,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 14**: lock-open, key, shield-check, shopping-cart, credit-card, map-pin.
 - **Batch 15**: funnel, arrow-up-right-from-square, sign-out, bookmark, sparkle.
 - **Batch 16**: code, list, squares-four, chart-bar, sparkles.
+- **Batch 17**: sign-in, arrows-out, arrows-in, arrow-elbow-down-left, panel-right, prohibit.
 - **`@nubo-icons/react`** in `packages/react`: generated from `icons/`, one module per icon per style, ESM + CommonJS with types for both, Lucide-compatible names and props. Tested against the SVG sources.
 - **CI**: GitHub Actions runs format, icon lint, build, typecheck and tests on every push and pull request.
 - **Website, first version** in `apps/web`, built on shadcn/ui: search across names, aliases and tags; a toolbar for style, size, stroke and color with Random and Reset; a bottom drawer per icon with previews, SVG and React code, copy and download; light and dark themes; a generated `llms.txt`.

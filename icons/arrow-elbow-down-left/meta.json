@@ -1,0 +1,8 @@
+{
+  "tags": ["enter", "return", "submit", "newline", "corner"],
+  "categories": ["arrows"],
+  "aliases": ["corner-down-left"],
+  "rtl": "mirror",
+  "added": "0.1.0",
+  "status": "approved"
+}

@@ -1,0 +1,8 @@
+{
+  "tags": ["minimize", "collapse", "exit fullscreen", "shrink"],
+  "categories": ["arrows", "interface"],
+  "aliases": ["minimize"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

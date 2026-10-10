@@ -40,9 +40,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | arrow-counter-clockwise    | ✅       | Alias `undo`.                                                   |
 | arrow-clockwise            | ✅       | Alias `redo`.                                                   |
 | sign-out                   | ✅       | Alias `log-out`. Mirrors in RTL.                                |
-| sign-in                    | P3       | Alias `log-in`. Mirrors in RTL.                                 |
-| arrows-out                 | P3       | Alias `maximize`.                                               |
-| arrows-in                  | P3       | Alias `minimize`.                                               |
+| sign-in                    | ✅       | Alias `log-in`. Mirrors in RTL.                                 |
+| arrows-out                 | ✅       | Alias `maximize`.                                               |
+| arrows-in                  | ✅       | Alias `minimize`.                                               |
 | pin                        | P3       | Push pin.                                                       |
 | bookmark                   | ✅       |                                                                 |
 | star                       | ✅       | Five points, soft tips. Never folded or halved in Duo.          |
@@ -64,9 +64,9 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | chevrons-right             | ✅       | Last page.                               |
 | arrow-up-right             | ✅       | Outbound link, growth.                   |
 | arrows-up-down             | ✅       | Alias `sort`.                            |
-| arrow-elbow-down-left      | P3       | Alias `corner-down-left`. The enter key. |
+| arrow-elbow-down-left      | ✅       | Alias `corner-down-left`. The enter key. |
 | panel-left                 | ✅       | Sidebar toggle.                          |
-| panel-right                | P3       |                                          |
+| panel-right                | ✅       |                                          |
 
 ## Status and feedback
 
@@ -81,7 +81,7 @@ Edit freely. Names follow DESIGN.md: name what the icon shows, and give it the L
 | clock           | ✅       |                                                              |
 | bell            | ✅       |                                                              |
 | bell-off        | P3       | Slash rule from DESIGN.md.                                   |
-| prohibit        | P3       | Alias `ban`.                                                 |
+| prohibit        | ✅       | Alias `ban`.                                                 |
 
 ## People
 
