@@ -27,9 +27,7 @@ const batch = requested.length
   : drafts.length
     ? drafts
     : all;
-const approved = all.filter(
-  (i) => i.meta.status === "approved" && !batch.includes(i),
-);
+const rest = all.filter((i) => !batch.includes(i));
 
 const inner = (svg: string) =>
   svg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "");
@@ -57,9 +55,9 @@ const groupW = SIZES.length * CELL;
 const sheetW = LABEL_W + STYLES.length * (groupW + GROUP_GAP);
 
 async function realSheet(file: string, fg: string, bg: string, muted: string) {
-  const rows = [...batch, ...approved];
-  const dividerY = 30 + batch.length * ROW_H + (approved.length ? 14 : 0);
-  const height = 30 + rows.length * ROW_H + (approved.length ? 28 : 0) + 10;
+  const rows = [...batch, ...rest];
+  const dividerY = 30 + batch.length * ROW_H + (rest.length ? 14 : 0);
+  const height = 30 + rows.length * ROW_H + (rest.length ? 28 : 0) + 10;
   const parts: string[] = [];
   STYLES.forEach((style, s) => {
     const gx = LABEL_W + s * (groupW + GROUP_GAP);
@@ -67,12 +65,12 @@ async function realSheet(file: string, fg: string, bg: string, muted: string) {
       `<text x="${gx}" y="18" font-size="11" fill="${muted}" font-family="sans-serif">${style}  ·  ${SIZES.join(" / ")}</text>`,
     );
   });
-  if (approved.length)
+  if (rest.length)
     parts.push(
       `<path d="M10 ${dividerY}H${sheetW - 10}" stroke="${muted}" stroke-opacity=".4" stroke-dasharray="3 3"/>`,
     );
   rows.forEach((icon, r) => {
-    const y = 30 + r * ROW_H + (r >= batch.length && approved.length ? 28 : 0);
+    const y = 30 + r * ROW_H + (r >= batch.length && rest.length ? 28 : 0);
     parts.push(
       `<text x="10" y="${y + 22}" font-size="11" fill="${muted}" font-family="sans-serif">${icon.name}</text>`,
     );
@@ -140,7 +138,7 @@ function html() {
 <div class="wrap"><table>
   <thead><tr><th></th>${STYLES.map((s) => `<th>${s} · ${SIZES.join(" / ")}</th>`).join("")}</tr></thead>
   <tbody>${batch.map(row).join("")}
-  ${approved.length ? `<tr class="divider"><th>approved</th><td colspan="${STYLES.length}"></td></tr>${approved.map(row).join("")}` : ""}</tbody>
+  ${rest.length ? `<tr class="divider"><th>everything else</th><td colspan="${STYLES.length}"></td></tr>${rest.map(row).join("")}` : ""}</tbody>
 </table></div>`;
 }
 
@@ -156,7 +154,7 @@ writeFileSync(join(OUT, "review.html"), html());
 
 const fmt = (n: number) => n.toFixed(2);
 const table = [];
-for (const icon of [...batch, ...approved])
+for (const icon of [...batch, ...rest])
   for (const style of STYLES) {
     const m = await measure(icon.svg[style]);
     table.push({
