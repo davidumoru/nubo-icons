@@ -1,32 +1,23 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CodeBlock } from "@/components/docs/code-block";
+import { TerminalIcon } from "@nubo-icons/react";
+import { CodeTabsBlock } from "@/components/code/code-tabs-block";
 
 const MANAGERS = [
-  { id: "pnpm", command: "pnpm add" },
-  { id: "npm", command: "npm install" },
-  { id: "yarn", command: "yarn add" },
-  { id: "bun", command: "bun add" },
+  { value: "pnpm", command: "pnpm add" },
+  { value: "npm", command: "npm install" },
+  { value: "yarn", command: "yarn add" },
+  { value: "bun", command: "bun add" },
 ];
 
 export function InstallTabs({ pkg }: { pkg: string }) {
   return (
-    <Tabs defaultValue="pnpm" className="mt-[1.25em]">
-      <TabsList variant="line" aria-label="Package manager">
-        {MANAGERS.map((m) => (
-          <TabsTrigger key={m.id} value={m.id}>
-            {m.id}
-          </TabsTrigger>
-        ))}
-      </TabsList>
-      {MANAGERS.map((m) => (
-        <TabsContent key={m.id} value={m.id}>
-          <CodeBlock>
-            <code>
-              {m.command} {pkg}
-            </code>
-          </CodeBlock>
-        </TabsContent>
-      ))}
-    </Tabs>
+    <CodeTabsBlock
+      storageKey="nubo:package-manager"
+      icon={<TerminalIcon />}
+      tabs={MANAGERS.map((m) => ({
+        value: m.value,
+        label: m.value,
+        code: `${m.command} ${pkg}`,
+      }))}
+    />
   );
 }

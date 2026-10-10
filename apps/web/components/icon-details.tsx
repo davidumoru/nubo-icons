@@ -109,11 +109,13 @@ export function IconDetails({
                 {a}
               </Badge>
             ))}
-            {icon.tags.map((t) => (
-              <Badge key={t} variant="outline">
-                {t}
-              </Badge>
-            ))}
+            {icon.tags
+              .filter((t) => !icon.aliases.includes(t))
+              .map((t) => (
+                <Badge key={t} variant="outline">
+                  {t}
+                </Badge>
+              ))}
           </div>
         </div>
       </div>

@@ -144,11 +144,12 @@
   }
 }
 
-/* Code highlighted by rehype-pretty-code carries both themes; pick one per color scheme. */
-[data-rehype-pretty-code-figure] code span {
+/* Highlighted code carries both themes, from rehype-pretty-code in docs and shiki in the browser; pick one
+   per color scheme. */
+:is([data-rehype-pretty-code-figure], [data-highlighted]) span {
   color: var(--shiki-light);
 }
-.dark [data-rehype-pretty-code-figure] code span {
+.dark :is([data-rehype-pretty-code-figure], [data-highlighted]) span {
   color: var(--shiki-dark);
 }
 

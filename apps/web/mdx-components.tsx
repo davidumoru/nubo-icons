@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
-import { CodeBlock } from "@/components/docs/code-block";
+import { CodeBlock } from "@/components/code/code-block";
 import {
   Table,
   TableBody,
