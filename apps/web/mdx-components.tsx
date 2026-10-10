@@ -39,8 +39,10 @@ const components: MDXComponents = {
   a: ({ href = "", ...props }) =>
     href.startsWith("/") ? (
       <Link href={href} {...props} />
-    ) : (
+    ) : href.startsWith("#") ? (
       <a href={href} {...props} />
+    ) : (
+      <a href={href} target="_blank" rel="noreferrer" {...props} />
     ),
   pre: (props) => <CodeBlock {...props} />,
   table: (props) => (

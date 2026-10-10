@@ -64,7 +64,12 @@ export function DocsTableOfContents({
       )}
       <Separator />
       <div className="flex flex-col gap-2">
-        <a href={editUrl} className={linkClass}>
+        <a
+          href={editUrl}
+          target="_blank"
+          rel="noreferrer"
+          className={linkClass}
+        >
           <PencilIcon />
           Edit this page
         </a>

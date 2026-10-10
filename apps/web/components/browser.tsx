@@ -135,7 +135,11 @@ export function Browser() {
               variant="outline"
               nativeButton={false}
               render={
-                <a href="https://github.com/davidumoru/nubo-icons/issues/new" />
+                <a
+                  href="https://github.com/davidumoru/nubo-icons/issues/new"
+                  target="_blank"
+                  rel="noreferrer"
+                />
               }
             >
               Request an icon
