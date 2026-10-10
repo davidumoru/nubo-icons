@@ -5,7 +5,6 @@ import { useCallback, useSyncExternalStore } from "react";
 // Kept in memory too, so a choice still sticks for the visit when storage is blocked.
 const memory = new Map<string, string>();
 
-// A choice remembered across pages and visits, like the package manager or the code format.
 export function useStoredChoice<T extends string>(
   key: string,
   options: readonly T[],

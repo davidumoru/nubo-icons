@@ -3,7 +3,6 @@ import { STYLES, type Style } from "@/lib/icons";
 
 const NAMES = ["Heart", "Bell", "House", "Folder", "Camera"];
 
-// A preview panel in the style of shadcn's component previews: one bordered area, the styles side by side.
 export function StylePreview({ styles = [...STYLES] }: { styles?: Style[] }) {
   return (
     <div className="mt-[1.25em] grid gap-8 rounded-xl border px-6 py-10 sm:grid-cols-3 sm:gap-4">

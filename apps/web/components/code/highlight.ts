@@ -16,7 +16,6 @@ const getHighlighter = () =>
     engine: createJavaScriptRegexEngine(),
   }));
 
-// The highlighted lines only, to drop into our own <pre><code>.
 export async function highlight(code: string, lang: Lang) {
   const html = (await getHighlighter()).codeToHtml(code, {
     lang,

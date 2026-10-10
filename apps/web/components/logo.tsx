@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 
-// The nubo wordmark: each letter built from circles, half circles and bars, softened like the icons.
 export function Logo({ className }: { className?: string }) {
   return (
     <svg

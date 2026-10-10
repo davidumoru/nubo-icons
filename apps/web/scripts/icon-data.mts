@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { strToU8, zipSync } from "fflate";
 
 const ROOT = join(import.meta.dirname, "../../..");
 const ICONS = join(ROOT, "icons");
@@ -59,5 +60,22 @@ const llms = [
   "",
 ].join("\n");
 writeFileSync(join(import.meta.dirname, "../public/llms.txt"), llms);
+
+// Duo's tint group gets its 30% opacity written in: a plain SVG file has nothing else to apply it.
+const files: Record<string, Uint8Array> = {
+  "LICENSE.txt": strToU8(readFileSync(join(ROOT, "LICENSE"), "utf8")),
+};
+for (const icon of icons)
+  for (const style of STYLES)
+    files[`nubo-icons/${style}/${icon.name}.svg`] = strToU8(
+      readFileSync(join(ICONS, icon.name, `${style}.svg`), "utf8").replace(
+        '<g data-tone="secondary">',
+        '<g data-tone="secondary" opacity=".3">',
+      ),
+    );
+writeFileSync(
+  join(import.meta.dirname, "../public/nubo-icons.zip"),
+  zipSync(files, { level: 9 }),
+);
 
 console.log(`icon data: ${icons.length} icons`);

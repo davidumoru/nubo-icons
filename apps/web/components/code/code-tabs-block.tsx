@@ -7,6 +7,7 @@ import { useCopy } from "@/components/use-copy";
 import { useHighlighted } from "@/components/code/code-block";
 import { useStoredChoice } from "@/components/code/use-stored-choice";
 import type { Lang } from "@/components/code/highlight";
+import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
 export type CodeTab = {
@@ -16,9 +17,8 @@ export type CodeTab = {
   lang?: Lang;
 };
 
-// The inner level of shadcn's code blocks: variants of the same code (package managers, SVG and React) as
-// pill tabs in the block's own header, with the copy button. Underline tabs above a block stay for
-// switching between different kinds of content.
+// Variants of the same code get pill tabs inside the block's header, like shadcn's; underline tabs above a
+// block are kept for switching between different kinds of content.
 export function CodeTabsBlock({
   tabs,
   storageKey,
@@ -76,7 +76,11 @@ export function CodeTabsBlock({
             onClick={() => copy("code", active.code)}
             className="size-7 text-muted-foreground hover:text-foreground [&_svg]:size-3.5!"
           >
-            {copied === "code" ? <CheckIcon /> : <CopyIcon />}
+            <SwapIcon
+              on={copied === "code"}
+              from={<CopyIcon />}
+              to={<CheckIcon />}
+            />
           </Button>
         </div>
       </div>

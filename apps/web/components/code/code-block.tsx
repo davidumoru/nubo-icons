@@ -5,6 +5,7 @@ import { CheckIcon, CopyIcon } from "@nubo-icons/react";
 import { Button } from "@/components/ui/button";
 import { useCopy } from "@/components/use-copy";
 import { highlight, type Lang } from "@/components/code/highlight";
+import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
 // The site's one code block. Inside `.typeset` it takes typeset's code styling; docs pass a highlighted
@@ -42,7 +43,11 @@ export function CodeBlock({
         onClick={() => copy("code", code ?? ref.current?.innerText ?? "")}
         className="absolute top-1 right-1 size-7 bg-muted text-muted-foreground hover:text-foreground [&_svg]:size-3.5!"
       >
-        {copied === "code" ? <CheckIcon /> : <CopyIcon />}
+        <SwapIcon
+          on={copied === "code"}
+          from={<CopyIcon />}
+          to={<CheckIcon />}
+        />
       </Button>
     </div>
   );

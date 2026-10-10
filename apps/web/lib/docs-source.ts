@@ -7,7 +7,6 @@ import type { Doc } from "@/lib/docs";
 const source = (doc: Doc) =>
   readFileSync(join(process.cwd(), "content/docs", `${doc.file}.mdx`), "utf8");
 
-// The page as plain Markdown, for "Copy page": MDX imports, exports and components dropped.
 export function markdownFor(doc: Doc, title: string, description: string) {
   const body = source(doc)
     .replace(/^export const metadata = \{[\s\S]*?\};\n/m, "")

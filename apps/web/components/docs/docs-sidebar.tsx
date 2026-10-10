@@ -54,7 +54,6 @@ export function DocsSidebar() {
   );
 }
 
-// Below lg the sidebar is hidden; the pages are a row of links instead.
 export function DocsMobileNav() {
   const pathname = usePathname();
   return (

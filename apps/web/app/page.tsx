@@ -1,5 +1,6 @@
 import {
   CameraIcon,
+  DownloadIcon,
   CloudIcon as CloudLineIcon,
   HeartIcon,
 } from "@nubo-icons/react";
@@ -13,7 +14,9 @@ import {
   HouseIcon,
   PhoneIcon,
 } from "@nubo-icons/react/duo";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Browser } from "@/components/browser";
 import { SiteHeader } from "@/components/site-header";
@@ -46,6 +49,20 @@ export default function Home() {
           Open-source icons on a 24px grid with a 1.5px stroke. Every icon comes
           in three styles that swap without shifting your layout.
         </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          <Button size="lg" nativeButton={false} render={<Link href="/docs" />}>
+            Get started
+          </Button>
+          <Button
+            size="lg"
+            variant="outline"
+            nativeButton={false}
+            render={<a href="/nubo-icons.zip" download />}
+          >
+            <DownloadIcon data-icon="inline-start" />
+            Download all
+          </Button>
+        </div>
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-6">
           {SHOWCASE.map((ShowcaseIcon, i) => (
             <Card

@@ -10,7 +10,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-// Headings link to themselves; the "#" shows on hover.
 function heading(Tag: "h2" | "h3" | "h4") {
   return function Heading({
     id,
@@ -44,8 +43,6 @@ const components: MDXComponents = {
       <a href={href} {...props} />
     ),
   pre: (props) => <CodeBlock {...props} />,
-  // Tables leave typeset for shadcn's Table in a rounded frame. Code inside a cell drops the chip and the
-  // first column reads as the key.
   table: (props) => (
     <div
       data-not-typeset

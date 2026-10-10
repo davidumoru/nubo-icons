@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { DrawerTitle } from "@/components/ui/drawer";
 import { CodePanel } from "@/components/code-panel";
+import { ExportMenu } from "@/components/export-menu";
 import {
   StyleToggle,
   effectiveStroke,
@@ -14,6 +15,7 @@ import {
 import { Icon } from "@/components/icon";
 import { useCopy } from "@/components/use-copy";
 import { jsxFor, svgFor, type IconData } from "@/lib/icons";
+import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
 const SIZES = [16, 20, 24, 32, 48];
@@ -41,27 +43,39 @@ export function IconDetails({
 
   return (
     <div className="flex flex-col gap-6">
-      <DrawerTitle
-        render={
-          <Button
-            variant="ghost"
-            size="lg"
-            onClick={() => copy("name", icon.name)}
-            aria-label={`Copy name ${icon.name}`}
-          />
-        }
-        className="group/title -ml-4 self-start text-2xl font-semibold tracking-tight"
-      >
-        {icon.name}
-        {copied === "name" ? (
-          <CheckIcon data-icon="inline-end" />
-        ) : (
-          <CopyIcon
+      {/* Leaves room for the drawer's close button until the content is narrower than the drawer. */}
+      <div className="flex items-center justify-between gap-4 pr-10 xl:pr-0">
+        <DrawerTitle
+          render={
+            <Button
+              variant="ghost"
+              size="lg"
+              onClick={() => copy("name", icon.name)}
+              aria-label={`Copy name ${icon.name}`}
+            />
+          }
+          className="group/title -ml-4 self-start text-2xl font-semibold tracking-tight"
+        >
+          {icon.name}
+          <SwapIcon
             data-icon="inline-end"
-            className="opacity-0 transition-opacity group-hover/title:opacity-100 group-focus-visible/title:opacity-100"
+            on={copied === "name"}
+            from={<CopyIcon />}
+            to={<CheckIcon />}
+            className={cn(
+              "transition-opacity",
+              copied !== "name" &&
+                "opacity-0 group-hover/title:opacity-100 group-focus-visible/title:opacity-100",
+            )}
           />
-        )}
-      </DrawerTitle>
+        </DrawerTitle>
+        <ExportMenu
+          svg={svg}
+          baseName={`${icon.name}-${settings.iconStyle}`}
+          size={settings.size}
+          color={custom.color}
+        />
+      </div>
 
       <div className="grid gap-8 md:grid-cols-[1fr_22rem]">
         <div className="flex flex-col gap-4">
@@ -98,11 +112,7 @@ export function IconDetails({
             }
             className="w-full"
           />
-          <CodePanel
-            svg={svg}
-            fileName={`${icon.name}-${settings.iconStyle}.svg`}
-            jsx={jsx}
-          />
+          <CodePanel svg={svg} jsx={jsx} />
           <div className="flex flex-wrap gap-1">
             {icon.aliases.map((a) => (
               <Badge key={a} variant="secondary">

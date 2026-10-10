@@ -1,16 +1,8 @@
 "use client";
 
-import type React from "react";
-import { CodeIcon, DownloadIcon } from "@nubo-icons/react";
+import { CodeIcon } from "@nubo-icons/react";
 import { CodeTabsBlock } from "@/components/code/code-tabs-block";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 
-// Formatter-style layout: the root tag's attributes one per line, each element on its own line.
 function prettySvg(svg: string) {
   const rootEnd = svg.indexOf(">");
   const [tag, ...attrs] =
@@ -30,17 +22,8 @@ function prettySvg(svg: string) {
   return [root, ...body].join("\n");
 }
 
-export function CodePanel({
-  svg,
-  fileName,
-  jsx,
-}: {
-  svg: string;
-  fileName: string;
-  jsx: string;
-}) {
+export function CodePanel({ svg, jsx }: { svg: string; jsx: string }) {
   return (
-    // The same code block, and the same typeset code styling, as the docs.
     <div className="typeset typeset-docs">
       <CodeTabsBlock
         storageKey="nubo:format"
@@ -51,53 +34,7 @@ export function CodePanel({
           { value: "svg", label: "SVG", code: prettySvg(svg), lang: "xml" },
           { value: "react", label: "React", code: jsx, lang: "tsx" },
         ]}
-        actions={
-          <IconButton
-            label={`Download ${fileName}`}
-            onClick={() => download(svg, fileName)}
-          >
-            <DownloadIcon />
-          </IconButton>
-        }
       />
     </div>
-  );
-}
-
-function download(svg: string, fileName: string) {
-  const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml" }));
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = fileName;
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
-function IconButton({
-  label,
-  onClick,
-  children,
-}: {
-  label: string;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <Tooltip>
-      <TooltipTrigger
-        render={
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={onClick}
-            aria-label={label}
-            className="size-7 text-muted-foreground hover:text-foreground [&_svg]:size-3.5!"
-          />
-        }
-      >
-        {children}
-      </TooltipTrigger>
-      <TooltipContent>{label}</TooltipContent>
-    </Tooltip>
   );
 }
