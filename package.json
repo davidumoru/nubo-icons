@@ -14,7 +14,7 @@
     "typecheck": "pnpm --filter \"./packages/**\" typecheck",
     "test": "pnpm --filter \"./packages/**\" test",
     "changeset": "changeset",
-    "release": "pnpm build && changeset publish"
+    "release": "pnpm build && node scripts/stage-release.mjs"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
