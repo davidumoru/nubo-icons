@@ -1,0 +1,19 @@
+{
+  "tags": [
+    "home",
+    "building",
+    "main",
+    "start",
+    "dashboard"
+  ],
+  "categories": [
+    "navigation",
+    "buildings"
+  ],
+  "aliases": [
+    "home"
+  ],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

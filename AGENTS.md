@@ -12,7 +12,6 @@ Nubo is an open-source icon library: one set of icon names, three styles (Line, 
 | `tools/`         | Lint, build and preview scripts.                                                      |
 | `apps/web/`      | The website (Next.js, shadcn/ui).                                                     |
 | `docs/research/` | The research behind the design and architecture decisions.                            |
-| `playground/`    | Throwaway 18px experiments from before the real setup. Reference only, to be deleted. |
 
 pnpm workspace. Use `pnpm`, never npm or yarn.
 

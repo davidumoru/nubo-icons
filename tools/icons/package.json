@@ -1,0 +1,19 @@
+{
+  "name": "@nubo-icons/tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "tsx src/lint.ts",
+    "preview": "tsx src/preview.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "fast-xml-parser": "^5.11.2",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
