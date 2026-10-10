@@ -91,7 +91,8 @@ Symbols that may join the morph group (menu, x, plus, minus, check, chevrons, ar
 - **Avoid** letters and text (except fixed conventions like the info "i"), culture-specific gestures and symbols, violent imagery, and brand logos.
 - **The 5-second test.** If you can't think of the image for a concept within 5 seconds, users won't recognise it either. Pair that icon with a label in the UI, or don't make it.
 - **Names** are kebab-case nouns, object first, then modifier: `user-plus`, `circle-check`, `arrow-left`. Use Lucide's name when it already describes the picture. When Lucide names an icon by its function (`search`, `settings`), that name becomes an alias: `magnifying-glass` is aliased `search`, so migrating from Lucide still works.
-- **Modifiers** (plus, minus, check, x, slash) keep the same size and position across every icon that uses them, bottom-right unless the base icon needs otherwise. **(calibrate the exact size in the first batch that needs one)**
+- **Modifier badges** (plus, minus, check, x) are 7px: arms 5.5px long on the stroke's centerline. They keep a 1.5px gap from the base icon and never overlap it. They sit bottom-right when the base leaves room there; when it doesn't (a person's shoulders fill the bottom), the base shrinks a little and the badge moves beside it at head height, as in `user-plus`. A badge stays a line in every style.
+- **Slashes** run corner to corner at 45° and cut a 1.5px gap through the base icon on both sides. The exception: an inner detail that the gap would erase (an eye's pupil) may meet the slash instead, and then only on one side, as in `eye-off`.
 
 ## Source format
 

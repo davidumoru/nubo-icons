@@ -1,0 +1,8 @@
+{
+  "tags": ["duplicate", "clone", "clipboard", "paste"],
+  "categories": ["editing", "interface"],
+  "aliases": ["duplicate"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}

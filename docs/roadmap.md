@@ -12,6 +12,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Batch 2**: x, plus, minus, chevron-right, arrow-right, circle-check.
 - **Batch 3**: chevron-left, chevron-up, chevron-down, arrow-left, arrow-up, arrow-down.
 - **Batch 4**: user, bell, mail, lock, trash, calendar.
+- **Batch 5**: menu, eye, eye-off, user-plus, pencil, copy.
 
 ## Next
 

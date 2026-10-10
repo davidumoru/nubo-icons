@@ -1,0 +1,8 @@
+{
+  "tags": ["hide", "hidden", "invisible", "private", "unseen"],
+  "categories": ["interface", "accessibility"],
+  "aliases": ["eye-slash"],
+  "rtl": "none",
+  "added": "0.1.0",
+  "status": "approved"
+}
