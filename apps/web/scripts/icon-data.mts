@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { strToU8, zipSync } from "fflate";
 import { DOCS } from "../lib/docs.ts";
@@ -78,7 +78,10 @@ const llms = [
   `- [All icons as SVG](${url("/nubo-icons.zip")}): every icon in every style, with the license`,
   "",
 ].join("\n");
-writeFileSync(join(import.meta.dirname, "../public/llms.txt"), llms);
+// Everything in public/ is generated, so a fresh clone has no public/ folder to write into.
+const PUBLIC = join(import.meta.dirname, "../public");
+mkdirSync(PUBLIC, { recursive: true });
+writeFileSync(join(PUBLIC, "llms.txt"), llms);
 
 // Duo's tint group gets its 30% opacity written in: a plain SVG file has nothing else to apply it.
 const files: Record<string, Uint8Array> = {
@@ -92,9 +95,6 @@ for (const icon of icons)
         '<g data-tone="secondary" opacity=".3">',
       ),
     );
-writeFileSync(
-  join(import.meta.dirname, "../public/nubo-icons.zip"),
-  zipSync(files, { level: 9 }),
-);
+writeFileSync(join(PUBLIC, "nubo-icons.zip"), zipSync(files, { level: 9 }));
 
 console.log(`icon data: ${icons.length} icons`);
