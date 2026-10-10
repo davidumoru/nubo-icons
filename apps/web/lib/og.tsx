@@ -3,7 +3,7 @@ import { LOGO_PATH, LOGO_VIEWBOX } from "@/components/logo";
 import { getIcon, type Style } from "@/lib/icons";
 import { SITE_URL } from "@/lib/site";
 
-export const OG_SIZE = { width: 1200, height: 630 };
+const OG_SIZE = { width: 1200, height: 630 };
 
 const INK = "#171717";
 const MUTED = "#737373";

@@ -1,5 +1,5 @@
 type DocEntry = { slug: string; file: DocFile; title: string };
-export type DocFile =
+type DocFile =
   "index" | "react" | "styles" | "svg" | "accessibility" | "design" | "roadmap";
 
 export const DOC_GROUPS: { label: string; pages: DocEntry[] }[] = [

@@ -10,7 +10,7 @@ import type { Lang } from "@/components/code/highlight";
 import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
-export type CodeTab = {
+type CodeTab = {
   value: string;
   label: string;
   code: string;
