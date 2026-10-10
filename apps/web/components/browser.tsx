@@ -20,8 +20,14 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { Input } from "@/components/ui/input";
 import { Controls } from "@/components/controls";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from "@/components/ui/input-group";
+import { Kbd } from "@/components/ui/kbd";
 import {
   DEFAULT_SETTINGS,
   effectiveStroke,
@@ -68,22 +74,43 @@ export function Browser() {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Concentric with the pills inside: 20px search radius + 8px padding at the top, 18px toggle radius + 10px gap at the bottom. */}
-      <Card className="sticky top-3 z-20 gap-3 rounded-[28px] bg-background/80 p-2 shadow-sm backdrop-blur-md">
-        <Input
-          ref={search}
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder={`Search ${icons.length} icons…  ( / )`}
-          aria-label="Search icons"
-          className="h-10"
-        />
-        <div className="px-0.5 pb-0.5">
-          <Controls settings={settings} onChange={setSettings} />
-        </div>
+      {/* Concentric with the 36px pills inside: their 18px radius plus the 8px padding. */}
+      <Card className="sticky top-3 z-20 flex-col gap-2 rounded-[26px] bg-background/80 p-2 shadow-sm backdrop-blur-md md:flex-row md:items-center">
+        <InputGroup className="md:flex-1">
+          <InputGroupAddon>
+            <MagnifyingGlassIcon />
+          </InputGroupAddon>
+          <InputGroupInput
+            ref={search}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") setQuery("");
+            }}
+            placeholder={`Search ${icons.length} icons`}
+            aria-label="Search icons"
+          />
+          <InputGroupAddon align="inline-end">
+            {query ? (
+              <InputGroupButton
+                size="icon-xs"
+                aria-label="Clear search"
+                onClick={() => {
+                  setQuery("");
+                  search.current?.focus();
+                }}
+              >
+                <XIcon />
+              </InputGroupButton>
+            ) : (
+              <Kbd>/</Kbd>
+            )}
+          </InputGroupAddon>
+        </InputGroup>
+        <Controls settings={settings} onChange={setSettings} />
       </Card>
 
-      <p className="text-xs text-muted-foreground" aria-live="polite">
+      <p className="sr-only" aria-live="polite">
         {results.length === icons.length
           ? `${icons.length} icons`
           : `${results.length} of ${icons.length} icons`}

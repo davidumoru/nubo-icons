@@ -1,18 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import {
   ArrowCounterClockwiseIcon,
   CheckIcon,
-  ShareIcon,
+  LinkIcon,
+  SlidersHorizontalIcon,
   HeartIcon as HeartLineIcon,
   SparklesIcon,
 } from "@nubo-icons/react";
 import { HeartIcon as HeartFillIcon } from "@nubo-icons/react/fill";
 import { HeartIcon as HeartDuoIcon } from "@nubo-icons/react/duo";
 import { Button } from "@/components/ui/button";
-import { Field, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Slider } from "@/components/ui/slider";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { STYLES, type Style } from "@/lib/icons";
@@ -24,6 +35,7 @@ import {
 import { shareLink } from "@/components/use-site-url";
 import { useCopy } from "@/components/use-copy";
 import { SwapIcon } from "@/components/swap-icon";
+import { cn } from "@/lib/utils";
 
 const STYLE_ICONS = {
   line: HeartLineIcon,
@@ -69,109 +81,256 @@ export function Controls({
   settings: Settings;
   onChange: (settings: Settings) => void;
 }) {
-  const set = <K extends keyof Settings>(key: K, value: Settings[K]) =>
-    onChange({ ...settings, [key]: value });
-  const lineOnly = settings.iconStyle !== "line";
   const { copied, copy } = useCopy();
 
   return (
-    <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+    <div className="flex items-center gap-2">
       <StyleToggle
         value={settings.iconStyle}
-        onChange={(s) => set("iconStyle", s)}
+        onChange={(iconStyle) => onChange({ ...settings, iconStyle })}
+        className="max-md:flex-1"
       />
-
-      <Field orientation="horizontal" className="w-auto">
-        <FieldLabel htmlFor="icon-size">Size</FieldLabel>
-        <div className="w-24 shrink-0">
-          <Slider
-            min={16}
-            max={48}
-            step={2}
-            value={[Math.min(48, Math.max(16, settings.size))]}
-            onValueChange={(v) => set("size", first(v))}
-            aria-label="Size"
-          />
-        </div>
-        <Input
-          id="icon-size"
-          type="number"
-          min={8}
-          max={256}
-          value={settings.size}
-          onChange={(e) => {
-            const v = Number(e.target.value);
-            if (v > 0) set("size", v);
-          }}
-          className="w-16 shrink-0 text-center tabular-nums"
-        />
-      </Field>
-
-      <Field
-        orientation="horizontal"
-        data-disabled={lineOnly || undefined}
-        className="w-auto"
+      <Customize settings={settings} onChange={onChange} />
+      <Button
+        variant="outline"
+        size="icon"
+        onClick={() => copy("share", shareLink(settings))}
+        aria-label={
+          copied === "share" ? "Link copied" : "Copy a link with these settings"
+        }
+        title="Copy a link with these settings"
       >
-        <FieldLabel>Stroke</FieldLabel>
-        <div className="w-24 shrink-0">
-          <Slider
-            min={1}
-            max={2.5}
-            step={0.25}
-            value={[effectiveStroke(settings)]}
-            onValueChange={(v) => set("strokeWidth", first(v))}
-            disabled={lineOnly}
-            aria-label="Stroke width"
-          />
-        </div>
-        <span className="w-8 text-sm tabular-nums">
-          {effectiveStroke(settings)}
-        </span>
-      </Field>
-
-      <Field orientation="horizontal" className="w-auto">
-        <FieldLabel htmlFor="icon-color">Color</FieldLabel>
-        <Input
-          id="icon-color"
-          type="color"
-          value={settings.color === "currentColor" ? "#171717" : settings.color}
-          onChange={(e) => set("color", e.target.value)}
-          className="w-12 shrink-0 cursor-pointer p-1 [&::-webkit-color-swatch]:rounded-full [&::-webkit-color-swatch]:border-none [&::-webkit-color-swatch-wrapper]:p-0"
+        <SwapIcon
+          on={copied === "share"}
+          from={<LinkIcon />}
+          to={<CheckIcon />}
         />
-      </Field>
-
-      <div className="flex items-center gap-1 md:ml-auto">
-        <Button
-          variant="outline"
-          onClick={() => onChange(randomSettings(settings))}
-        >
-          <SparklesIcon data-icon="inline-start" />
-          Random
-        </Button>
-        <Button
-          variant="ghost"
-          onClick={() => onChange(DEFAULT_SETTINGS)}
-          disabled={isDefault(settings)}
-        >
-          <ArrowCounterClockwiseIcon data-icon="inline-start" />
-          Reset
-        </Button>
-        <Separator orientation="vertical" className="mx-1 h-5! self-center!" />
-        <Button
-          variant="outline"
-          onClick={() => copy("share", shareLink(settings))}
-          title="Copy a link to the site with these settings"
-        >
-          <SwapIcon
-            data-icon="inline-start"
-            on={copied === "share"}
-            from={<ShareIcon />}
-            to={<CheckIcon />}
-          />
-          Share
-        </Button>
-      </div>
+      </Button>
     </div>
+  );
+}
+
+const SIZES = [16, 20, 24, 32, 48];
+
+const SWATCHES = [
+  "#ef4444",
+  "#f97316",
+  "#eab308",
+  "#22c55e",
+  "#3b82f6",
+  "#8b5cf6",
+  "#ec4899",
+];
+
+function Customize({
+  settings,
+  onChange,
+}: {
+  settings: Settings;
+  onChange: (settings: Settings) => void;
+}) {
+  const set = <K extends keyof Settings>(key: K, value: Settings[K]) =>
+    onChange({ ...settings, [key]: value });
+  const lineOnly = settings.iconStyle !== "line";
+  const auto = settings.color === "currentColor";
+
+  return (
+    <Popover>
+      <PopoverTrigger
+        render={<Button variant="outline" className="relative" />}
+      >
+        <SlidersHorizontalIcon data-icon="inline-start" />
+        <span className="max-sm:sr-only">Customize</span>
+        {!isDefault(settings) && (
+          <span
+            aria-label="Changed"
+            className="absolute top-1.5 right-1.5 size-1.5 rounded-full bg-primary"
+          />
+        )}
+      </PopoverTrigger>
+      <PopoverContent align="end" className="w-80 gap-5">
+        <FieldGroup className="gap-5">
+          <Field className="gap-2.5">
+            <div className="flex items-center justify-between">
+              <FieldLabel htmlFor="icon-size">Size</FieldLabel>
+              <InputGroup className="h-8 w-20">
+                <InputGroupInput
+                  id="icon-size"
+                  type="number"
+                  min={8}
+                  max={256}
+                  value={settings.size}
+                  onChange={(e) => {
+                    const v = Number(e.target.value);
+                    if (v > 0) set("size", v);
+                  }}
+                  className="[appearance:textfield] text-right tabular-nums [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                />
+                <InputGroupAddon align="inline-end">
+                  <InputGroupText>px</InputGroupText>
+                </InputGroupAddon>
+              </InputGroup>
+            </div>
+            <ToggleGroup
+              value={
+                SIZES.includes(settings.size) ? [String(settings.size)] : []
+              }
+              onValueChange={(v) => v[0] && set("size", Number(v[0]))}
+              aria-label="Size presets"
+              variant="outline"
+              size="sm"
+              spacing={0}
+              className="w-full"
+            >
+              {SIZES.map((s) => (
+                <ToggleGroupItem
+                  key={s}
+                  value={String(s)}
+                  className="flex-1 tabular-nums"
+                >
+                  {s}
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+          </Field>
+
+          <Field data-disabled={lineOnly || undefined} className="gap-2.5">
+            <div className="flex items-center justify-between">
+              <FieldLabel>Stroke</FieldLabel>
+              <span className="text-sm text-muted-foreground tabular-nums">
+                {effectiveStroke(settings)}px
+              </span>
+            </div>
+            <Slider
+              min={1}
+              max={2.5}
+              step={0.25}
+              value={[effectiveStroke(settings)]}
+              onValueChange={(v) => set("strokeWidth", first(v))}
+              disabled={lineOnly}
+              aria-label="Stroke width"
+            />
+          </Field>
+
+          <Field className="gap-2.5">
+            <FieldLabel htmlFor="icon-color">Color</FieldLabel>
+            <ToggleGroup
+              value={[settings.color]}
+              onValueChange={(v) => v[0] && set("color", v[0])}
+              aria-label="Color"
+              spacing={1}
+              className="w-full justify-between"
+            >
+              <ToggleGroupItem
+                value="currentColor"
+                aria-label="Auto, follows the text color"
+                title="Auto"
+                className="size-8 min-w-8 rounded-full p-0"
+              >
+                <span className="size-5 rounded-full bg-[conic-gradient(var(--foreground)_0_50%,var(--background)_0)] ring-1 ring-foreground/20" />
+              </ToggleGroupItem>
+              {SWATCHES.map((c) => (
+                <ToggleGroupItem
+                  key={c}
+                  value={c}
+                  aria-label={c}
+                  title={c}
+                  className="size-8 min-w-8 rounded-full p-0"
+                >
+                  <span
+                    className="size-5 rounded-full"
+                    style={{ backgroundColor: c }}
+                  />
+                </ToggleGroupItem>
+              ))}
+            </ToggleGroup>
+            <InputGroup className="h-8">
+              <InputGroupAddon>
+                <label className="relative grid size-5 cursor-pointer place-items-center">
+                  <span
+                    className={cn(
+                      "size-4 rounded-full ring-1 ring-foreground/20",
+                      auto && "bg-foreground",
+                    )}
+                    style={
+                      auto ? undefined : { backgroundColor: settings.color }
+                    }
+                  />
+                  <input
+                    type="color"
+                    aria-label="Pick a color"
+                    value={auto ? "#171717" : settings.color}
+                    onChange={(e) => set("color", e.target.value)}
+                    className="absolute inset-0 cursor-pointer opacity-0"
+                  />
+                </label>
+              </InputGroupAddon>
+              <HexInput
+                id="icon-color"
+                value={auto ? "" : settings.color}
+                onCommit={(hex) => set("color", hex)}
+              />
+            </InputGroup>
+          </Field>
+        </FieldGroup>
+
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            className="flex-1"
+            onClick={() => onChange(randomSettings(settings))}
+          >
+            <SparklesIcon data-icon="inline-start" />
+            Random
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            className="flex-1"
+            onClick={() => onChange(DEFAULT_SETTINGS)}
+            disabled={isDefault(settings)}
+          >
+            <ArrowCounterClockwiseIcon data-icon="inline-start" />
+            Reset
+          </Button>
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+// Keeps its own draft so a half-typed value isn't rejected mid-keystroke; only a complete hex reaches the icons.
+function HexInput({
+  id,
+  value,
+  onCommit,
+}: {
+  id: string;
+  value: string;
+  onCommit: (hex: string) => void;
+}) {
+  const [draft, setDraft] = useState(value);
+  const [synced, setSynced] = useState(value);
+  if (value !== synced) {
+    setSynced(value);
+    setDraft(value);
+  }
+  return (
+    <InputGroupInput
+      id={id}
+      value={draft}
+      placeholder="Auto"
+      spellCheck={false}
+      onChange={(e) => {
+        const next = e.target.value.trim();
+        setDraft(next);
+        const hex = next.startsWith("#") ? next : `#${next}`;
+        if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex))
+          onCommit(hex.toLowerCase());
+      }}
+      className="font-mono text-xs"
+    />
   );
 }
 

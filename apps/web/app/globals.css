@@ -134,16 +134,6 @@
   }
 }
 
-@keyframes float {
-  0%,
-  100% {
-    translate: 0 0;
-  }
-  50% {
-    translate: 0 -4px;
-  }
-}
-
 /* Highlighted code carries both themes, from rehype-pretty-code in docs and shiki in the browser; pick one
    per color scheme. */
 :is([data-rehype-pretty-code-figure], [data-highlighted]) span {
