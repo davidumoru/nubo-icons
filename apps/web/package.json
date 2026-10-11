@@ -15,6 +15,7 @@
     "@mdx-js/react": "^3.1.1",
     "@next/mdx": "^16.4.0",
     "@nubo-icons/react": "workspace:*",
+    "@vercel/analytics": "^2.0.1",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "github-slugger": "^2.0.0",
