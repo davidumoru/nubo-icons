@@ -4,5 +4,6 @@
   "aliases": [],
   "rtl": "none",
   "added": "0.1.0",
-  "status": "approved"
+  "status": "approved",
+  "exceptions": ["miter-cutout"]
 }
