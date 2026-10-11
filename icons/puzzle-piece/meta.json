@@ -1,0 +1,8 @@
+{
+  "tags": ["plugin", "extension", "addon", "integration", "module"],
+  "categories": ["development"],
+  "aliases": ["puzzle"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

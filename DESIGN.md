@@ -45,7 +45,7 @@ No sharp points or hard corners anywhere. Star tips, arrow heads, bolt points an
 - Every corner gets at least a 2px radius on the stroke's centerline (1.5px where a short segment leaves no room). A stroke's inner edge has the centerline radius minus half the stroke (0.75px), so anything smaller leaves the inside of the corner sharp even though the outside looks round.
 - Points that would be sharp get a small geometric curve as well as the round join.
 - Inner (concave) corners are rounded too. A round join only softens outer corners.
-- Angles: abstract diagonals (check, x, arrows, slashes) use 45°. Outlines of real objects follow the object: a roof is as steep as it needs to be to read as a house. No perspective, no 3D. Front-on or profile views only.
+- Angles: abstract diagonals (check, x, arrows, slashes) use 45°. Outlines of real objects follow the object: a roof is as steep as it needs to be to read as a house. No perspective, no 3D. Front-on or profile views only, except where the convention is isometric and a flat view would not read: `package` is a cube because every major set draws it that way.
 - One or two forms per icon. If a detail disappears at 16px, leave it out.
 
 ## Line
