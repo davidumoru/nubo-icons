@@ -43,3 +43,5 @@ next-env.d.ts
 # generated from icons/ by scripts/icon-data.mts
 /lib/icon-data.json
 /public/nubo-icons.zip
+# generated from packages/react/CHANGELOG.md by scripts/changelog.mts
+/content/docs/changelog.mdx

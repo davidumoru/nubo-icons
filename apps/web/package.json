@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm --filter @nubo-icons/react build && pnpm icons && next dev",
-    "build": "pnpm --filter @nubo-icons/react build && pnpm icons && next build",
+    "dev": "pnpm --filter @nubo-icons/react build && pnpm icons && pnpm changelog && next dev",
+    "build": "pnpm --filter @nubo-icons/react build && pnpm icons && pnpm changelog && next build",
     "start": "next start",
     "lint": "eslint",
-    "icons": "node scripts/icon-data.mts"
+    "icons": "node scripts/icon-data.mts",
+    "changelog": "node scripts/changelog.mts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
