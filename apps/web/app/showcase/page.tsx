@@ -59,7 +59,7 @@ export default function Showcase() {
           <ArrowLeftIcon />
         </Button>
         <Link href="/" className="rounded-md">
-          <Logo className="-translate-y-[3px]" />
+          <Logo />
         </Link>
         <Separator orientation="vertical" className="mx-2 my-auto h-4" />
         <h1 className="text-sm text-muted-foreground">Showcase</h1>
