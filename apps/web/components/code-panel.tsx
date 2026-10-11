@@ -22,7 +22,15 @@ function prettySvg(svg: string) {
   return [root, ...body].join("\n");
 }
 
-export function CodePanel({ svg, jsx }: { svg: string; jsx: string }) {
+export function CodePanel({
+  svg,
+  styleSvgs,
+  jsx,
+}: {
+  svg: string;
+  styleSvgs: string[];
+  jsx: string;
+}) {
   return (
     <div className="typeset typeset-docs">
       <CodeTabsBlock
@@ -31,7 +39,13 @@ export function CodePanel({ svg, jsx }: { svg: string; jsx: string }) {
         className="mt-0"
         preClassName="max-h-80"
         tabs={[
-          { value: "svg", label: "SVG", code: prettySvg(svg), lang: "xml" },
+          {
+            value: "svg",
+            label: "SVG",
+            code: prettySvg(svg),
+            lang: "xml",
+            reserve: styleSvgs.map(prettySvg),
+          },
           { value: "react", label: "React", code: jsx, lang: "tsx" },
         ]}
       />

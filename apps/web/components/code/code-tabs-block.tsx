@@ -15,6 +15,8 @@ type CodeTab = {
   label: string;
   code: string;
   lang?: Lang;
+  // Other versions this tab can switch to (an icon's other styles), measured so swapping them doesn't resize the block.
+  reserve?: string[];
 };
 
 // Variants of the same code get pill tabs inside the block's header, like shadcn's; underline tabs above a
@@ -86,20 +88,22 @@ export function CodeTabsBlock({
       {/* Invisible copies of every tab share the active panel's grid cell, so the block is always as tall as its
           longest tab and switching never resizes what's around it. */}
       <div className="grid">
-        {tabs.map((t) => (
-          <div
-            key={t.value}
-            aria-hidden
-            inert
-            className="invisible col-start-1 row-start-1 min-w-0 text-sm"
-          >
-            <HighlightedPre
-              code={t.code}
-              lang={t.lang}
-              className={preClassName}
-            />
-          </div>
-        ))}
+        {tabs.flatMap((t) =>
+          [t.code, ...(t.reserve ?? [])].map((code, i) => (
+            <div
+              key={`${t.value}-${i}`}
+              aria-hidden
+              inert
+              className="invisible col-start-1 row-start-1 min-w-0 text-sm"
+            >
+              <HighlightedPre
+                code={code}
+                lang={t.lang}
+                className={preClassName}
+              />
+            </div>
+          )),
+        )}
         {tabs.map((t) => (
           <TabsContent
             key={t.value}

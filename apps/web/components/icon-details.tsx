@@ -12,7 +12,7 @@ import { StyleToggle } from "@/components/controls";
 import { effectiveStroke, type Settings } from "@/lib/settings";
 import { Icon } from "@/components/icon";
 import { useCopy } from "@/components/use-copy";
-import { jsxFor, svgFor, type IconData } from "@/lib/icons";
+import { jsxFor, STYLES, svgFor, type IconData } from "@/lib/icons";
 import { SwapIcon } from "@/components/swap-icon";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +30,7 @@ export function IconDetails({
   const { copied, copy } = useCopy();
   const custom = { ...settings, strokeWidth: effectiveStroke(settings) };
   const svg = svgFor(icon, settings.iconStyle, custom);
+  const styleSvgs = STYLES.map((style) => svgFor(icon, style, custom));
   const jsx = jsxFor(icon, custom);
   const iconProps = {
     component: icon.component,
@@ -113,7 +114,7 @@ export function IconDetails({
             }
             className="w-full"
           />
-          <CodePanel svg={svg} jsx={jsx} />
+          <CodePanel svg={svg} styleSvgs={styleSvgs} jsx={jsx} />
           <div className="flex flex-wrap gap-1">
             {icon.aliases.map((a) => (
               <Badge key={a} variant="secondary">
