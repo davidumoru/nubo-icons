@@ -92,7 +92,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <StyleSpecimen />
+        <StyleSpecimen className="max-lg:hidden" />
       </section>
       <main className="pb-24">
         <Browser />
