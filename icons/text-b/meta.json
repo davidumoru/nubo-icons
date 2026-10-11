@@ -1,0 +1,8 @@
+{
+  "tags": ["bold", "strong", "text", "format", "font"],
+  "categories": ["editing"],
+  "aliases": ["bold"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

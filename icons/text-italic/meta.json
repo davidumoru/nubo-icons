@@ -1,0 +1,8 @@
+{
+  "tags": ["italic", "slant", "emphasis", "text", "format"],
+  "categories": ["editing"],
+  "aliases": ["italic"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

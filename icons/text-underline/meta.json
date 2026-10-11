@@ -1,0 +1,8 @@
+{
+  "tags": ["underline", "text", "format", "font"],
+  "categories": ["editing"],
+  "aliases": ["underline"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

@@ -1,0 +1,8 @@
+{
+  "tags": ["zoom in", "enlarge", "magnify", "scale", "bigger"],
+  "categories": ["interface"],
+  "aliases": ["zoom-in"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

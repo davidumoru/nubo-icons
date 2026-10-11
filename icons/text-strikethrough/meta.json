@@ -1,0 +1,8 @@
+{
+  "tags": ["strikethrough", "strike", "cross out", "text", "format"],
+  "categories": ["editing"],
+  "aliases": ["strikethrough"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

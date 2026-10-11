@@ -1,0 +1,8 @@
+{
+  "tags": ["zoom out", "shrink", "reduce", "scale", "smaller"],
+  "categories": ["interface"],
+  "aliases": ["zoom-out"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}
