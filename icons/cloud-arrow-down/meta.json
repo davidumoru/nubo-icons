@@ -1,0 +1,9 @@
+{
+  "tags": ["download", "sync", "backup", "save", "fetch"],
+  "categories": ["weather", "files"],
+  "aliases": ["cloud-download"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved",
+  "exceptions": ["miter-cutout"]
+}

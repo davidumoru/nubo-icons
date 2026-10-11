@@ -1,0 +1,8 @@
+{
+  "tags": ["power", "charge", "energy", "level", "battery empty"],
+  "categories": ["devices", "status"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}

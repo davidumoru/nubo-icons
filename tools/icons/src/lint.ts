@@ -56,7 +56,7 @@ const META_KEYS = [
   "status",
   "exceptions",
 ];
-const EXCEPTIONS = ["thin-fill-outline"];
+const EXCEPTIONS = ["thin-fill-outline", "miter-cutout"];
 
 const tooPrecise = (value: string) => /\d\.\d{3,}/.test(value);
 
@@ -68,10 +68,12 @@ function checkShape(
 ) {
   const thinOutline =
     style === "fill" && exceptions.includes("thin-fill-outline");
+  const miterCutout = style === "fill" && exceptions.includes("miter-cutout");
   const allowed = [
     ...SHAPE_ATTRS[node.name],
     ...PAINT_ATTRS,
     ...(thinOutline ? ["stroke-width"] : []),
+    ...(miterCutout ? ["stroke-linejoin"] : []),
   ];
   for (const [attr, value] of Object.entries(node.attrs)) {
     if (!allowed.includes(attr))
@@ -94,6 +96,9 @@ function checkShape(
         `${where}: a thin outline must be thinner than 1.5 and on a solid shape`,
       );
   }
+  const join = node.attrs["stroke-linejoin"];
+  if (join !== undefined && (join !== "miter" || fill === "none"))
+    errors.push(`${where}: only a solid shape may switch to a miter join`);
 }
 
 function checkSvg(

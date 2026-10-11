@@ -1,0 +1,8 @@
+{
+  "tags": ["hosting", "rack", "storage", "backend", "infrastructure"],
+  "categories": ["devices", "development"],
+  "aliases": ["hard-drives"],
+  "rtl": "none",
+  "added": "0.2.0",
+  "status": "approved"
+}
