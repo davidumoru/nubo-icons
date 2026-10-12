@@ -17,7 +17,11 @@ export function SwapIcon({
   const hidden = "scale-[0.25] opacity-0 blur-[4px]";
   const shown = "scale-100 opacity-100 blur-none";
   return (
-    <span className={cn("inline-grid shrink-0", className)} {...props}>
+    <span
+      data-swap
+      className={cn("inline-grid shrink-0", className)}
+      {...props}
+    >
       <span aria-hidden className={cn(layer, on ? hidden : shown)}>
         {from}
       </span>

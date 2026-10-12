@@ -150,3 +150,18 @@
   --typeset-leading: 1.75;
   --typeset-flow: 1.25em;
 }
+
+/* !important outranks the rule next-themes injects to stop transitions during a theme change. */
+.theme-toggle-icon > svg {
+  transition:
+    opacity 300ms,
+    scale 300ms,
+    filter 300ms !important;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-icon > svg {
+    scale: 1 !important;
+    filter: none !important;
+  }
+}
