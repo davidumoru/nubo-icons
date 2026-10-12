@@ -1,5 +1,15 @@
 # @nubo-icons/react
 
+## 0.3.0
+
+### Minor Changes
+
+- a3f35a0: Add 12 icons: laptop, keyboard, printer, headphones, music-note (alias `music`), battery, bluetooth, cpu (alias `chip`), server (alias `hard-drives`), cloud-arrow-down (alias `cloud-download`), cloud-arrow-up (alias `cloud-upload`) and hourglass.
+
+### Patch Changes
+
+- 595b2bf: Fill details now match Line in size and shape: larger holes in eye, eye-off, gear and image; rounder corners in bug, calendar, credit-card, gift, lock, lock-open and mail; sharper check cutouts in circle-check and shield-check; the image's lower mountain flank; and a larger wallet pocket in every style.
+
 ## 0.2.0
 
 ### Minor Changes
