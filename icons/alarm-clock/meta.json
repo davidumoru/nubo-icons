@@ -1,0 +1,8 @@
+{
+  "tags": ["alarm", "wake", "reminder", "morning", "time"],
+  "categories": ["time"],
+  "aliases": ["alarm"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

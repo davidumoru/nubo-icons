@@ -1,0 +1,8 @@
+{
+  "tags": ["sticky", "memo", "notes", "post-it", "reminder"],
+  "categories": ["files", "editing"],
+  "aliases": ["sticky-note"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

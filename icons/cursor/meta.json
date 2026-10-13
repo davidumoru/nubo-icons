@@ -1,0 +1,8 @@
+{
+  "tags": ["pointer", "mouse", "click", "select", "arrow"],
+  "categories": ["interface"],
+  "aliases": ["mouse-pointer"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

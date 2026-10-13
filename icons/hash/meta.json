@@ -1,0 +1,8 @@
+{
+  "tags": ["hashtag", "number", "channel", "pound", "tag"],
+  "categories": ["communication", "social"],
+  "aliases": ["hashtag"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

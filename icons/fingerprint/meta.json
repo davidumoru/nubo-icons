@@ -1,0 +1,8 @@
+{
+  "tags": ["biometric", "identity", "touch-id", "unlock", "security"],
+  "categories": ["security", "account"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

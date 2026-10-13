@@ -1,0 +1,8 @@
+{
+  "tags": ["tray", "messages", "incoming", "mail", "received"],
+  "categories": ["communication", "files"],
+  "aliases": ["tray"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

@@ -1,0 +1,8 @@
+{
+  "tags": ["stack", "levels", "arrange", "depth", "overlay"],
+  "categories": ["layout", "editing"],
+  "aliases": ["stack"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

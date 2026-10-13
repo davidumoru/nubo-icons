@@ -1,0 +1,8 @@
+{
+  "tags": ["stopwatch", "countdown", "duration", "time", "speed"],
+  "categories": ["time"],
+  "aliases": ["stopwatch"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

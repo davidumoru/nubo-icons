@@ -1,0 +1,8 @@
+{
+  "tags": ["money", "price", "payment", "usd", "cost"],
+  "categories": ["commerce"],
+  "aliases": ["dollar-sign"],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}

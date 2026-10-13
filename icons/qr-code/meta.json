@@ -1,0 +1,8 @@
+{
+  "tags": ["scan", "barcode", "code", "link", "share"],
+  "categories": ["devices", "interface"],
+  "aliases": [],
+  "rtl": "none",
+  "added": "0.4.0",
+  "status": "approved"
+}
