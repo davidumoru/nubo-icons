@@ -9,6 +9,25 @@ Every icon is plain SVG, so you can use Nubo anywhere, not only in React.
 
 [Open any icon](/) on the site. The drawer shows its SVG with your chosen size, stroke and color already applied: copy it, or download it as a file. The React tab gives you the matching component.
 
+## Install from npm
+
+[`@nubo-icons/svg`](https://www.npmjs.com/package/@nubo-icons/svg) has every icon as a file per style, so a bundler or a CDN can load them by path.
+
+```sh
+pnpm add @nubo-icons/svg
+```
+
+```html
+<img
+  src="https://unpkg.com/@nubo-icons/svg/fill/heart.svg"
+  alt=""
+  width="24"
+  height="24"
+/>
+```
+
+An `<img>` can't inherit color, so inline the SVG when it should follow your text color. The package also has `icons.json`, with every icon's aliases, tags and categories.
+
 ## Download the whole set
 
 [`nubo-icons.zip`](/nubo-icons.zip) has every icon as an SVG file, in a folder for each style: `line`, `fill` and `duo`. It's rebuilt with the site, so it always matches what you see here.

@@ -20,11 +20,12 @@ import { CloudIcon } from "@nubo-icons/react/duo";
 <HeartIcon size={20} />;
 ```
 
-Not using React? Every icon can be copied or downloaded as SVG or PNG from [the site](https://nubo.davidumoru.me), or grab [the whole set as a zip](https://nubo.davidumoru.me/nubo-icons.zip).
+Not using React? Install [`@nubo-icons/svg`](packages/svg) for every icon as a plain SVG file, copy or download one from [the site](https://nubo.davidumoru.me), or grab [the whole set as a zip](https://nubo.davidumoru.me/nubo-icons.zip).
 
-| Package                               | What it is                                     |
-| ------------------------------------- | ---------------------------------------------- |
-| [`@nubo-icons/react`](packages/react) | React components, with ESM, CommonJS and types |
+| Package                               | What it is                                      |
+| ------------------------------------- | ----------------------------------------------- |
+| [`@nubo-icons/react`](packages/react) | React components, with ESM, CommonJS and types  |
+| [`@nubo-icons/svg`](packages/svg)     | Plain SVG files for every style, plus icon data |
 
 ## Request an icon
 

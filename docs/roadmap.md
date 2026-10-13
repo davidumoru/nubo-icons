@@ -38,12 +38,12 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Footer** with the maker's links, and a **public roadmap** at `/docs/roadmap`. Keep that page in step with this file, written for users rather than contributors.
 - **Launch polish**: SEO metadata, link previews per page and per icon, sitemap, 404 page, Markdown versions of every page for AI tools, Vercel Analytics, and a README for the public repo.
 - **`@nubo-icons/react` on npm** (0.1.0, then 0.1.1). Changesets version it; CI stages each release through npm trusted publishing and a maintainer approves it with 2FA. The changelog is shown at `/docs/changelog`, generated from the package's `CHANGELOG.md`.
+- **`@nubo-icons/svg`** in `packages/svg`: every icon as a minified SVG file per style, with Duo's tint as real opacity, plus `icons.json` with aliases, tags and categories. A Changesets `fixed` group releases it with the React package, so both share one version.
 
 ## Next
 
 1. **Grow the set past the [launch list](launch-icons.md)** in batches, led by icon requests, every icon in all three styles, each batch reviewed and locked before the next.
-2. **`@nubo-icons/svg`**: optimized SVGs plus icon data JSON, released alongside the React package in a Changesets `fixed` group so both share one version.
-3. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
+2. **Distribution**: ask Iconify to include the set, which brings Tailwind and unplugin-icons support with no extra work.
 
 ## Later
 

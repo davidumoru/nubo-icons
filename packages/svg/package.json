@@ -1,0 +1,50 @@
+{
+  "name": "@nubo-icons/svg",
+  "version": "0.3.0",
+  "description": "Soft, open-source icons as plain SVG files in three styles: Line, Fill and Duo.",
+  "license": "MIT",
+  "author": "David Umoru (https://x.com/theumoru)",
+  "homepage": "https://nubo.davidumoru.me",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidumoru/nubo-icons.git",
+    "directory": "packages/svg"
+  },
+  "bugs": "https://github.com/davidumoru/nubo-icons/issues",
+  "keywords": [
+    "icons",
+    "svg",
+    "icon-set",
+    "outline",
+    "filled",
+    "duotone"
+  ],
+  "sideEffects": false,
+  "files": [
+    "line",
+    "fill",
+    "duo",
+    "icons.json"
+  ],
+  "exports": {
+    "./line/*": "./line/*",
+    "./fill/*": "./fill/*",
+    "./duo/*": "./duo/*",
+    "./icons.json": "./icons.json",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "tsx scripts/build.ts",
+    "test": "tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@nubo-icons/tools": "workspace:*",
+    "@types/node": "^24.19.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
