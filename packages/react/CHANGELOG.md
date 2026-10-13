@@ -1,5 +1,15 @@
 # @nubo-icons/react
 
+## 0.4.0
+
+### Minor Changes
+
+- 4d1adcc: Add 12 icons: inbox (alias `tray`), layers (alias `stack`), cursor (alias `mouse-pointer`), hash (alias `hashtag`), command, timer (alias `stopwatch`), alarm-clock (alias `alarm`), note (alias `sticky-note`), table, qr-code, fingerprint and currency-dollar (alias `dollar-sign`).
+
+### Patch Changes
+
+- 0bd6f1c: The folded corner of file and file-text in Fill is now the same size as in Line.
+
 ## 0.3.0
 
 ### Minor Changes
