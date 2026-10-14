@@ -43,7 +43,7 @@ const reducedMotion = {
   get: () => matchMedia("(prefers-reduced-motion: reduce)").matches,
 };
 
-export function StyleSpecimen({ className }: { className?: string }) {
+export function StyleSpecimen() {
   const [style, setStyle] = useState<Style>("line");
   const still = useSyncExternalStore(
     reducedMotion.subscribe,
@@ -61,7 +61,7 @@ export function StyleSpecimen({ className }: { className?: string }) {
   }, [still]);
 
   return (
-    <Card className={cn("gap-0 p-0", className)}>
+    <Card className="mt-[1.25em] gap-0 p-0">
       <div
         className="grid p-3"
         style={{ gridTemplateColumns: `repeat(${COLUMNS}, minmax(0, 1fr))` }}
@@ -69,7 +69,7 @@ export function StyleSpecimen({ className }: { className?: string }) {
         {SPECIMEN.map((name, i) => (
           <div
             key={name}
-            className="grid aspect-square place-items-center"
+            className="grid h-16 place-items-center"
             // A diagonal stagger, so a style change reads as one sweep across the set.
             style={{
               transitionDelay: `${((i % COLUMNS) + Math.floor(i / COLUMNS)) * 45}ms`,
@@ -91,6 +91,19 @@ export function StyleSpecimen({ className }: { className?: string }) {
               />
             ))}
           </div>
+        ))}
+      </div>
+      <div className="flex justify-center gap-4 pb-5 text-xs capitalize">
+        {STYLES.map((s) => (
+          <span
+            key={s}
+            className={cn(
+              "transition-colors duration-300",
+              s === style ? "text-foreground" : "text-muted-foreground/60",
+            )}
+          >
+            {s}
+          </span>
         ))}
       </div>
     </Card>
