@@ -8,11 +8,19 @@ const MANAGERS = [
   { value: "bun", command: "bun add" },
 ];
 
-export function InstallTabs({ pkg }: { pkg: string }) {
+export function InstallTabs({
+  pkg,
+  className,
+}: {
+  pkg: string;
+  className?: string;
+}) {
   return (
     <CodeTabsBlock
       storageKey="nubo:package-manager"
       icon={<TerminalIcon />}
+      morph
+      className={className}
       tabs={MANAGERS.map((m) => ({
         value: m.value,
         label: m.value,

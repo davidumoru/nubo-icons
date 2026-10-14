@@ -1,6 +1,7 @@
 "use client";
 
 import { CheckIcon, CopyIcon } from "@nubo-icons/react";
+import { TextMorph } from "torph/react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useCopy } from "@/components/use-copy";
@@ -26,6 +27,7 @@ export function CodeTabsBlock({
   storageKey,
   icon,
   actions,
+  morph,
   className,
   preClassName,
 }: {
@@ -33,6 +35,7 @@ export function CodeTabsBlock({
   storageKey: string;
   icon?: React.ReactNode;
   actions?: React.ReactNode;
+  morph?: boolean;
   className?: string;
   preClassName?: string;
 }) {
@@ -85,42 +88,54 @@ export function CodeTabsBlock({
           </Button>
         </div>
       </div>
-      {/* Invisible copies of every tab share the active panel's grid cell, so the block is always as tall as its
-          longest tab and switching never resizes what's around it. */}
-      <div className="grid">
-        {tabs.flatMap((t) =>
-          [t.code, ...(t.reserve ?? [])].map((code, i) => (
-            <div
-              key={`${t.value}-${i}`}
-              aria-hidden
-              inert
-              className="invisible col-start-1 row-start-1 min-w-0 text-sm"
+      {morph ? (
+        <TabsContent value={active.value} className="min-w-0">
+          <pre className={cn(PRE_CLASS, preClassName)}>
+            <TextMorph as="code" duration={300}>
+              {active.code}
+            </TextMorph>
+          </pre>
+        </TabsContent>
+      ) : (
+        <div className="grid">
+          {/* Invisible copies of every tab share the active panel's grid cell, so the block is always as tall as its
+              longest tab and switching never resizes what's around it. */}
+          {tabs.flatMap((t) =>
+            [t.code, ...(t.reserve ?? [])].map((code, i) => (
+              <div
+                key={`${t.value}-${i}`}
+                aria-hidden
+                inert
+                className="invisible col-start-1 row-start-1 min-w-0 text-sm"
+              >
+                <HighlightedPre
+                  code={code}
+                  lang={t.lang}
+                  className={preClassName}
+                />
+              </div>
+            )),
+          )}
+          {tabs.map((t) => (
+            <TabsContent
+              key={t.value}
+              value={t.value}
+              className="col-start-1 row-start-1 min-w-0"
             >
               <HighlightedPre
-                code={code}
+                code={t.code}
                 lang={t.lang}
                 className={preClassName}
               />
-            </div>
-          )),
-        )}
-        {tabs.map((t) => (
-          <TabsContent
-            key={t.value}
-            value={t.value}
-            className="col-start-1 row-start-1 min-w-0"
-          >
-            <HighlightedPre
-              code={t.code}
-              lang={t.lang}
-              className={preClassName}
-            />
-          </TabsContent>
-        ))}
-      </div>
+            </TabsContent>
+          ))}
+        </div>
+      )}
     </Tabs>
   );
 }
+
+const PRE_CLASS = "mt-0! rounded-none! bg-transparent! px-4! py-3.5!";
 
 function HighlightedPre({
   code,
@@ -133,12 +148,7 @@ function HighlightedPre({
 }) {
   const html = useHighlighted(code, lang);
   return (
-    <pre
-      className={cn(
-        "mt-0! rounded-none! bg-transparent! px-4! py-3.5!",
-        className,
-      )}
-    >
+    <pre className={cn(PRE_CLASS, className)}>
       {html ? (
         <code data-highlighted dangerouslySetInnerHTML={{ __html: html }} />
       ) : (
