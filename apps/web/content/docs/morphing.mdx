@@ -1,0 +1,53 @@
+import { MorphDemo } from "@/components/docs/morph-demo";
+import { MorphPlayground } from "@/components/docs/morph-playground";
+
+export const metadata = {
+  title: "Morphing",
+  description: "MorphIcon animates between related icons, like menu to x.",
+};
+
+`MorphIcon` animates from one icon to another when its `name` changes. Try it:
+
+<MorphPlayground />
+
+## Usage
+
+`MorphIcon` comes from its own entry point in `@nubo-icons/react`. Pass the icon to show as `name`, and change it to animate:
+
+```tsx
+import { MorphIcon } from "@nubo-icons/react/morph";
+
+<button aria-label={open ? "Close menu" : "Open menu"} onClick={toggle}>
+  <MorphIcon name={open ? "x" : "menu"} />
+</button>;
+```
+
+It fits anywhere a control flips between two states:
+
+<MorphDemo />
+
+## Icons
+
+`MorphIcon` covers menu, x, plus, minus, check, and the arrows and chevrons in all four directions. Each of them can change into any other.
+
+Icons that are the same shape turned, like the arrows, the chevrons, and plus and x, rotate as a whole, so an arrow never bends on its way round. Any other pair morphs line by line: lines move to their new place, new lines grow from their middle, and lines that aren't needed shrink away.
+
+They are the same drawings as the regular Line icons, kept to at most three straight lines so they can morph.
+
+## Motion
+
+The animation is a spring with no bounce that settles in about 400ms. Changing `name` mid-animation starts from wherever the lines are, so fast toggling never jumps.
+
+With reduced motion turned on, icons swap instantly.
+
+The approach, lines padded to a fixed count and same-shape icons rotating instead of morphing, comes from Benji's [Morphing icons with Claude](https://benji.org/morphing-icons-with-claude).
+
+## Props
+
+`MorphIcon` takes `name`, `size`, `strokeWidth` and `title`, and passes any other SVG prop through, like the other [React](/docs/react) icons. It draws Line only.
+
+The `MorphIconName` type lists the names it accepts.
+
+## Accessibility
+
+Like the other icons, `MorphIcon` is hidden from screen readers unless you give it a `title`. In a button, label the button and change the label with the icon, so the label always says what the button will do.

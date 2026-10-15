@@ -13,6 +13,7 @@ import { pageMetadata, REPO_URL } from "@/lib/site";
 
 import * as Index from "@/content/docs/index.mdx";
 import * as ReactDoc from "@/content/docs/react.mdx";
+import * as Morphing from "@/content/docs/morphing.mdx";
 import * as Styles from "@/content/docs/styles.mdx";
 import * as Svg from "@/content/docs/svg.mdx";
 import * as Accessibility from "@/content/docs/accessibility.mdx";
@@ -27,6 +28,7 @@ type Mdx = {
 const PAGES = {
   index: Index,
   react: ReactDoc,
+  morphing: Morphing,
   styles: Styles,
   svg: Svg,
   accessibility: Accessibility,

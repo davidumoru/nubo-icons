@@ -2,6 +2,7 @@ type DocEntry = { slug: string; file: DocFile; title: string };
 type DocFile =
   | "index"
   | "react"
+  | "morphing"
   | "styles"
   | "svg"
   | "accessibility"
@@ -18,6 +19,7 @@ export const DOC_GROUPS: { label: string; pages: DocEntry[] }[] = [
     label: "Guides",
     pages: [
       { slug: "react", file: "react", title: "React" },
+      { slug: "morphing", file: "morphing", title: "Morphing" },
       { slug: "styles", file: "styles", title: "Line, Fill and Duo" },
       { slug: "svg", file: "svg", title: "SVG" },
       { slug: "accessibility", file: "accessibility", title: "Accessibility" },

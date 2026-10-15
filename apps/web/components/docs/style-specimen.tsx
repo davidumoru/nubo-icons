@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Icon } from "@/components/icon";
 import { STYLES, type Style } from "@/lib/icons";
+import { useReducedMotion } from "@/components/use-reduced-motion";
 import { cn } from "@/lib/utils";
 
 const COLUMNS = 6;
@@ -34,22 +35,9 @@ const SPECIMEN = [
   "Gear",
 ];
 
-const reducedMotion = {
-  subscribe(onChange: () => void) {
-    const query = matchMedia("(prefers-reduced-motion: reduce)");
-    query.addEventListener("change", onChange);
-    return () => query.removeEventListener("change", onChange);
-  },
-  get: () => matchMedia("(prefers-reduced-motion: reduce)").matches,
-};
-
 export function StyleSpecimen() {
   const [style, setStyle] = useState<Style>("line");
-  const still = useSyncExternalStore(
-    reducedMotion.subscribe,
-    reducedMotion.get,
-    () => true,
-  );
+  const still = useReducedMotion();
 
   useEffect(() => {
     if (still) return;
