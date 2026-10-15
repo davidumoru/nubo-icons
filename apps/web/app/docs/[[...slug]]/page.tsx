@@ -68,12 +68,19 @@ export default function DocPage({ params }: PageProps<"/docs/[[...slug]]">) {
 
 function DocSkeleton() {
   return (
-    <div className="mx-auto flex w-full max-w-160 flex-col gap-4 px-2 py-6 md:px-0 lg:py-10">
-      <Skeleton className="h-9 w-48" />
-      <Skeleton className="h-5 w-80" />
-      <Skeleton className="mt-6 h-4 w-full" />
-      <Skeleton className="h-4 w-11/12" />
-      <Skeleton className="h-4 w-4/5" />
+    <div className="flex xl:w-full">
+      <div className="mx-auto flex w-full max-w-160 min-w-0 flex-1 flex-col gap-6 px-2 py-6 md:px-0 lg:py-10">
+        <div className="flex flex-col gap-2">
+          <Skeleton className="h-9 w-48" />
+          <Skeleton className="h-6 w-80 max-w-full" />
+        </div>
+        <div className="flex flex-col gap-3">
+          <Skeleton className="h-4 w-full" />
+          <Skeleton className="h-4 w-11/12" />
+          <Skeleton className="h-4 w-4/5" />
+        </div>
+      </div>
+      <div className="hidden w-56 shrink-0 xl:block" />
     </div>
   );
 }
