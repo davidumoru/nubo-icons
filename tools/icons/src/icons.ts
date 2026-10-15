@@ -18,6 +18,7 @@ export type Meta = {
   added: string;
   status: "draft" | "approved";
   exceptions?: string[];
+  morph?: { rotation?: string; angle?: number };
 };
 
 export type Icon = {

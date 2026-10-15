@@ -10,6 +10,7 @@ import {
   type Node,
   type Style,
 } from "./icons";
+import { MAX_LINES, morphLines, morphShapes } from "./morph";
 
 const errors: string[] = [];
 const warnings: string[] = [];
@@ -55,6 +56,7 @@ const META_KEYS = [
   "added",
   "status",
   "exceptions",
+  "morph",
 ];
 const EXCEPTIONS = ["thin-fill-outline", "miter-cutout"];
 
@@ -180,6 +182,24 @@ function checkMeta(where: string, meta: Record<string, unknown>) {
     errors.push(
       `${where}: exceptions must be a subset of ${EXCEPTIONS.join(", ")}`,
     );
+  const morph = meta.morph as Record<string, unknown> | undefined;
+  if (morph === undefined) return;
+  if (typeof morph !== "object" || morph === null)
+    return errors.push(`${where}: morph must be an object`);
+  for (const key of Object.keys(morph))
+    if (key !== "rotation" && key !== "angle")
+      errors.push(`${where}: unknown morph key "${key}"`);
+  if (morph.rotation !== undefined && typeof morph.rotation !== "string")
+    errors.push(`${where}: morph.rotation must be a string`);
+  if (
+    morph.angle !== undefined &&
+    (morph.rotation === undefined ||
+      typeof morph.angle !== "number" ||
+      morph.angle % 45 !== 0)
+  )
+    errors.push(
+      `${where}: morph.angle must be a multiple of 45, set alongside morph.rotation`,
+    );
 }
 
 const names = iconNames();
@@ -198,6 +218,18 @@ for (const name of names) {
   }
   const icon = loadIcon(name);
   checkMeta(`${name}/meta.json`, icon.meta);
+
+  if (icon.meta.morph) {
+    try {
+      const lines = morphLines(icon.svg.line);
+      if (lines.length > MAX_LINES)
+        errors.push(
+          `${name}/line.svg: morphing icons have at most ${MAX_LINES} straight lines, found ${lines.length}`,
+        );
+    } catch (error) {
+      errors.push(`${name}/line.svg: ${(error as Error).message}`);
+    }
+  }
 
   const bounds: Partial<Record<Style, Awaited<ReturnType<typeof measure>>>> =
     {};
@@ -240,6 +272,12 @@ for (const name of names) {
         `${name}: ${a} and ${b} silhouettes differ by up to ${fmt(d)}px`,
       );
   }
+}
+
+try {
+  morphShapes(names.map(loadIcon));
+} catch (error) {
+  errors.push(`morph: ${(error as Error).message}`);
 }
 
 for (const w of warnings) console.warn(`warn  ${w}`);

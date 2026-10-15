@@ -1,3 +1,5 @@
+import { MorphDemo } from "@/components/docs/morph-demo";
+
 export const metadata = {
   title: "React",
   description: "Import paths, names, props and types for @nubo-icons/react.",
@@ -63,6 +65,24 @@ Every icon has the classes `nubo-icon` and `nubo-<name>`, so you can style one i
 ```
 
 Size follows the `size` prop, but CSS `width` and `height` win if you set them, which makes utility classes like `size-5` work as expected. Use `size="1em"` to scale an icon with the text around it.
+
+## Morphing
+
+`MorphIcon` animates between related icons when its `name` changes. Click the buttons:
+
+<MorphDemo />
+
+```tsx
+import { MorphIcon } from "@nubo-icons/react/morph";
+
+<button aria-label={open ? "Close menu" : "Open menu"} onClick={toggle}>
+  <MorphIcon name={open ? "x" : "menu"} />
+</button>;
+```
+
+It works with menu, x, plus, minus, check, and the arrows and chevrons in all four directions. Arrows turn into arrows, chevrons into chevrons and plus into x; any other pair morphs line by line. A change mid-animation starts from where the lines are, and with reduced motion turned on, icons swap instantly.
+
+`MorphIcon` takes `size`, `strokeWidth`, `title` and any SVG prop, like the other icons. It draws Line only. Label the button, not the icon, so the label changes along with it.
 
 ## TypeScript
 

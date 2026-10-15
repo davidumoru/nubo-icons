@@ -39,6 +39,7 @@ How nubo gets from here to a published library, and what comes after. The reason
 - **Launch polish**: SEO metadata, link previews per page and per icon, sitemap, 404 page, Markdown versions of every page for AI tools, Vercel Analytics, and a README for the public repo.
 - **`@nubo-icons/react` on npm** (0.1.0, then 0.1.1). Changesets version it; CI stages each release through npm trusted publishing and a maintainer approves it with 2FA. The changelog is shown at `/docs/changelog`, generated from the package's `CHANGELOG.md`.
 - **`@nubo-icons/svg`** in `packages/svg`: every icon as a minified SVG file per style, with Duo's tint as real opacity, plus `icons.json` with aliases, tags and categories. A Changesets `fixed` group releases it with the React package, so both share one version.
+- **Morphing icons**: `MorphIcon` from `@nubo-icons/react/morph`, based on [Morphing icons with Claude](https://benji.org/morphing-icons-with-claude). It covers menu, x, plus, minus, check, arrows and chevrons. The build reads each icon's straight lines from `line.svg`; `meta.json` marks which icons join (`morph`) and which turn into each other (`rotation` and `angle`). Lint keeps morph icons to three straight lines and checks that rotation sets line up. `/morph` plays every pair for review.
 
 ## Next
 
@@ -47,19 +48,9 @@ How nubo gets from here to a published library, and what comes after. The reason
 
 ## Later
 
-### Morphing icons
+### More morphing icons
 
-A `MorphIcon` component that animates between icons in a morph group, based on [Morphing icons with Claude](https://benji.org/morphing-icons-with-claude).
-
-- **Morph group**: symbols built from at most three straight lines. Today that's menu, x, plus, minus, check, chevrons and arrows; later play/pause, download/upload and equals. Objects like heart or gear can't morph cleanly and stay out.
-- **Data**: generated from the existing `line.svg` files. The build reads each morph-group icon's straight segments and pads it to three, collapsing unused lines to invisible points. `meta.json` marks which icons rotate into each other (chevron right/left/up/down, plus and x), because rotating looks better than morphing between same-shape icons.
-- **Component**: `<MorphIcon name={open ? "x" : "menu"} />`. Endpoints animate between icons; same-shape pairs rotate. Follows `size` and `strokeWidth`.
-- **Reduced motion**: with `prefers-reduced-motion`, icons swap instantly.
-- **Accessibility**: the button's label changes, never the icon's.
-- **Lint rule**: morph-group icons must stay at three straight segments or fewer.
-- **Test page** that plays every pair in the group, since whether a transition feels right needs a human eye.
-
-Depends on `@nubo-icons/react`.
+Play/pause and download/upload could join the morph group, but they're drawn with curves and rounded rectangles. Joining means redrawing approved icons, so it waits for a redesign request.
 
 ### More styles
 

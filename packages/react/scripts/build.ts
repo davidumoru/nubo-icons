@@ -8,6 +8,7 @@ import {
   parseSvg,
   type Node,
 } from "@nubo-icons/tools/icons";
+import { morphShapes } from "@nubo-icons/tools/morph";
 
 const PKG = new URL("..", import.meta.url).pathname;
 const DIST = join(PKG, "dist");
@@ -39,6 +40,7 @@ const compile = (module: string, outDir: string, extra: string[] = []) =>
     tsc,
     [
       "src/create-icon.ts",
+      "src/morph-icon.ts",
       "--outDir",
       outDir,
       "--module",
@@ -124,6 +126,30 @@ for (const style of STYLES) {
   for (const dir of [types, cjs])
     writeFileSync(join(dir, "index.d.ts"), dts.join("\n") + "\n");
 }
+
+const morphDirs = ["esm", "cjs", "types"].map((d) => join(DIST, d, "morph"));
+for (const dir of morphDirs) mkdirSync(dir, { recursive: true });
+const shapes = JSON.stringify(morphShapes(icons));
+// Next.js and other RSC frameworks need the directive on the module that creates the component.
+writeFileSync(
+  join(DIST, "esm/morph/index.js"),
+  `"use client";\nimport { createMorphIcon } from "../morph-icon.js";\nexport const MorphIcon = createMorphIcon(${shapes});\n`,
+);
+writeFileSync(
+  join(DIST, "cjs/morph/index.js"),
+  `"use client";\n"use strict";\nconst { createMorphIcon } = require("../morph-icon.js");\nexports.MorphIcon = createMorphIcon(${shapes});\n`,
+);
+const morphDts = [
+  'import type { ForwardRefExoticComponent, RefAttributes } from "react";',
+  'import type { MorphIconProps as Props } from "../morph-icon.js";',
+  `export type MorphIconName = ${Object.keys(JSON.parse(shapes))
+    .map((n) => JSON.stringify(n))
+    .join(" | ")};`,
+  "export type MorphIconProps = Props<MorphIconName>;",
+  "export declare const MorphIcon: ForwardRefExoticComponent<MorphIconProps & RefAttributes<SVGSVGElement>>;",
+];
+for (const dir of [morphDirs[1], morphDirs[2]])
+  writeFileSync(join(dir, "index.d.ts"), morphDts.join("\n") + "\n");
 
 console.log(
   `Built ${icons.length} icons × ${STYLES.length} styles (${exportNames.size} names, each also as …Icon).`,

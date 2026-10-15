@@ -91,7 +91,7 @@ Duo is Line with a light tint behind the part of the icon that identifies it.
 
 ## Motion
 
-Symbols that may join the morph group (menu, x, plus, minus, check, chevrons, arrows) are drawn from at most three straight lines. That keeps them animatable later without redrawing. See [docs/roadmap.md](docs/roadmap.md).
+Icons in the morph group (menu, x, plus, minus, check, chevrons, arrows) animate into each other with `MorphIcon`, so they're drawn from at most three straight lines. `pnpm icons:lint` enforces it. Icons that are the same shape turned (the arrows, the chevrons, plus and x) must have matching lines, so they can rotate rather than morph.
 
 ## Metaphors and naming
 

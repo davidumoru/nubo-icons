@@ -38,6 +38,18 @@ Any other SVG prop (`className`, `style`, `onClick`, `ref`) passes through. Ever
 
 Fill and Duo are drawn for the 1.5 stroke. A different `strokeWidth` thickens their outlines too, which can close the small gaps between parts.
 
+## Morphing
+
+`MorphIcon` animates between menu, x, plus, minus, check, and the arrows and chevrons when `name` changes:
+
+```tsx
+import { MorphIcon } from "@nubo-icons/react/morph";
+
+<MorphIcon name={open ? "x" : "menu"} />;
+```
+
+With reduced motion turned on, icons swap instantly.
+
 ## Accessibility
 
 Icons are hidden from screen readers by default (`aria-hidden="true"`). Pass `title` or `aria-label` to make one announced instead. For icon-only buttons, label the button rather than the icon:

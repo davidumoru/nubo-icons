@@ -18,6 +18,7 @@
     "typescript": "^5.9.3"
   },
   "exports": {
-    "./icons": "./src/icons.ts"
+    "./icons": "./src/icons.ts",
+    "./morph": "./src/morph.ts"
   }
 }

@@ -70,6 +70,16 @@
         "types": "./dist/cjs/duo/index.d.ts",
         "default": "./dist/cjs/duo/index.js"
       }
+    },
+    "./morph": {
+      "import": {
+        "types": "./dist/types/morph/index.d.ts",
+        "default": "./dist/esm/morph/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/morph/index.d.ts",
+        "default": "./dist/cjs/morph/index.js"
+      }
     }
   },
   "scripts": {
@@ -100,6 +110,9 @@
       ],
       "duo": [
         "./dist/cjs/duo/index.d.ts"
+      ],
+      "morph": [
+        "./dist/cjs/morph/index.d.ts"
       ]
     }
   },
