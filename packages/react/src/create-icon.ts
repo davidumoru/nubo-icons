@@ -19,6 +19,7 @@ export type IconProps = SVGProps<SVGSVGElement> & {
   size?: number | string;
   title?: string;
   secondaryOpacity?: number;
+  mirrored?: boolean;
 };
 
 export type NuboIcon = ForwardRefExoticComponent<
@@ -43,6 +44,7 @@ export function createIcon(
   slug: string,
   style: IconStyle,
   nodes: IconNode[],
+  mirror = false,
 ): NuboIcon {
   const Icon = forwardRef<SVGSVGElement, IconProps>(
     (
@@ -51,7 +53,9 @@ export function createIcon(
         strokeWidth = 1.5,
         secondaryOpacity = 0.3,
         title,
+        mirrored,
         className,
+        style: css,
         children,
         ...rest
       },
@@ -74,9 +78,17 @@ export function createIcon(
           strokeWidth,
           strokeLinecap: "round",
           strokeLinejoin: "round",
-          className: ["nubo-icon", `nubo-${slug}`, className]
+          // Icons can't see the text direction without client JavaScript, so flipping in right-to-left
+          // layouts is left to one CSS rule on this class.
+          className: [
+            "nubo-icon",
+            `nubo-${slug}`,
+            mirror && mirrored === undefined && "nubo-mirror",
+            className,
+          ]
             .filter(Boolean)
             .join(" "),
+          style: mirrored ? { scale: "-1 1", ...css } : css,
           ...(labelled ? { role: "img" } : { "aria-hidden": true }),
           ...rest,
         },

@@ -3,7 +3,7 @@ import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { iconNames, loadIcon } from "@nubo-icons/tools/icons";
-import { morphLines } from "@nubo-icons/tools/morph";
+import { morphLines, morphShapes } from "@nubo-icons/tools/morph";
 import { MorphIcon } from "../dist/esm/morph/index.js";
 
 const members = iconNames()
@@ -43,4 +43,11 @@ test("MorphIcon always draws three paths and hides the unused ones", () => {
   assert.equal(html.match(/<path /g)?.length, 3);
   assert.equal(html.match(/opacity="0"/g)?.length, 2);
   assert.match(html, /aria-hidden="true"/);
+});
+
+test("morphing icons that mirror name their mirror image", () => {
+  const shapes = morphShapes(members);
+  assert.equal(shapes["arrow-right"].mirror, "arrow-left");
+  assert.equal(shapes["chevron-left"].mirror, "chevron-right");
+  assert.equal(shapes["arrow-up"].mirror, undefined);
 });

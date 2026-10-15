@@ -101,3 +101,18 @@ test("the CommonJS build exports the same components", () => {
   assert.deepEqual(Object.keys(cjs).sort(), Object.keys(Fill).sort());
   assert.equal(html(cjs.Gear), html((Fill as unknown as Module).Gear));
 });
+
+test("icons that point a direction carry nubo-mirror, which mirrored overrides", () => {
+  const { ArrowRight, Check } = Line as unknown as Module;
+  assert.match(
+    html(ArrowRight),
+    /class="nubo-icon nubo-arrow-right nubo-mirror"/,
+  );
+  assert.doesNotMatch(html(Check), /nubo-mirror/);
+  assert.doesNotMatch(
+    html(ArrowRight, { mirrored: false }),
+    /nubo-mirror|scale/,
+  );
+  const flipped = html(Check, { mirrored: true, style: { color: "red" } });
+  assert.match(flipped, /style="scale:-1 1;color:red"/);
+});

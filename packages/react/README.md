@@ -33,6 +33,7 @@ Every icon is also exported with an `Icon` suffix (`HeartIcon`), and under its L
 | `color`            | inherit | Icons use `currentColor`, so they follow the text color unless you set one.           |
 | `title`            | none    | Makes the icon an announced image (`role="img"` with a `<title>`).                    |
 | `secondaryOpacity` | `0.3`   | Duo only: strength of the light tone. The layer also carries `data-tone="secondary"`. |
+| `mirrored`         | auto    | Flips the icon. By default, icons that point a direction get the class `nubo-mirror`. |
 
 Any other SVG prop (`className`, `style`, `onClick`, `ref`) passes through. Every icon has the classes `nubo-icon` and `nubo-<name>`.
 
@@ -49,6 +50,16 @@ import { MorphIcon } from "@nubo-icons/react/morph";
 ```
 
 With reduced motion turned on, icons swap instantly.
+
+## Right-to-left
+
+Add this rule once, and arrows, chevrons and other icons that point a direction flip in right-to-left text:
+
+```css
+.nubo-mirror:dir(rtl) {
+  scale: -1 1;
+}
+```
 
 ## Accessibility
 

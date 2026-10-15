@@ -6,6 +6,7 @@ export type MorphShape = {
   lines: Line[];
   rotation?: string;
   angle?: number;
+  mirror?: string;
 };
 
 export const MAX_LINES = 3;
@@ -81,6 +82,19 @@ function align(lines: Line[], reference: Line[]): Line[] {
   return best;
 }
 
+const segmentKey = (lines: Line[]) =>
+  lines
+    .map((line) =>
+      [line.slice(0, 2), line.slice(2)]
+        .map((p) => p.map((n) => round(n).toFixed(2)).join(","))
+        .sort()
+        .join(" "),
+    )
+    .sort()
+    .join(" | ");
+
+const flip = ([x1, y1, x2, y2]: Line): Line => [24 - x1, y1, 24 - x2, y2];
+
 export function morphShapes(icons: Icon[]): Record<string, MorphShape> {
   const members = icons.filter((icon) => icon.meta.morph);
   const shapes: Record<string, MorphShape> = {};
@@ -104,6 +118,18 @@ export function morphShapes(icons: Icon[]): Record<string, MorphShape> {
       lines: lines.map((l) => l.map(round) as Line),
       ...(rotation ? { rotation, angle } : {}),
     };
+  }
+  for (const icon of members) {
+    if (icon.meta.rtl !== "mirror") continue;
+    const flipped = segmentKey(morphLines(icon.svg.line).map(flip));
+    const partner = members.find(
+      (m) => segmentKey(morphLines(m.svg.line)) === flipped,
+    );
+    if (!partner)
+      throw new Error(
+        `${icon.name} mirrors in right-to-left layouts, but no morph icon is its mirror image`,
+      );
+    shapes[icon.name].mirror = partner.name;
   }
   return shapes;
 }

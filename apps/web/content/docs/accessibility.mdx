@@ -44,10 +44,18 @@ When an icon stands on its own and says something, such as a status in a table, 
 
 ## Right-to-left layouts
 
-Icons that point a direction, such as arrows, chevrons, undo and sign-out, should be mirrored in right-to-left layouts. Icons like clocks, checkmarks and media controls stay as they are. Each icon's metadata marks whether it mirrors, and a CSS rule handles it:
+Icons that point a direction, such as arrows, chevrons, undo and sign-out, should be mirrored in right-to-left layouts. Icons like clocks, checkmarks and media controls stay as they are.
+
+In React, every icon that should mirror has the class `nubo-mirror`. Add one rule to your CSS and they all flip wherever the text runs right to left:
 
 ```css
-[dir="rtl"] .nubo-arrow-right {
-  transform: scaleX(-1);
+.nubo-mirror:dir(rtl) {
+  scale: -1 1;
 }
 ```
+
+To override an icon, pass `mirrored`. `mirrored={false}` keeps it as drawn in every direction, for an arrow that means a fixed side of the screen. `mirrored` on its own always flips it.
+
+`MorphIcon` needs no CSS: it reads the text direction itself and morphs to the mirrored icon, so `arrow-right` points left.
+
+With plain SVG, `icons.json` in `@nubo-icons/svg` marks each icon's `rtl` as `mirror` or `none`.

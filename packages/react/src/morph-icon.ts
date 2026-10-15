@@ -15,6 +15,7 @@ export type MorphShape = {
   lines: Line[];
   rotation?: string;
   angle?: number;
+  mirror?: string;
 };
 
 export type MorphIconProps<Name extends string> = Omit<
@@ -120,11 +121,18 @@ export function createMorphIcon<Name extends string>(
       const [initial] = useState(() => initialState(name, shapes[name]));
       const state = useRef(initial);
       const paths = useRef<(SVGPathElement | null)[]>([]);
+      const mounted = useRef(false);
 
       useEffect(() => {
         const from = state.current;
-        if (from.name === name) return;
-        const target = shapes[name];
+        const path = paths.current[0];
+        const rtl = path && getComputedStyle(path).direction === "rtl";
+        const shown = ((rtl && shapes[name].mirror) || name) as Name;
+        // The server can't know the text direction, so a mirrored first icon appears without animating.
+        const instant = !mounted.current;
+        mounted.current = true;
+        if (from.name === shown) return;
+        const target = shapes[shown];
         const previous = shapes[from.name as Name];
         const turning =
           target.rotation !== undefined &&
@@ -169,14 +177,14 @@ export function createMorphIcon<Name extends string>(
             return { line, opacity };
           });
           state.current = {
-            name,
+            name: shown,
             slots,
             order,
             angle: turning ? angle : (target.angle ?? 0),
           };
         };
 
-        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        if (instant || matchMedia("(prefers-reduced-motion: reduce)").matches) {
           draw(1);
           return;
         }

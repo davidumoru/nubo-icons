@@ -36,13 +36,14 @@ Icons also export their aliases: the names other sets use for the same thing. `S
 
 ## Props
 
-| Prop               | Default   | Notes                                                                                 |
-| ------------------ | --------- | ------------------------------------------------------------------------------------- |
-| `size`             | `24`      | Width and height. Any number or CSS length, such as `18` or `"1em"`.                  |
-| `strokeWidth`      | `1.5`     | Stroke width in grid units, so it scales with `size`.                                 |
-| `color`            | inherited | Icons draw in `currentColor`, so they follow the text color unless you set one.       |
-| `title`            | none      | Makes the icon announced to screen readers. See [Accessibility](/docs/accessibility). |
-| `secondaryOpacity` | `0.3`     | Duo only: the strength of the tint.                                                   |
+| Prop               | Default   | Notes                                                                                   |
+| ------------------ | --------- | --------------------------------------------------------------------------------------- |
+| `size`             | `24`      | Width and height. Any number or CSS length, such as `18` or `"1em"`.                    |
+| `strokeWidth`      | `1.5`     | Stroke width in grid units, so it scales with `size`.                                   |
+| `color`            | inherited | Icons draw in `currentColor`, so they follow the text color unless you set one.         |
+| `title`            | none      | Makes the icon announced to screen readers. See [Accessibility](/docs/accessibility).   |
+| `secondaryOpacity` | `0.3`     | Duo only: the strength of the tint.                                                     |
+| `mirrored`         | auto      | Flips the icon. See [right-to-left layouts](/docs/accessibility#right-to-left-layouts). |
 
 Every other SVG prop passes through, including `className`, `style`, event handlers and `ref`.
 

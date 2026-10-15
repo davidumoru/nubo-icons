@@ -96,7 +96,8 @@ for (const style of STYLES) {
     const nodes = JSON.stringify(
       parseSvg(icon.svg[style]).children.map(toNode),
     );
-    const call = `createIcon(${JSON.stringify(name)}, ${JSON.stringify(icon.name)}, ${JSON.stringify(style)}, ${nodes})`;
+    const mirror = icon.meta.rtl === "mirror" ? ", true" : "";
+    const call = `createIcon(${JSON.stringify(name)}, ${JSON.stringify(icon.name)}, ${JSON.stringify(style)}, ${nodes}${mirror})`;
     writeFileSync(
       join(esm, `${icon.name}.js`),
       `import { createIcon } from "../create-icon.js";\nexport const ${name} = ${call};\n`,
