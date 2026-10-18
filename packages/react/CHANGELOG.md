@@ -1,5 +1,11 @@
 # @nubo-icons/react
 
+## 0.6.0
+
+### Minor Changes
+
+- 5f48d24: Add 6 icons: floppy-disk (alias `save`), circle-plus (alias `plus-circle`), circle-minus (alias `minus-circle`), trend-down (alias `trending-down`), clock-counter-clockwise (alias `history`) and palette.
+
 ## 0.5.0
 
 ### Minor Changes
