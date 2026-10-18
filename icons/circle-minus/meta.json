@@ -1,0 +1,8 @@
+{
+  "tags": ["remove", "delete", "subtract", "collapse", "less"],
+  "categories": ["interface"],
+  "aliases": ["minus-circle"],
+  "rtl": "none",
+  "added": "0.6.0",
+  "status": "approved"
+}

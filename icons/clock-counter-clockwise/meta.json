@@ -1,0 +1,8 @@
+{
+  "tags": ["history", "recent", "undo", "past", "activity", "restore", "time"],
+  "categories": ["time", "arrows"],
+  "aliases": ["history"],
+  "rtl": "none",
+  "added": "0.6.0",
+  "status": "approved"
+}

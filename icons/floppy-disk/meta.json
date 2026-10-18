@@ -1,0 +1,8 @@
+{
+  "tags": ["save", "disk", "store", "storage", "document"],
+  "categories": ["files", "interface"],
+  "aliases": ["save"],
+  "rtl": "none",
+  "added": "0.6.0",
+  "status": "approved"
+}
