@@ -3,6 +3,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  experimental: {
+    agentUpgrade: "security",
+  },
   partialPrefetching: true,
   pageExtensions: ["ts", "tsx", "mdx"],
   turbopack: {
