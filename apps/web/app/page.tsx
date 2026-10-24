@@ -1,4 +1,4 @@
-import { ArrowRightIcon, DownloadIcon } from "@nubo-icons/react";
+import { DownloadIcon } from "@nubo-icons/react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { connection } from "next/server";
@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Browser } from "@/components/browser";
 import { InstallTabs } from "@/components/docs/install-tabs";
+import { MorphPill } from "@/components/morph-pill";
 import { SiteFooter } from "@/components/site-footer";
 import { getIcon } from "@/lib/icons";
 import {
@@ -64,19 +65,7 @@ export default function Home() {
       />
       <section className="flex flex-col items-start gap-8 py-12 sm:items-center sm:text-center lg:py-16">
         <div className="flex flex-col items-start gap-6 sm:items-center">
-          <Link
-            href="/docs/morphing"
-            className="group inline-flex h-7 items-center gap-2 rounded-full bg-foreground/5 pr-3 pl-1 text-[0.8125rem] font-medium transition-colors hover:bg-foreground/10"
-          >
-            <span className="rounded-full bg-primary px-2 py-0.5 text-xs text-primary-foreground">
-              New
-            </span>
-            Morphing icons
-            <ArrowRightIcon
-              size={14}
-              className="text-muted-foreground transition-transform group-hover:translate-x-0.5"
-            />
-          </Link>
+          <MorphPill />
           <h1 className="max-w-4xl text-4xl font-semibold tracking-tight sm:leading-[1.1] text-balance [text-box:trim-both_cap_alphabetic] sm:text-5xl">
             Soft, open‑source icons for apps, sites, docs and slides.
           </h1>
